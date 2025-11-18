@@ -1,9 +1,12 @@
 import { Routes, Route } from "react-router-dom";
-import MainLayout from "../layout/MainLayout";
-import Home from "../pages/home/Home";
-import NotFound from "../pages/NotFound";
-import About from "../pages/about/About";
-import Contact from "../pages/contact/Contact";
+
+import Home from "../components/pages/home/Home";
+
+import About from "../components/pages/about/About";
+import Contact from "../components/pages/contact/Contact";
+
+import NotFound from "../components/pages/NotFound";
+import MainLayout from "../components/layout/MainLayout";
 
 function AppRoutes() {
   return (
