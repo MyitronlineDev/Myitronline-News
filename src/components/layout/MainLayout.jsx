@@ -1,14 +1,17 @@
-import Header from "../components/common/Header";
-import Footer from "../components/common/Footer";
+import { Outlet } from "react-router-dom";
+import Header from "../common/Header";
+import Footer from "../common/Footer";
 
-const MainLayout = ({ children }) => {
+function MainLayout() {
   return (
     <>
       <Header />
-      <main style={{ minHeight: "80vh" }}>{children}</main>
+        <main className="min-h-screen">
+          <Outlet />
+        </main>
       <Footer />
     </>
   );
-};
+}
 
 export default MainLayout;

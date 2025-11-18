@@ -1,21 +1,12 @@
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
+import AppRoutes from "./components/routes/AppRoutes";
 
-// Normal imports
-import Home from "./components/pages/Home";
-import NotFound from "../pages/NotFound";
-
-function AppRoutes() {
+function App() {
   return (
-    <Routes>
-
-      {/* Home */}
-      <Route path="/" element={<Home />} />
-
-      {/* Not found */}
-      <Route path="*" element={<NotFound />} />
-
-    </Routes>
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
   );
 }
 
-export default AppRoutes;
+export default App;
