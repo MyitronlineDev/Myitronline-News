@@ -1,4 +1,5 @@
 import React from "react";
+import LendingPage from "./LendingPage";
 
 const Home = () => {
   // Mock Data based on the screenshot
@@ -307,9 +308,9 @@ const Home = () => {
     //   </div>
     // </div>
     <div className="container mx-auto px-4 font-sans ">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 ">
         {/* latest news section */}
-        <div className="lg:col-span-2 ">
+        <div className="lg:col-span-3 px-2 ">
           <h1 className="text-3xl font-bold">Latest News</h1>
           <br />
 
@@ -330,8 +331,8 @@ const Home = () => {
         </div>
 
         {/* side  Section */}
-        <div className="lg:col-span-10 bg-blue-200">
-          
+        <div className="lg:col-span-9 ">
+          <LendingPage/>
         </div>
       </div>
     </div>
