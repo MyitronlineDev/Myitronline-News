@@ -38,7 +38,7 @@ function TvSection() {
   return (
     <section className="max-w-sm mx-auto px-4 py-8">
       {/* Heading */}
-      <h2 className="text-2xl font-extrabold tracking-tight mb-4">TV</h2>
+      <h2 className="text-3xl font-bold tracking-tight mb-4">TV</h2>
 
       {/* List */}
       <div className="space-y-4">
@@ -49,16 +49,16 @@ function TvSection() {
               <img
                 src={item.image}
                 alt={item.title}
-                className="w-24 h-16 object-cover"
+                className="w-25 h-18 object-cover"
               />
             </div>
 
             {/* Text */}
             <div className="flex-1">
-              <h3 className="text-sm font-semibold leading-snug hover:text-blue-600 cursor-pointer">
+              <h3 className="text-l font-semibold leading-snug hover:text-blue-600 cursor-pointer">
                 {item.title}
               </h3>
-              <p className="mt-1 text-xs text-gray-500">{item.date}</p>
+              <span className="mt-1 font-semibold text-sm text-gray-500">{item.date}</span>
             </div>
           </article>
         ))}

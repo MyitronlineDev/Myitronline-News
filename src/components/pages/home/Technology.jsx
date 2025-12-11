@@ -45,8 +45,8 @@ const articles = [
 
 function Technology() {
   return (
-    <section className="max-w-3xl mx-auto px-4 py-8">
-      <h2 className="text-2xl font-extrabold tracking-tight mb-6">
+    <section className="max-w-3xl mx-auto px-4 py-8 font-sans">
+      <h2 className="text-3xl font-bold tracking-tight mb-6">
         Technology
       </h2>
 
@@ -60,21 +60,21 @@ function Technology() {
               <img
                 src={article.image}
                 alt={article.title}
-                className="w-28 h-24 object-cover rounded-md"
+                className="w-28 h-24 object-cover "
               />
             </div>
 
             <div className="flex-1">
-              <h3 className="text-base font-semibold leading-snug hover:text-blue-600 cursor-pointer">
+              <h3 className="text-xl font-semibold">
                 {article.title}
               </h3>
 
-              <p className="mt-1 text-sm text-gray-500">{article.excerpt}</p>
+              <p className="mt-1 text-l text-gray-600">{article.excerpt}</p>
 
-              <div className="mt-2 text-xs font-semibold uppercase tracking-wide text-gray-400 flex items-center gap-2">
+              <div className="mt-2 text-xs font-semibold uppercase tracking-wide text-gray-500 flex items-center gap-2">
                 <span>{article.author}</span>
                 <span className="w-1 h-1 rounded-full bg-gray-400" />
-                <span>{article.date}</span>
+                <span className="text-gray-500 text-sm">{article.date}</span>
               </div>
             </div>
           </article>

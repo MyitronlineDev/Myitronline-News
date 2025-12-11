@@ -1,5 +1,9 @@
 import React from "react";
 import LendingPage from "./LendingPage";
+import Featured from "./Featured";
+import Technology from "./Technology";
+import TvSection from "./TvSection";
+import FashionStay from "./FashionStay";
 
 const Home = () => {
   // Mock Data based on the screenshot
@@ -56,6 +60,50 @@ const Home = () => {
       excerpt:
         "Refreshingly, what was expected of her was the same thing that was expected of Lara Stone: to take a...",
     },
+    {
+      category: "TECHNOLOGY",
+      date: "02/15/2019",
+      title: "Apple to ship iPhones with only Qualcomm chips to German stores",
+      excerpt:
+        "Refreshingly, what was expected of her was the same thing that was expected of Lara Stone: to take a...",
+    },
+    {
+      category: "TECHNOLOGY",
+      date: "02/15/2019",
+      title:
+        "Angry Birds maker Rovio sees sales growth in 2019 after weak fourth quarter",
+      excerpt:
+        "Refreshingly, what was expected of her was the same thing that was expected of Lara Stone: to take a...",
+    },
+    {
+      category: "TECHNOLOGY",
+      date: "02/15/2019",
+      title: "Apple to ship iPhones with only Qualcomm chips to German stores",
+      excerpt:
+        "Refreshingly, what was expected of her was the same thing that was expected of Lara Stone: to take a...",
+    },
+    {
+      category: "TECHNOLOGY",
+      date: "02/15/2019",
+      title: "Apple to ship iPhones with only Qualcomm chips to German stores",
+      excerpt:
+        "Refreshingly, what was expected of her was the same thing that was expected of Lara Stone: to take a...",
+    },
+    {
+      category: "TECHNOLOGY",
+      date: "02/15/2019",
+      title:
+        "Angry Birds maker Rovio sees sales growth in 2019 after weak fourth quarter",
+      excerpt:
+        "Refreshingly, what was expected of her was the same thing that was expected of Lara Stone: to take a...",
+    },
+    {
+      category: "TECHNOLOGY",
+      date: "02/15/2019",
+      title: "Apple to ship iPhones with only Qualcomm chips to German stores",
+      excerpt:
+        "Refreshingly, what was expected of her was the same thing that was expected of Lara Stone: to take a...",
+    },
   ];
 
   const rightNews = [
@@ -77,6 +125,29 @@ const Home = () => {
 
   const featuredItems = [
     {
+      category: "FASHION",
+      title:
+        "Elsa Hosk Looks Like an Absolute Vision in Victoria’s Secret’s $1M Fantasy Bra",
+      date: "02/15/2019",
+      image:
+        "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+    },
+    {
+      category: "FASHION",
+      title:
+        "Gabriela Hearst’s Fall Collection Is for the Sophisticated Minimalist",
+      date: "02/15/2019",
+      image:
+        "https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+    },
+    {
+      category: "FASHION",
+      title: "This £55 Bag Is Fast Becoming Part of the It-Girl Uniform",
+      date: "02/15/2019",
+      image:
+        "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+    },
+     {
       category: "FASHION",
       title:
         "Elsa Hosk Looks Like an Absolute Vision in Victoria’s Secret’s $1M Fantasy Bra",
@@ -333,6 +404,18 @@ const Home = () => {
         {/* side  Section */}
         <div className="lg:col-span-9 ">
           <LendingPage/>
+          <Featured featuredItems={featuredItems}/>
+          <FashionStay/>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 ">
+            <div className="lg:col-span-8 ">
+              <Technology/>
+            </div>
+            <div className="lg:col-span-4 ">
+              <TvSection/>
+            </div>
+
+          </div>
         </div>
       </div>
     </div>

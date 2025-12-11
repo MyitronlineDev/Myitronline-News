@@ -2,7 +2,7 @@ import React from "react";
 
 const LendingPage = () => {
   return (
-    <div className="flex flex-col lg:flex-row gap-6">
+    <div className="flex flex-col lg:flex-row gap-6 mb-7">
       {/* Thumbnail Section */}
       <div className="lg:w-2/3">
         <div className="relative mb-8">
@@ -40,7 +40,7 @@ const LendingPage = () => {
             <span className="uppercase font-semibold">Fashion</span>
           </div>
         </div>
-        <h2 className="text-2xl font-semibold leading-tight">
+        <h2 className="text-xl font-semibold leading-tight">
           Led Zeppelin to launch collection with Vans
         </h2>
         <p className="leading-tight">
@@ -56,7 +56,7 @@ const LendingPage = () => {
             <span className="uppercase font-semibold">Fashion</span>
           </div>
         </div>
-        <h2 className="text-2xl font-semibold leading-tight">
+        <h2 className="text-xl font-semibold leading-tight">
           Led Zeppelin to launch collection with Vans
         </h2>
         <p className="leading-tight">
