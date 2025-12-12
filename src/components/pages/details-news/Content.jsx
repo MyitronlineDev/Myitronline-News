@@ -1,34 +1,34 @@
+import { useTextSize } from "../../context/TextSizeContext";
+
 const Content = ({ contents = [], featuredImage = [] }) => {
   const image = featuredImage?.[0];
 
+  // Get current font size from context
+  const { scale } = useTextSize();
+
   return (
-    <div className="relative">
+    <div className="relative" style={{ fontSize: `${scale}rem` }}>
 
       {/* IMAGE FLOATS ONLY FOR FIRST PARAGRAPH */}
       {image && (
         <div
-          className="
-            float-right 
-            ml-6 
-            mb-4 
-            w-100 
-            sm:w-150 
-            wrap-image
-          "
+          className={`float-right  ml-6  mb-4 w-100 sm:w-150 wrap-image`}
         >
           <img
             src={image.url}
             alt={image.caption}
             className="rounded-xl shadow-md w-full h-auto"
           />
-         
-          <p className="text-sm text-gray-500 italic mt-1">{image.caption}</p>
+
+          <p className="text-sm text-gray-500 italic mt-1">
+            {image.caption}
+          </p>
         </div>
       )}
 
       {/* FIRST PARAGRAPH ONLY (WRAPPED AROUND IMAGE) */}
       {contents[0] && (
-        <p className="text-gray-800 text-lg leading-relaxed mb-6 text-justify">
+        <p className="text-gray-800 leading-relaxed mb-6 text-justify">
           {contents[0].text}
         </p>
       )}
@@ -37,7 +37,7 @@ const Content = ({ contents = [], featuredImage = [] }) => {
       <div className="clear-both"></div>
 
       {/* REST PARAGRAPHS FULL-WIDTH */}
-      <div className="flex flex-col gap-6 text-lg leading-relaxed text-justify">
+      <div className="flex flex-col gap-6 leading-relaxed text-justify">
         {contents.slice(1).map((item) => {
           switch (item.type) {
             case "paragraph":
@@ -47,7 +47,7 @@ const Content = ({ contents = [], featuredImage = [] }) => {
               return (
                 <blockquote
                   key={item.id}
-                  className="border-l-4 pl-4 italic text-gray-600 text-xl"
+                  className="border-l-4 pl-4 italic text-gray-600"
                 >
                   “{item.text}”
                   <span className="block mt-2 text-sm text-gray-500">
@@ -61,7 +61,6 @@ const Content = ({ contents = [], featuredImage = [] }) => {
           }
         })}
       </div>
-
     </div>
   );
 };
