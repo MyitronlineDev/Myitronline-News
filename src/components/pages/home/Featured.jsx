@@ -20,7 +20,7 @@ const Featured = ({featuredItems}) => {
   };
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 h-auto">
+    <div className="grid grid-cols-1 lg:grid-cols-12 h-auto mb-4">
 
       {/* LEFT SECTION */}
       <div className="lg:col-span-3 grid place-items-center ">

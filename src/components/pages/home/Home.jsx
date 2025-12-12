@@ -4,6 +4,8 @@ import Featured from "./Featured";
 import Technology from "./Technology";
 import TvSection from "./TvSection";
 import FashionStay from "./FashionStay";
+import CalibrityFood from "./CalibrityFood";
+import LatestNews from "./LatestNews";
 
 const Home = () => {
   // Mock Data based on the screenshot
@@ -76,6 +78,35 @@ const Home = () => {
         "Refreshingly, what was expected of her was the same thing that was expected of Lara Stone: to take a...",
     },
     {
+      category: "TECHNOLOGY",
+      date: "02/15/2019",
+      title: "Apple to ship iPhones with only Qualcomm chips to German stores",
+      excerpt:
+        "Refreshingly, what was expected of her was the same thing that was expected of Lara Stone: to take a...",
+    },
+    {
+      category: "TECHNOLOGY",
+      date: "02/15/2019",
+      title: "Apple to ship iPhones with only Qualcomm chips to German stores",
+      excerpt:
+        "Refreshingly, what was expected of her was the same thing that was expected of Lara Stone: to take a...",
+    },
+    {
+      category: "TECHNOLOGY",
+      date: "02/15/2019",
+      title:
+        "Angry Birds maker Rovio sees sales growth in 2019 after weak fourth quarter",
+      excerpt:
+        "Refreshingly, what was expected of her was the same thing that was expected of Lara Stone: to take a...",
+    },
+    {
+      category: "TECHNOLOGY",
+      date: "02/15/2019",
+      title: "Apple to ship iPhones with only Qualcomm chips to German stores",
+      excerpt:
+        "Refreshingly, what was expected of her was the same thing that was expected of Lara Stone: to take a...",
+    },
+        {
       category: "TECHNOLOGY",
       date: "02/15/2019",
       title: "Apple to ship iPhones with only Qualcomm chips to German stores",
@@ -381,28 +412,10 @@ const Home = () => {
     <div className="container mx-auto px-4 font-sans ">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 ">
         {/* latest news section */}
-        <div className="lg:col-span-3 px-2 ">
-          <h1 className="text-3xl font-bold">Latest News</h1>
-          <br />
-
-          <div className="space-y-4">
-            {leftNews.map((item, index) => (
-              <div key={index} className="border-b pb-3">
-                <div className="flex flex-row gap-2 text-sm text-gray-700">
-                  <span className="font-semibold">{item.category}</span>
-                  <span className="text-yellow-500">{item.date}</span>
-                </div>
-                <h3 className="text-lg font-semibold">{item.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {item.excerpt}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
+        <LatestNews leftNews={leftNews} />
 
         {/* side  Section */}
-        <div className="lg:col-span-9 ">
+        <div className="col-span-full lg:col-span-9 ">
           <LendingPage/>
           <Featured featuredItems={featuredItems}/>
           <FashionStay/>
@@ -416,6 +429,7 @@ const Home = () => {
             </div>
 
           </div>
+          <CalibrityFood/>
         </div>
       </div>
     </div>
