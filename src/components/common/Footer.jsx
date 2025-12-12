@@ -1,89 +1,204 @@
 import React from "react";
 
-export default function Footer() {
+function Footer() {
+    const BLUE = "#2f6bff";
   return (
-    <footer className="bg-gray-50 text-gray-800">
-      <div className="max-w-6xl mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 items-start gap-8">
-          {/* Left: Logo */}
-          <div className="flex items-center md:justify-start justify-center">
+    <footer className="bg-[#0b0b0b] text-gray-300">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 py-12">
+        {/* top row: logo + tagline (left) and small nav (right) */}
+        <div className="flex flex-col lg:flex-row items-start justify-between gap-6">
+          {/* left block */}
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4">
             <div className="flex items-center gap-4">
-              <img
-                src="data:image/webp;base64,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"
-                alt="LifeNews logo"
-                className="w-20 h-auto object-contain"
-              />
-              <div className="hidden md:block">
-                <div className="text-lg font-bold">LifeNews</div>
-                <div className="text-xs text-yellow-500">
-                  Fashion Trends and Culture
+              {/* logomark */}
+              <div
+                className="flex items-center justify-center h-14 w-14 rounded-md"
+                style={{
+                  background: `linear-gradient(135deg, ${BLUE}, #3b3bff)`,
+                }}
+                aria-hidden
+              >
+                {/* simple R mark; replace with actual logo SVG if available */}
+                <svg
+                  className="h-8 w-8 text-white"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  role="img"
+                  aria-label="Renaz logo"
+                >
+                  <path d="M5 4h6a4 4 0 010 8H5V4z" fill="white" />
+                  <path
+                    d="M11 12l4 8"
+                    stroke="white"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
+
+              <div className="leading-tight">
+                <div className="text-white text-2xl font-bold tracking-tight">
+                  Renaz
+                </div>
+                {/* tagline row */}
+                <div className="mt-2 text-xs text-gray-400 flex items-center gap-3">
+                  <span>Honest</span>
+                  <span className="hidden sm:inline-block h-3 border-l border-gray-600" />
+                  <span>Journalism</span>
+                  <span className="hidden sm:inline-block h-3 border-l border-gray-600" />
+                  <span>Bravery</span>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Middle: About */}
-          <div className="text-center md:text-left">
-            <h3 className="text-xl font-black mb-3">About Us</h3>
-            <p className="text-sm text-gray-500 leading-relaxed">
-              Newspaper WordPress Theme is your news, entertainment, music
-              fashion website. We provide you with the latest breaking news and
-              videos straight from the entertainment industry.
-            </p>
-            <p className="mt-1 text-sm">
-              Contact us:{" "}
-              <a
-                href="mailto:contact@yoursite.com"
-                className="text-yellow-500 font-small"
+          {/* right top nav (hidden on very small screens) */}
+          <nav className="hidden md:flex items-center gap-8">
+            <a
+              href="#about"
+              className="text-sm text-gray-300 hover:text-white transition"
+            >
+              About Us
+            </a>
+            <a
+              href="#contact"
+              className="text-sm text-gray-300 hover:text-white transition"
+            >
+              Contact Us
+            </a>
+            <a
+              href="#subscribe"
+              className="text-sm text-gray-300 hover:text-white transition"
+            >
+              Subscribe
+            </a>
+            <a
+              href="#podcast"
+              className="text-sm text-gray-300 hover:text-white transition"
+            >
+              Podcast
+            </a>
+            <a
+              href="#video"
+              className="text-sm text-gray-300 hover:text-white transition"
+            >
+              Video
+            </a>
+            <a
+              href="#longnews"
+              className="text-sm text-gray-300 hover:text-white transition"
+            >
+              Long News
+            </a>
+          </nav>
+        </div>
+
+        {/* divider */}
+        <div className="mt-6 border-t border-gray-800" />
+
+        {/* bottom row */}
+        <div className="mt-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <p className="text-sm text-gray-300 md:pr-8 leading-relaxed">
+            <span className="font-semibold text-white">Copyright:</span> Any
+            unauthorized use or reproduction of{" "}
+            <span className="font-semibold text-white">Renaz</span> content for
+            commercial purposes is strictly prohibited and constitutes copyright
+            infringement liable to legal action.
+          </p>
+
+          <div className="flex items-center gap-4">
+            {/* social icons */}
+            <a
+              href="#"
+              aria-label="Facebook"
+              className="p-2 rounded-full hover:bg-gray-800"
+              title="Facebook"
+            >
+              <svg
+                className="h-5 w-5 text-gray-300"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden
               >
-                contact@yoursite.com
-              </a>
-            </p>
-          </div>
+                <path d="M22 12.07C22 6.48 17.52 2 11.93 2S2 6.48 2 12.07c0 5.02 3.66 9.22 8.44 9.88v-6.98H8.08v-2.9h2.36V9.41c0-2.33 1.38-3.62 3.5-3.62.99 0 2.03.18 2.03.18v2.23h-1.14c-1.13 0-1.48.7-1.48 1.42v1.71h2.52l-.4 2.9h-2.12v6.98C18.34 21.29 22 17.09 22 12.07z" />
+              </svg>
+            </a>
 
-          {/* Right: Socials */}
-          <div className="text-center ">
-            <h3 className="text-xl font-black mb-3 ">Follow Us</h3>
-            <div className="flex  justify-center items-center gap-4 text-sm text-gray-700">
-              <a href="https://www.facebook.com/" aria-label="facebook" className="hover:opacity-80" target="_blank">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width={22}
-                  height={22}
-                  fill="currentColor"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
-                </svg>
-              </a>
+            <a
+              href="#"
+              aria-label="Pinterest"
+              className="p-2 rounded-full hover:bg-gray-800"
+              title="Pinterest"
+            >
+              <svg
+                className="h-5 w-5 text-gray-300"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden
+              >
+                <path d="M12 2C6.48 2 2 6.48 2 12c0 4.1 2.5 7.59 6.02 9.05-.08-.77-.15-1.95.03-2.79.16-.73 1.05-4.68 1.05-4.68s-.27-.54-.27-1.34c0-1.25.72-2.18 1.62-2.18.76 0 1.12.57 1.12 1.25 0 .76-.48 1.9-.73 2.96-.2.9.42 1.64 1.24 1.64 1.49 0 2.64-1.57 2.64-3.84 0-1.99-1.43-3.38-3.47-3.38-2.37 0-3.77 1.77-3.77 3.59 0 .71.27 1.48.61 1.9.07.08.08.15.06.23-.06.25-.2.79-.22.9-.03.14-.09.17-.23.1-.86-.4-1.4-1.65-1.4-2.66 0-2.16 1.57-4.14 4.54-4.14 2.38 0 4.23 1.7 4.23 3.97 0 2.36-1.48 4.26-3.54 4.26-0.69 0-1.34-.36-1.56-.78 0 0-.37 1.42-.46 1.8-.17.66-.5 1.31-.8 1.82C9.9 22.8 10.94 23 12 23c5.52 0 10-4.48 10-11S17.52 2 12 2z" />
+              </svg>
+            </a>
 
-              <a href="https://www.instagram.com/" aria-label="instagram" className="hover:opacity-80" target="_blank">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width={22}
-                  height={22}
-                  fill="currentColor"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
-                </svg>
-              </a>
+            <a
+              href="#"
+              aria-label="Instagram"
+              className="p-2 rounded-full hover:bg-gray-800"
+              title="Instagram"
+            >
+              <svg
+                className="h-5 w-5 text-gray-300"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden
+              >
+                <path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm5 5.5A4.5 4.5 0 1016.5 12 4.5 4.5 0 0012 7.5zm6.5-.9a1.1 1.1 0 11-1.1-1.1 1.1 1.1 0 011.1 1.1zM12 9a3 3 0 11-3 3 3 3 0 013-3z" />
+              </svg>
+            </a>
 
-              <a href="https://x.com/?lang=en-in" aria-label="twitter" className="hover:opacity-80" target="_blank">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width={22}
-                  height={22}
-                  fill="currentColor"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" />
-                </svg>
-              </a>
-            </div>
+            <a
+              href="#"
+              aria-label="X"
+              className="p-2 rounded-full hover:bg-gray-800"
+              title="X / Twitter"
+            >
+              <svg
+                className="h-5 w-5 text-gray-300"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden
+              >
+                <path d="M23 3a10.9 10.9 0 01-3.14 1.53A4.48 4.48 0 0012 7.5v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
+              </svg>
+            </a>
           </div>
         </div>
       </div>
+
+      {/* Back to top button */}
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        aria-label="Back to top"
+        className="fixed right-8 bottom-1 h-12 w-12 rounded-full border-2 border-[#2f6bff] flex items-center justify-center text-[#2f6bff] bg-transparent hover:bg-[#2f6bff] hover:text-white transition"
+      >
+        <svg
+          className="h-5 w-5"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          aria-hidden
+        >
+          <path
+            d="M5 15l7-7 7 7"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </button>
     </footer>
   );
 }
+
+export default Footer;
