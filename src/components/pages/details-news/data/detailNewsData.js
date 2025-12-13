@@ -50,8 +50,48 @@ export const newsDetails = [
     ],
 
     relatedNews: [
-      { id: 2, title: "Delhi govt announces new EV policy for 2025" },
-      { id: 3, title: "Five affordable EV scooters launching this year" }
+      {
+        category: "WORLD",
+        title: "Global Leaders Meet to Discuss Climate Action at Emergency Summit",
+        date: "09/12/2024",
+        image:
+          "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=600&q=80",
+      },
+      {
+        category: "TECH",
+        title: "AI Breakthrough Promises Faster, Safer Medical Diagnoses",
+        date: "09/10/2024",
+        image:
+          "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=600&q=80",
+      },
+      {
+        category: "BUSINESS",
+        title: "Stock Markets Rally as Inflation Slows Across Major Economies",
+        date: "09/11/2024",
+        image:
+          "https://images.unsplash.com/photo-1518186233392-c232efbf2373?auto=format&fit=crop&w=600&q=80",
+      },
+      {
+        category: "HEALTH",
+        title: "New Research Highlights Benefits of Plant-Rich Diets",
+        date: "09/09/2024",
+        image:
+          "https://images.unsplash.com/photo-1506086679526-a687f394c016?auto=format&fit=crop&w=600&q=80",
+      },
+      {
+        category: "SCIENCE",
+        title: "Astronomers Discover Possible Earth-Like Planet in Nearby System",
+        date: "09/08/2024",
+        image:
+          "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?auto=format&fit=crop&w=600&q=80",
+      },
+      {
+        category: "SPORTS",
+        title: "Historic Win as Underdog Team Secures Championship Title",
+        date: "09/07/2024",
+        image:
+          "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=600&q=80",
+      },
     ],
 
     tags: ["EV", "Electric Vehicles", "Business News", "India"]
