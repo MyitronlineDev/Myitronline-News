@@ -1,4 +1,5 @@
 import { useTextSize } from "../../context/TextSizeContext";
+import ReadMoreLess from "../../common/ReadMoreLess";
 
 const Content = ({ contents = [], featuredImage = [] }) => {
   const image = featuredImage?.[0];
@@ -12,15 +13,25 @@ const Content = ({ contents = [], featuredImage = [] }) => {
       {/* IMAGE FLOATS ONLY FOR FIRST PARAGRAPH */}
       {image && (
         <div
-          className={`float-right  ml-6  mb-4 w-100 sm:w-150 wrap-image`}
+          className="
+          float-right ml-6
+          w-100 sm:w-150
+          wrap-image
+          transition-all duration-300
+        "
         >
           <img
             src={image.url}
             alt={image.caption}
-            className="rounded-xl shadow-md w-full h-auto"
+            className="
+            rounded-xl w-full h-auto
+            shadow-md
+            transition-all duration-500
+            hover:shadow-xl hover:scale-[1.03]
+          "
           />
 
-          <p className="text-sm text-gray-500 italic mt-1">
+          <p className="text-xs sm:text-sm text-gray-500 italic mt-2">
             {image.caption}
           </p>
         </div>
@@ -41,7 +52,13 @@ const Content = ({ contents = [], featuredImage = [] }) => {
         {contents.slice(1).map((item) => {
           switch (item.type) {
             case "paragraph":
-              return <p key={item.id}>{item.text}</p>;
+              return (
+                <ReadMoreLess
+                  key={item.id}
+                  text={item.text}
+                  wordCount={150}
+                />
+              );
 
             case "quote":
               return (
@@ -61,6 +78,7 @@ const Content = ({ contents = [], featuredImage = [] }) => {
           }
         })}
       </div>
+
     </div>
   );
 };

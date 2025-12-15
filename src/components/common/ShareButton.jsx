@@ -20,6 +20,7 @@ const ShareButton = () => {
 
     return (
         <Button
+        variant="ghost"
             label="Share"
             icon={FaShare}
             fn={hanldeShare}
