@@ -1,12 +1,24 @@
-import React from 'react'
+import { NavLink } from "react-router-dom";
 
-const ArticleMeta = ({dateUpdated, author, datePublished, }) => {
-    return (
-        <div className="flex gap-3  items-center">
-            <p className='text-md'>Updated: {dateUpdated}</p>
-            <p className="italic">~{author}</p>
-        </div>
-    )
-}
+const ArticleMeta = ({ dateUpdated, author }) => {
+  return (
+    <div className="flex gap-3 items-center">
+      <p className="text-md">Updated: {dateUpdated}</p>
 
-export default ArticleMeta
+      <NavLink
+        to={`/author/${author}`}
+        className={({ isActive }) =>
+          `
+          italic underline
+          ${isActive ? "text-blue-600 font-semibold" : "text-green-500"}
+          visited:text-purple-600
+          `
+        }
+      >
+        ~{author}
+      </NavLink>
+    </div>
+  );
+};
+
+export default ArticleMeta;

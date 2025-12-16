@@ -12,7 +12,7 @@ const ReadMoreLess = ({ text = " ", wordCount = 20 }) => {
     <p>{displayText} <span>
       {
         words.length > wordCount && (
-          <button onClick={() => setIsExpended(!isExpended)} className="underline">
+          <button onClick={() => setIsExpended(!isExpended)} className="underline text-yellow-500">
             {isExpended ? "Read Less" : "Read More"}
           </button>
         )

@@ -1,13 +1,10 @@
-import { FaShare } from "react-icons/fa"
-import { FiPrinter } from "react-icons/fi";
-// import { MdPrint } from "react-icons/md";
-import Button from "../../common/Button"
 import TextSizeButton from "../../common/TextSizeButton";
+import ShareButton from "../../common/ShareButton";
 
 const ArticleMetaActions = () => {
     return (
-        <div className="">
-            <Button label="Share" icon={FaShare}  />
+        <div className="flex md:gap-2 ">
+            <ShareButton />
             <TextSizeButton />
         </div>
     )

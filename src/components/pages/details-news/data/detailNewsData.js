@@ -5,7 +5,7 @@ export const newsDetails = [
     slug: "india-rise-electric-vehicle-adoption-2025",
     author: "Krishna Gopal Varshahnay",
     datePublished: "2025-02-12T08:30:00Z",
-    dateUpdated: "2025-02-12T10:15:00Z",
+    dateUpdated: "05-01-2025",
 
     category: "India",
     subCategory: "Business",
