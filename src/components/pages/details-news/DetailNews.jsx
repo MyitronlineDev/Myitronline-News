@@ -7,7 +7,7 @@ import RelatedNews from "./RelatedNews";
 import LatestNewsWrapper from "./LatestNewsWrapper";
 import Tags from "./Tags";
 import ReadingProgress from "../../common/ReadingProgress";
-import ReadMoreLess from "../../common/ReadMoreLess";
+import LiveTime from "../../common/liveClock/LiveTime"
 
 const DetailNews = () => {
   const { id } = useParams();
@@ -24,9 +24,9 @@ const DetailNews = () => {
   return (
     <>
       <ReadingProgress />
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Keep article readable on large screens */}
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-7xl mx-auto">
 
           {/* CATEGORY */}
           <p className="
@@ -69,7 +69,7 @@ const DetailNews = () => {
               author={article.author}
               slug={article.slug}
             />
-            <ArticleMetaActions />
+            {/* <ArticleMetaActions /> */}
           </div>
 
           {/* ARTICLE CONTENT */}

@@ -3,7 +3,7 @@ import ShareButton from "../../common/ShareButton";
 
 const ArticleMetaActions = () => {
     return (
-        <div className="flex  gap-2 ">
+        <div className="flex md:gap-2 ">
             <ShareButton />
             <TextSizeButton />
         </div>
