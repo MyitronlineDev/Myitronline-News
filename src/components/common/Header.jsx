@@ -76,25 +76,6 @@ function Header() {
   }
 
   return (
-   
-      <nav
-        ref={navRef}
-        className="w-full bg-black text-white shadow-lg sticky top-0 z-50 mb-2 mx-auto"
-      >
-        {/* Top Bar */}
-        <div className="max-w-6xl px-4 py-3 flex items-center w-full  ">
-          {/* Logo */}
-          {/* <div className="flex items-center space-x-2">
-            <span className="text-yellow-500 text-5xl font-bold">*</span>
-            <div>
-              <h1 className="text-xl font-semibold leading-tight">
-                LifeNews
-              </h1>
-              <p className="text-xs text-gray-400 mt-1">
-                Fashion Trends and Culture
-              </p>
-            </div>
-          </div> */}
     <nav
       ref={navRef}
       className="w-full bg-black text-white shadow-lg sticky top-0 z-50 mb-2"
@@ -102,7 +83,7 @@ function Header() {
       {/* Top Bar */}
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center">
         {/* Logo */}
-        <div className="flex items-center space-x-2">
+        {/* <div className="flex items-center space-x-2">
           <span className="text-yellow-500 text-5xl font-bold">*</span>
           <div>
             <h1 className="text-xl font-semibold leading-tight">LifeNews</h1>
@@ -110,7 +91,7 @@ function Header() {
               Fashion Trends and Culture
             </p>
           </div>
-        </div>
+        </div> */}
 
         {/* Hamburger (Mobile) */}
         <button
