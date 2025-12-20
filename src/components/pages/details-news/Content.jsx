@@ -18,8 +18,7 @@ const Content = ({ contents = [], featuredImage = [] }) => {
           w-100 sm:w-150
           wrap-image
           transition-all duration-300
-        "
-        >
+        ">
           <img
             src={image.url}
             alt={image.caption}
@@ -28,9 +27,7 @@ const Content = ({ contents = [], featuredImage = [] }) => {
             shadow-md
             transition-all duration-500
             hover:shadow-xl hover:scale-[1.03]
-          "
-          />
-
+          "/>
           <p className="text-xs sm:text-sm text-gray-500 italic mt-2">
             {image.caption}
           </p>

@@ -6,7 +6,7 @@ const ArticleMeta = ({ dateUpdated, author }) => {
       <p className="text-md">Updated: {dateUpdated}</p>
 
       <NavLink
-        to={`/author/${author}`}
+        to={`/author/myitronline/${author}`}
         className={({ isActive }) =>
           `
           italic underline
