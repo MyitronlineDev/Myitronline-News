@@ -1,3 +1,5 @@
+import authorimage from "../../../../assets/authorimage.jpeg"
+
 export const newsDetails = [
   {
     id: 1,
@@ -14,11 +16,10 @@ export const newsDetails = [
       name: "Krishna Gopal Warshnay",
       slug: "krishna-gopal-warshnay",
       role: "Senior Business Correspondent",
-      bio: "Krishna Gopal Warshnay is a senior journalist covering business, electric mobility, and policy-driven economic reforms in India. Electric vehicle sales in India surged by more than 40% in the first quarter of 2025, marking one of the strongest growth phases the country has ever recorded in the clean mobility space. According to the Ministry of Heavy Industries, this jump reflects a fundamental shift in consumer preference, driven not only by higher fuel prices but also by improved confidence in EV technology. The government’s revised subsidy structure, paired with aggressive private investment in charging infrastructure, has helped reduce ownership anxiety that once held back potential buyers. Moreover, Ministry of Heavy Industries, this jump reflects a fundamental shift in consumer preference, driven not only by higher fuel prices but also by improved confidence in EV technology. The government’s revised subsidy structure, paired with aggressive private investment in charging infrastructure,gy. The government’s revised subsidy experts believe could be a defining decade for India’s transition toward sustainable mobility. ",
+      bio: "Krishna Gopal Warshnay is a senior journalist covering business, electric mobility, and policy-driven economic reforms in India. Electric vehicle sales in India surged by more than 40% in the first quarter of 2025, marking one of the strongest growth phases the country has ever recorded in the clean mobility space. According to the Ministry of Heavy Industries, this jump reflects a fundamental shift in consumer preference, driven not only by higher fuel prices but also by improved confidence in EV technology. The government’s revised subsidy structure, paired with aggressive private investment in charging infrastructure, has helped reduce ownership anxiety that once held back potential buyers. Moreover, Ministry of Heavy Industries, this jump reflects a fundamental shift in consumer preference, driven not only by higher fuel prices but also by improved confidence in EV technology. in EV technology. The government’s revised subsidy structure, paired with aggressive private investment in charging infrastructure, has helped reduce ownership anxiety that once held back potential buyers. Moreover, Ministry of Heavy Industries, this jump reflects a fundamental shift in consumer preference, driven not only by higher fuel prices but also by improved confidence in EV technology.in EV technology. The government’s revised subsidy structure, paired with aggressive private investment in charging infrastructure, has helped reduce ownership anxiety that once held back potential buyers. Moreover, Ministry of Heavy Industries, this jump reflects a fundamental shift in consumer preference, driven not only by higher fuel prices but also by improved confidence in EV technology. The government’s revised subsidy structure, paired with aggressive private investment in charging infrastructure,gy. The government’s revised subsidy experts believe could be a defining decade for India’s transition toward sustainable mobility. ",
       location: "New Delhi, India",
       joined: "2022",
-      avatar:
-        "https://images.unsplash.com/photo-1502685104226-ee32379fefbe?w=300"
+      avatar: authorimage
     },
 
     description: "India witnessed a significant jump in electric vehicle (EV) sales this year, driven by new government subsidies and private sector investment.",
