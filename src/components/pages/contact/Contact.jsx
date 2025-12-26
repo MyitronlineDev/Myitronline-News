@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import FormSkeleton from "../../utility/FormSkeleton";
 
 function Contact() {
   const [loading, setLoading] = useState(false);
@@ -127,6 +128,12 @@ function Contact() {
       setFormErrors(errors);
       return;
     }
+    setLoading(true); // 🔥 SKELETON START
+
+    setTimeout(() => {
+      setLoading(false); // 🔥 SKELETON STOP
+      alert("Message sent successfully");
+    }, 2000);
   };
 
   return (
@@ -247,182 +254,196 @@ function Contact() {
         </div>
 
         {/* Right column: form */}
+
         <section className="bg-white p-6 md:p-8 rounded-2xl shadow-sm hover:shadow-lg transition-shadow duration-200 h-full flex flex-col">
-          <div>
-            <h3 className="text-3xl font-bold text-slate-900 mb-2">
-              Get in Touch
-            </h3>
-            <p className="text-md  mb-4">
-              Your email address will not be published. Required fields are
-              marked *
-            </p>
-          </div>
-
-          <form className="grid grid-cols-1 gap-4 flex-1">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {loading ? (
+            <FormSkeleton />
+          ) : (
+            <>
               <div>
-                <label
-                  htmlFor="fullName"
-                  className="block text-sm font-medium text-slate-700"
-                >
-                  Full Name <span className="text-red-600">*</span>
-                </label>
-                <input
-                  id="fullName"
-                  name="fullName"
-                  value={formData.fullName}
-                  onChange={(e) => {
-                    const input = e.target.value;
-                    if (/^[a-zA-Z\s]*$/.test(input) || input === "") {
-                      changeHandler(e);
-                    }
-                  }}
-                  className={`mt-1 block w-full rounded-lg border px-3 py-2 text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-300 transition ${
-                    formErrors.fullName ? "border-red-300" : "border-slate-200"
-                  }`}
-                  placeholder="Enter full name"
-                  aria-invalid={!!formErrors.fullName}
-                  aria-describedby={
-                    formErrors.fullName ? "fullName-error" : undefined
-                  }
-                />
-                {formErrors.fullName && (
-                  <p id="fullName-error" className="text-red-600 text-sm mt-1">
-                    {formErrors.fullName}
-                  </p>
-                )}
+                <h3 className="text-3xl font-bold text-slate-900 mb-2">
+                  Get in Touch
+                </h3>
+                <p className="text-md  mb-4">
+                  Your email address will not be published. Required fields are
+                  marked *
+                </p>
               </div>
 
-              <div>
-                <label
-                  htmlFor="emailAddress"
-                  className="block text-sm font-medium text-slate-700"
-                >
-                  Email <span className="text-red-600">*</span>
-                </label>
-                <input
-                  id="emailAddress"
-                  name="emailAddress"
-                  value={formData.emailAddress}
-                  onChange={changeHandler}
-                  className={`mt-1 block w-full rounded-lg border px-3 py-2 text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-300 transition ${
-                    formErrors.emailAddress
-                      ? "border-red-300"
-                      : "border-slate-200"
-                  }`}
-                  placeholder="Enter your email address"
-                  aria-invalid={!!formErrors.emailAddress}
-                  aria-describedby={
-                    formErrors.emailAddress ? "emailAddress-error" : undefined
-                  }
-                />
-                {formErrors.emailAddress && (
-                  <p
-                    id="emailAddress-error"
-                    className="text-red-600 text-sm mt-1"
+              <form className="grid grid-cols-1 gap-4 flex-1">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label
+                      htmlFor="fullName"
+                      className="block text-sm font-medium text-slate-700"
+                    >
+                      Full Name <span className="text-red-600">*</span>
+                    </label>
+                    <input
+                      id="fullName"
+                      name="fullName"
+                      value={formData.fullName}
+                      onChange={(e) => {
+                        const input = e.target.value;
+                        if (/^[a-zA-Z\s]*$/.test(input) || input === "") {
+                          changeHandler(e);
+                        }
+                      }}
+                      className={`mt-1 block w-full rounded-lg border px-3 py-2 text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-300 transition ${
+                        formErrors.fullName
+                          ? "border-red-300"
+                          : "border-slate-200"
+                      }`}
+                      placeholder="Enter full name"
+                      aria-invalid={!!formErrors.fullName}
+                      aria-describedby={
+                        formErrors.fullName ? "fullName-error" : undefined
+                      }
+                    />
+                    {formErrors.fullName && (
+                      <p
+                        id="fullName-error"
+                        className="text-red-600 text-sm mt-1"
+                      >
+                        {formErrors.fullName}
+                      </p>
+                    )}
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="emailAddress"
+                      className="block text-sm font-medium text-slate-700"
+                    >
+                      Email <span className="text-red-600">*</span>
+                    </label>
+                    <input
+                      id="emailAddress"
+                      name="emailAddress"
+                      value={formData.emailAddress}
+                      onChange={changeHandler}
+                      className={`mt-1 block w-full rounded-lg border px-3 py-2 text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-300 transition ${
+                        formErrors.emailAddress
+                          ? "border-red-300"
+                          : "border-slate-200"
+                      }`}
+                      placeholder="Enter your email address"
+                      aria-invalid={!!formErrors.emailAddress}
+                      aria-describedby={
+                        formErrors.emailAddress
+                          ? "emailAddress-error"
+                          : undefined
+                      }
+                    />
+                    {formErrors.emailAddress && (
+                      <p
+                        id="emailAddress-error"
+                        className="text-red-600 text-sm mt-1"
+                      >
+                        {formErrors.emailAddress}
+                      </p>
+                    )}
+                  </div>
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="mobileNumber"
+                    className="block text-sm font-medium text-slate-700"
                   >
-                    {formErrors.emailAddress}
-                  </p>
-                )}
-              </div>
-            </div>
-
-            <div>
-              <label
-                htmlFor="mobileNumber"
-                className="block text-sm font-medium text-slate-700"
-              >
-                Phone Number <span className="text-red-600">*</span>
-              </label>
-              <input
-                id="mobileNumber"
-                name="mobileNumber"
-                value={formData.mobileNumber}
-                onChange={(e) => {
-                  const inputVal = e.target.value;
-                  if (
-                    /^\d*$/.test(inputVal) &&
-                    (inputVal === "" || parseInt(inputVal[0], 10) >= 6)
-                  ) {
-                    changeHandler(e);
-                  }
-                }}
-                className={`mt-1 block w-full rounded-lg border px-3 py-2 text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-300 transition ${
-                  formErrors.mobileNumber
-                    ? "border-red-300"
-                    : "border-slate-200"
-                }`}
-                placeholder="Mobile Number"
-                maxLength={10}
-                inputMode="numeric"
-                type="tel"
-                aria-invalid={!!formErrors.mobileNumber}
-                aria-describedby={
-                  formErrors.mobileNumber ? "mobileNumber-error" : undefined
-                }
-              />
-              {formErrors.mobileNumber && (
-                <p
-                  id="mobileNumber-error"
-                  className="text-red-600 text-sm mt-1"
-                >
-                  {formErrors.mobileNumber}
-                </p>
-              )}
-            </div>
-
-            <div>
-              <label
-                htmlFor="message"
-                className="block text-sm font-medium text-slate-700"
-              >
-                Message <span className="text-red-600">*</span>
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={changeHandler}
-                className={`mt-1 block w-full rounded-lg border px-3 py-2 text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-300 transition ${
-                  formErrors.message ? "border-red-300" : "border-slate-200"
-                }`}
-                rows={5}
-                placeholder="Message here"
-                aria-invalid={!!formErrors.message}
-                aria-describedby={
-                  formErrors.message ? "message-error" : undefined
-                }
-              />
-              {formErrors.message && (
-                <p id="message-error" className="text-red-600 text-sm mt-1">
-                  {formErrors.message}
-                </p>
-              )}
-            </div>
-
-            <div className="mt-4">
-              <button
-                type="submit"
-                onClick={sendEmailHandler}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-60 transition"
-              >
-                {loading ? "Sending..." : "Submit"}
-                <svg
-                  width={16}
-                  height={16}
-                  className="ms-2"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  aria-hidden
-                >
-                  <path
-                    fill="currentColor"
-                    d="M23.612.225a1.045,1.045,0,0,0-1.138-.1L.827,11.646a1.547,1.547,0,0,0,.125,2.8l3.254,1.38a.719.719,0,0,0,.043.245l2.5,6.746A1.514,1.514,0,0,0,8.171,24h.089a1.512,1.512,0,0,0,1.3-.824l2.571-4.855,5.408,4.115a1.517,1.517,0,0,0,2.395-.853L23.743,1.36A1.05,1.05,0,0,0,23.612.225Z"
+                    Phone Number <span className="text-red-600">*</span>
+                  </label>
+                  <input
+                    id="mobileNumber"
+                    name="mobileNumber"
+                    value={formData.mobileNumber}
+                    onChange={(e) => {
+                      const inputVal = e.target.value;
+                      if (
+                        /^\d*$/.test(inputVal) &&
+                        (inputVal === "" || parseInt(inputVal[0], 10) >= 6)
+                      ) {
+                        changeHandler(e);
+                      }
+                    }}
+                    className={`mt-1 block w-full rounded-lg border px-3 py-2 text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-300 transition ${
+                      formErrors.mobileNumber
+                        ? "border-red-300"
+                        : "border-slate-200"
+                    }`}
+                    placeholder="Mobile Number"
+                    maxLength={10}
+                    inputMode="numeric"
+                    type="tel"
+                    aria-invalid={!!formErrors.mobileNumber}
+                    aria-describedby={
+                      formErrors.mobileNumber ? "mobileNumber-error" : undefined
+                    }
                   />
-                </svg>
-              </button>
-            </div>
-          </form>
+                  {formErrors.mobileNumber && (
+                    <p
+                      id="mobileNumber-error"
+                      className="text-red-600 text-sm mt-1"
+                    >
+                      {formErrors.mobileNumber}
+                    </p>
+                  )}
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium text-slate-700"
+                  >
+                    Message <span className="text-red-600">*</span>
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={changeHandler}
+                    className={`mt-1 block w-full rounded-lg border px-3 py-2 text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-300 transition ${
+                      formErrors.message ? "border-red-300" : "border-slate-200"
+                    }`}
+                    rows={5}
+                    placeholder="Message here"
+                    aria-invalid={!!formErrors.message}
+                    aria-describedby={
+                      formErrors.message ? "message-error" : undefined
+                    }
+                  />
+                  {formErrors.message && (
+                    <p id="message-error" className="text-red-600 text-sm mt-1">
+                      {formErrors.message}
+                    </p>
+                  )}
+                </div>
+
+                <div className="mt-4">
+                  <button
+                    type="submit"
+                    onClick={sendEmailHandler}
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-60 transition"
+                  >
+                    {loading ? "Sending..." : "Submit"}
+                    <svg
+                      width={16}
+                      height={16}
+                      className="ms-2"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      aria-hidden
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M23.612.225a1.045,1.045,0,0,0-1.138-.1L.827,11.646a1.547,1.547,0,0,0,.125,2.8l3.254,1.38a.719.719,0,0,0,.043.245l2.5,6.746A1.514,1.514,0,0,0,8.171,24h.089a1.512,1.512,0,0,0,1.3-.824l2.571-4.855,5.408,4.115a1.517,1.517,0,0,0,2.395-.853L23.743,1.36A1.05,1.05,0,0,0,23.612.225Z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </form>
+            </>
+          )}
         </section>
       </div>
 

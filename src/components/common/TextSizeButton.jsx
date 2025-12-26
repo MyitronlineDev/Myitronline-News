@@ -38,7 +38,7 @@ const TextSizeButton = () => {
             rounded-lg bg-white
             border border-gray-200
             shadow-lg
-            p-1 z-50
+            p-1 z-60
           "
         >
           <button
