@@ -23,7 +23,7 @@ const Featured = ({featuredItems}) => {
     <div className="grid grid-cols-1 lg:grid-cols-12 h-auto mb-4">
 
       {/* LEFT SECTION */}
-      <div className="lg:col-span-3 grid place-items-center ">
+      <div className="lg:col-span-3 grid px-4 ">
         <div className="">
           <h2 className="text-3xl font-bold">Featured</h2>
           <p className="text-gray-600 text-xl font-semibold">
@@ -36,7 +36,7 @@ const Featured = ({featuredItems}) => {
       {/* RIGHT SECTION — SWIPER */}
       <div className="lg:col-span-9 px-4">
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-2">
           {featuredItems.slice(startIndex, endIndex).map((item, i) => (
             <div 
               key={i} 
@@ -56,7 +56,7 @@ const Featured = ({featuredItems}) => {
 
               {/* TEXT */}
               <h3 className="mt-4 font-semibold text-xl leading-tight">
-                {item.title}
+                {item.title.length > 57 ? `${item.title.substring(0, 57)}...`: item.title}
               </h3>
               <p className="text-gray-500 text-sm">{item.date}</p>
             </div>

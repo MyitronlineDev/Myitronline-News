@@ -36,34 +36,39 @@ const tvArticles = [
 
 function TvSection() {
   return (
-    <section className="max-w-sm mx-auto px-4 py-8">
+    <section className="w-full px-2 py-6">
       {/* Heading */}
-      <h2 className="text-3xl font-bold tracking-tight mb-4">TV</h2>
+      <h2 className="text-2xl font-bold tracking-tight mb-4">TV</h2>
 
       {/* List */}
-      <div className="space-y-4">
+      <div className="space-y-5">
         {tvArticles.map((item) => (
-          <article key={item.id} className="flex gap-3">
+          <article
+            key={item.id}
+            className="flex gap-4 items-start"
+          >
             {/* Thumbnail */}
             <div className="shrink-0">
               <img
                 src={item.image}
                 alt={item.title}
-                className="w-25 h-18 object-cover"
+                className="w-24 h-16 md:w-28 md:h-20 object-cover rounded"
               />
             </div>
 
             {/* Text */}
             <div className="flex-1">
-              <h3 className="text-l font-semibold leading-snug hover:text-blue-600 cursor-pointer">
+              <h3 className="text-sm md:text-base font-semibold leading-snug hover:text-blue-600 cursor-pointer line-clamp-2">
                 {item.title}
               </h3>
-              <span className="mt-1 font-semibold text-sm text-gray-500">{item.date}</span>
+
+              <span className="mt-1 block text-xs font-semibold text-gray-500">
+                {item.date}
+              </span>
             </div>
           </article>
         ))}
       </div>
-
     </section>
   );
 }

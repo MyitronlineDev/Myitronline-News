@@ -75,7 +75,7 @@ function Header() {
         className="w-full bg-black text-white shadow-lg sticky top-0 z-50 mb-2"
       >
         {/* Top Bar */}
-        <div className="max-w-6xl mx-auto px-4 py-3 flex items-center">
+        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center">
           {/* Logo */}
           <div className="flex items-center space-x-2">
             <span className="text-yellow-500 text-5xl font-bold">*</span>
