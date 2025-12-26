@@ -9,6 +9,7 @@ import NotFound from "../components/pages/NotFound";
 import MainLayout from "../components/layout/MainLayout";
 import DetailNews from "../components/pages/details-news/DetailNews";
 import Article from "../components/finance/Article";
+import Articles from "../components/Navbar Screens/Income Tax/Articles";
 
 function AppRoutes() {
   return (
@@ -20,6 +21,7 @@ function AppRoutes() {
         <Route path="/detail-news/:id/myitronline" element={<DetailNews />} />
 
         <Route path="/navbar/finance/article" element={<Article />} />
+        <Route path="/navbar/income-tax/article" element={<Articles />} />
 
         <Route path="*" element={<NotFound />} />
       </Route>
