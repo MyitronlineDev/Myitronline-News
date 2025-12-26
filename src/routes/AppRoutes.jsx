@@ -19,7 +19,6 @@ function AppRoutes() {
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
         <Route path="/detail-news/:id/myitronline" element={<DetailNews />} />
-        <Route path="/author/myitronline/:name" element={<AuthorPage />} />
 
         <Route path="/navbar/finance/article" element={<Article />} />
 
