@@ -1,27 +1,48 @@
-import { useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { FiSearch } from "react-icons/fi";
+
 import ArticleMetaActions from "../pages/details-news/ArticleMetaActions";
 import LiveTime from "./liveClock/LiveTime";
 import SearchInput from "./SearchInput";
-import articles from "../pages/details-news/data/articles";
+
+import { searchNews } from "../context/apiService/apiService";
+
 
 const TopBar = () => {
   const [query, setQuery] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
   const [openSearch, setOpenSearch] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  // Suggestions logic
-  const suggestions = useMemo(() => {
-    if (!query) return [];
+  useEffect(() => {
+    // ❌ Less than 3 chars → reset
+    if (query.trim().length < 3) {
+      setSuggestions([]);
+      return;
+    }
 
-    return articles
-      .filter((item) =>
-        item.title.toLowerCase().includes(query.toLowerCase())
-      )
-      .slice(0, 5);
+    const fetchSearch = async () => {
+      try {
+        setLoading(true);
+        const res = await searchNews(query.trim());
+
+        // ✅ correct key from API
+        setSuggestions(res?.results || []);
+      } catch (err) {
+        console.error(err);
+        setSuggestions([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    const debounce = setTimeout(fetchSearch, 300);
+    return () => clearTimeout(debounce);
   }, [query]);
 
   const handleSelect = (title) => {
     setQuery(title);
+    setSuggestions([]);
     setOpenSearch(false);
   };
 
@@ -31,9 +52,8 @@ const TopBar = () => {
 
         {/* TOP ROW */}
         <div className="flex items-center justify-between">
-          {/* Logo */}
           <img
-            src="/MyitronlineLogo.svg"
+            src="/logo.jpeg"
             alt="Myitronline logo"
             className="h-9 sm:h-10 w-auto"
           />
@@ -45,6 +65,7 @@ const TopBar = () => {
               onChange={setQuery}
               suggestions={suggestions}
               onSelect={handleSelect}
+              loading={loading}
             />
           </div>
 
@@ -54,7 +75,6 @@ const TopBar = () => {
               <LiveTime color="text-black" size="text-sm" />
             </div>
 
-            {/* Mobile search toggle */}
             <button
               onClick={() => setOpenSearch(v => !v)}
               className="sm:hidden p-2 rounded-full hover:bg-gray-200"
@@ -76,6 +96,7 @@ const TopBar = () => {
               onChange={setQuery}
               suggestions={suggestions}
               onSelect={handleSelect}
+              loading={loading}
             />
           </div>
         )}
