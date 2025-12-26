@@ -1,11 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Header from "../common/Header";
 import Footer from "../common/Footer";
-<<<<<<< HEAD
-import BackToTop from "../common/BackToTop";
-=======
 import TopBar from "../common/TopBar";
->>>>>>> 31ff11c496d59484d97b9dff21753c3e70f6b495
 
 function MainLayout() {
   return (
@@ -22,7 +18,7 @@ function MainLayout() {
       </main>
 
       <Footer />
-      <BackToTop/>
+      {/* <BackToTop/> */}
     </>
   );
 }
