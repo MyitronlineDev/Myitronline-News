@@ -8,7 +8,6 @@ import Contact from "../components/pages/contact/Contact";
 import NotFound from "../components/pages/NotFound";
 import MainLayout from "../components/layout/MainLayout";
 import DetailNews from "../components/pages/details-news/DetailNews";
-import AuthorPage from "../components/pages/details-news/AuthorPage";
 import Article from "../components/finance/Article";
 
 function AppRoutes() {
