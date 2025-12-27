@@ -21,3 +21,14 @@ export const searchNews = async (query) => {
     throw err;
   }
 };
+
+export const latestNews = async () => {
+  try{
+    const response = await api.get("/myitr-news/right-side");
+    return response.data;
+  }
+  catch(error){
+    console.error("Latest News API error:", error);
+    throw error;
+  }
+}

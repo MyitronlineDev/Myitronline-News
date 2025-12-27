@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import LendingPage from "./LendingPage";
 import Featured from "./Featured";
 import Technology from "./Technology";
@@ -6,8 +6,11 @@ import TvSection from "./TvSection";
 import FashionStay from "./FashionStay";
 import CalibrityFood from "./CalibrityFood";
 import LatestNews from "./LatestNews";
+import { latestNews } from "../../context/apiService/apiService";
 
 const Home = () => {
+
+  const [latestNewsData, setLatestNewsData] = useState([]);
   // Mock Data based on the screenshot
   const leftNews = [
     {
@@ -237,13 +240,40 @@ const Home = () => {
     },
   ];
 
+async function latestNewsDisplay() {
+  try {
+    const response = await latestNews();
+
+    if (response?.status) {
+      // map API data to UI-friendly format
+      const formattedNews = response.news.map(item => ({
+        category: item.category_name.toUpperCase(),
+        date: new Date(item.published_at).toLocaleDateString(),
+        title: item.news_title,
+        excerpt: item.synopsis,
+        slug: item.slug
+      }));
+
+      setLatestNewsData(formattedNews);
+    }
+  } catch (error) {
+    console.error("Latest news error:", error);
+  }
+}
+
+
+  console.log(latestNewsData);
+  useEffect(() => {
+    latestNewsDisplay();
+  },[]);
+
   return (
     <div
       className="container mx-auto px-4 font-sans"
       style={{ maxWidth: "1400px" }}
     >
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 ">
-        <LatestNews leftNews={leftNews} />
+        <LatestNews leftNews={latestNewsData} />
 
         {/* side  Section */}
         <div className="col-span-full lg:col-span-9 ">
