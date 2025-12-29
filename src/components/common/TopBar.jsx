@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { FiSearch } from "react-icons/fi";
 
-import ArticleMetaActions from "../pages/details-news/ArticleMetaActions";
 import LiveTime from "./liveClock/LiveTime";
 import SearchInput from "./SearchInput";
 
@@ -83,9 +82,6 @@ const TopBar = () => {
               <FiSearch size={20} />
             </button>
 
-            <div className="hidden sm:flex">
-              <ArticleMetaActions />
-            </div>
           </div>
         </div>
 

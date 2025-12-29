@@ -5,7 +5,7 @@ export const newsDetails = [
     id: 1,
     title: "India records sharp rise in electric vehicle adoption in 2025",
     slug: "india-rise-electric-vehicle-adoption-2025",
-    author: "krishna-gopal-varshnay",
+    author: "~Krishna Gopal Varahney",
     datePublished: "2025-02-12T08:30:00Z",
     dateUpdated: "05-01-2025",
 
@@ -13,7 +13,7 @@ export const newsDetails = [
     subCategory: "Business",
 
     authorDetails: {
-      name: "Krishna Gopal varshnay",
+      name: "~Krishna Gopal Varahney",
       slug: "krishna-gopal-varshnay",
       role: "Senior Business Correspondent",
       bio: "Krishna Gopal varshnay is a senior journalist covering business, electric mobility, and policy-driven economic reforms in India. Electric vehicle sales in India surged by more than 40% in the first quarter of 2025, marking one of the strongest growth phases the country has ever recorded in the clean mobility space. According to the Ministry of Heavy Industries, this jump reflects a fundamental shift in consumer preference, driven not only by higher fuel prices but also by improved confidence in EV technology. The government’s revised subsidy structure, paired with aggressive private investment in charging infrastructure, has helped reduce ownership anxiety that once held back potential buyers. Moreover, Ministry of Heavy Industries, this jump reflects a fundamental shift in consumer preference, driven not only by higher fuel prices but also by improved confidence in EV technology. in EV technology. The government’s revised subsidy structure, paired with aggressive private investment in charging infrastructure, has helped reduce ownership anxiety that once held back potential buyers. Moreover, Ministry of Heavy Industries, this jump reflects a fundamental shift in consumer preference, driven not only by higher fuel prices but also by improved confidence in EV technology.in EV technology. The government’s revised subsidy structure, paired with aggressive private investment in charging infrastructure, has helped reduce ownership anxiety that once held back potential buyers. Moreover, Ministry of Heavy Industries, this jump reflects a fundamental shift in consumer preference, driven not only by higher fuel prices but also by improved confidence in EV technology. The government’s revised subsidy structure, paired with aggressive private investment in charging infrastructure,gy. The government’s revised subsidy experts believe could be a defining decade for India’s transition toward sustainable mobility. ",
@@ -67,51 +67,6 @@ export const newsDetails = [
         url: "http://static1.squarespace.com/static/53453ebbe4b0d46770eb7505/5345482be4b01730378288f7/54b3a45de4b0d7856db8059e/1421059173445/",
         caption: "EV charging station in Mumbai."
       }
-    ],
-
-    relatedNews: [
-      {
-        category: "WORLD",
-        title: "Global Leaders Meet to Discuss Climate Action at Emergency Summit",
-        date: "09/12/2024",
-        image:
-          "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=600&q=80",
-      },
-      {
-        category: "TECH",
-        title: "AI Breakthrough Promises Faster, Safer Medical Diagnoses",
-        date: "09/10/2024",
-        image:
-          "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=600&q=80",
-      },
-      {
-        category: "BUSINESS",
-        title: "Stock Markets Rally as Inflation Slows Across Major Economies",
-        date: "09/11/2024",
-        image:
-          "https://images.unsplash.com/photo-1518186233392-c232efbf2373?auto=format&fit=crop&w=600&q=80",
-      },
-      {
-        category: "HEALTH",
-        title: "New Research Highlights Benefits of Plant-Rich Diets",
-        date: "09/09/2024",
-        image:
-          "https://images.unsplash.com/photo-1506086679526-a687f394c016?auto=format&fit=crop&w=600&q=80",
-      },
-      {
-        category: "SCIENCE",
-        title: "Astronomers Discover Possible Earth-Like Planet in Nearby System",
-        date: "09/08/2024",
-        image:
-          "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?auto=format&fit=crop&w=600&q=80",
-      },
-      {
-        category: "SPORTS",
-        title: "Historic Win as Underdog Team Secures Championship Title",
-        date: "09/07/2024",
-        image:
-          "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=600&q=80",
-      },
     ],
 
     tags: ["EV", "Electric Vehicles", "Business News", "India"]
