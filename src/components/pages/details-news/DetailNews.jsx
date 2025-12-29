@@ -5,15 +5,33 @@ import ArticleMetaActions from "./ArticleMetaActions";
 import Content from "./Content";
 import RelatedNews from "./RelatedNews";
 import LatestNewsWrapper from "./LatestNewsWrapper";
-import Tags from "./Tags";
 import ReadingProgress from "../../common/ReadingProgress";
-import LiveTime from "../../common/liveClock/LiveTime"
+import { useEffect, useState } from "react";
+import { fetchDetailsNewsApi } from "../../context/apiService/apiService";
 
 const DetailNews = () => {
-  const { id } = useParams();
-  const article = newsDetails.find((item) => item.id === Number(id));
+  // const { id } = useParams();
+  const { slug } = useParams();
+  // const article = newsDetails.find((item) => item.id === Number(id));
 
-  if (!article) {
+  const [articles, setArticles] = useState();
+  console.log(`articles data : `, articles);
+  console.log(`category name : `, articles?.category_name);
+
+  const fetchShowNews = async (slug) => {
+    try {
+      const article = await fetchDetailsNewsApi(slug);
+      setArticles(article);
+    } catch (err) {
+      console.log("FetchShowNewsApi error", err.message);
+    }
+  };
+
+  useEffect(() => {
+    if (slug) fetchShowNews(slug);
+  }, [slug]);
+
+  if (!articles) {
     return (
       <div className="text-center mt-16 text-lg sm:text-xl">
         News Not Found
@@ -29,35 +47,65 @@ const DetailNews = () => {
         <div className="max-w-7xl mx-auto">
 
           {/* CATEGORY */}
-          <p className="
-          text-blue-600 uppercase tracking-wider 
-          text-xs sm:text-sm font-semibold mb-3
-        ">
-            {article.category} / {article.subCategory}
-          </p>
+          {articles?.category_name && (
+            <span
+              className="
+              inline-block mt-2
+              px-3 py-1
+              text-xs sm:text-sm font-semibold
+              uppercase tracking-wider
+              rounded-full
+              text-white
+              bg-gradient-to-r from-blue-500 to-indigo-600
+              shadow-sm
+            "
+            >
+              {articles.category_name}
+            </span>
+          )}
+
 
           {/* TITLE */}
-          <h1 className="
+          <h1
+            className="
             text-2xl sm:text-3xl md:text-4xl
             font-bold leading-snug
             text-neutral-900
-          ">
-            {article.title}
+          "
+          >
+            {articles?.news_title}
           </h1>
 
-          {/* DESCRIPTION */}
-          <p className="
-            text-base sm:text-lg
-            text-neutral-600
-            leading-relaxed
-            border-l-4 border-neutral-300 pl-4 mt-3
-          ">
-            {article.description}
-          </p>
+          {/* DESCRIPTION / SYNOPSIS */}
+          {articles?.synopsis && (
+            <p
+              className="
+              text-base sm:text-lg
+              text-neutral-600
+              leading-relaxed
+              border-l-4 border-neutral-300
+              pl-4 mt-3
+            "
+            >
+              {articles.synopsis}
+            </p>
+          )}
+
+          {/* NEWS HEADING (Optional Highlight) */}
+          {articles?.news_heading && (
+            <h2
+              className="
+              mt-4 text-lg sm:text-xl
+              font-semibold text-neutral-800
+            "
+            >
+              {articles.news_heading}
+            </h2>
+          )}
 
 
           {/* META + ACTIONS */}
-          <div
+          {/* <div
             className="
             flex flex-col sm:flex-row sm:justify-between
             sm:items-center gap-3
@@ -65,27 +113,22 @@ const DetailNews = () => {
           "
           >
             <ArticleMeta
-              dateUpdated={article.dateUpdated}
-              author={article.author}
-              slug={article.slug}
+              dateUpdated={articles?.published_at}
+              author={articles.author || "krishna-gopal-varshnay"}
+              slug={articles.slug}
             />
-            {/* <ArticleMetaActions /> */}
-          </div>
+            <ArticleMetaActions />
+          </div> */}
 
           {/* ARTICLE CONTENT */}
           <Content
-            contents={article.content}
-            featuredImage={article.images}
+            contents={articles.content}
+          // featuredImage={articles.images}
           />
-
-          {/* TAGS */}
-          <div className="mt-10">
-            <Tags tags={article.tags} />
-          </div>
 
           {/* RELATED NEWS */}
           <div className="mt-14">
-            <RelatedNews featuredItems={article.relatedNews} />
+            <RelatedNews featuredItems={articles.relatedNews} />
           </div>
 
           {/* LATEST NEWS */}

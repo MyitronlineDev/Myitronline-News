@@ -23,12 +23,69 @@ export const searchNews = async (query) => {
 };
 
 export const latestNews = async () => {
-  try{
+  try {
     const response = await api.get("/myitr-news/right-side");
     return response.data;
   }
-  catch(error){
+  catch (error) {
     console.error("Latest News API error:", error);
     throw error;
   }
 }
+
+
+// export const fetchDetailsNewsApi = async (slug) => {
+//   try {
+//     const response = await api.get(`/myitr-news/show/${slug}`);
+//     if (response.status === 200) return response.data;
+
+//   } catch (error) {
+//     console.log("Show News API error:", error);
+//     throw error;
+//   }
+// }
+export const fetchDetailsNewsApi = async (slug) => {
+  try {
+    const response = await api.get(`/myitr-news/show/${slug}`);
+
+    if (response.status === 200) {
+      return response.data.news; // 👈 ONLY article
+    }
+
+    throw new Error("Invalid response");
+  } catch (error) {
+    console.error("Show News API error:", error);
+    throw error;
+  }
+};
+
+
+// export const translateText = async ({ text, from, to }) => {
+//   const res = await fetch(
+//     `https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=${from}&to=${to}`,
+//     {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//         "Ocp-Apim-Subscription-Key": import.meta.env.VITE_TRANSLATOR_KEY,
+//         "Ocp-Apim-Subscription-Region": import.meta.env.VITE_TRANSLATOR_REGION,
+//       },
+//       body: JSON.stringify([{ text }]),
+//     }
+//   );
+
+//   const data = await res.json();
+
+//   // 🔴 DEBUG (VERY IMPORTANT)
+//   console.log("Translator API response:", data);
+
+
+//   // ❌ If Azure returns error
+//   if (!Array.isArray(data)) {
+//     throw new Error(data?.error?.message || "Translation API error");
+//   }
+
+//   return data[0].translations[0].text;
+// };
+
+
