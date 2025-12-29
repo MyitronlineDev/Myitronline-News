@@ -26,13 +26,21 @@ export const latestNews = async () => {
   try {
     const response = await api.get("/myitr-news/right-side");
     return response.data;
-  }
-  catch (error) {
+  } catch (error) {
     console.error("Latest News API error:", error);
     throw error;
   }
-}
+};
 
+export const contactUs = async (data) => {
+  try {
+    const response = await api.post("contact-us", data);
+    return response.data;
+  } catch (error) {
+    console.error("Contact API error:", error);
+    throw error;
+  }
+};
 
 // export const fetchDetailsNewsApi = async (slug) => {
 //   try {
@@ -59,7 +67,6 @@ export const fetchDetailsNewsApi = async (slug) => {
   }
 };
 
-
 // export const translateText = async ({ text, from, to }) => {
 //   const res = await fetch(
 //     `https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=${from}&to=${to}`,
@@ -79,7 +86,6 @@ export const fetchDetailsNewsApi = async (slug) => {
 //   // 🔴 DEBUG (VERY IMPORTANT)
 //   console.log("Translator API response:", data);
 
-
 //   // ❌ If Azure returns error
 //   if (!Array.isArray(data)) {
 //     throw new Error(data?.error?.message || "Translation API error");
@@ -87,5 +93,3 @@ export const fetchDetailsNewsApi = async (slug) => {
 
 //   return data[0].translations[0].text;
 // };
-
-
