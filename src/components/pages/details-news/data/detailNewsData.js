@@ -23,10 +23,10 @@ export const newsDetails = [
 
 
        socials: {
-        twitter: "https://x.com/?lang=en-in",
-        linkedin: "https://in.linkedin.com/",
-       instagram: "https://www.instagram.com/",
-       facebook: "https://www.facebook.com/"
+        twitter: "https://x.com/_taxa23",
+        linkedin: "https://www.linkedin.com/company/taxa23/about/?viewAsMember=true",
+       instagram: "https://www.instagram.com/taxa232025/",
+       facebook: "https://www.facebook.com/profile.php?id=61576770940387"
       }
     },
 
