@@ -70,7 +70,7 @@ const Header = ({
       )}
 
       {heading && (
-        <h2 className="
+        <h2 data-translate className="
           mt-4
           text-xl sm:text-2xl
           text-neutral-800
