@@ -1,21 +1,21 @@
 import { useEffect, useState } from "react";
 import { FiSearch } from "react-icons/fi";
 
-import ArticleMetaActions from "../pages/details-news/ArticleMetaActions";
 import LiveTime from "./liveClock/LiveTime";
 import SearchInput from "./SearchInput";
 
 import { searchNews } from "../context/apiService/apiService";
+import {  useNavigate } from "react-router-dom";
 
 
 const TopBar = () => {
+  const navigateTo = useNavigate()
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [openSearch, setOpenSearch] = useState(false);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // ❌ Less than 3 chars → reset
     if (query.trim().length < 3) {
       setSuggestions([]);
       return;
@@ -26,7 +26,6 @@ const TopBar = () => {
         setLoading(true);
         const res = await searchNews(query.trim());
 
-        // ✅ correct key from API
         setSuggestions(res?.results || []);
       } catch (err) {
         console.error(err);
@@ -56,6 +55,7 @@ const TopBar = () => {
             src="/logo.jpeg"
             alt="Myitronline logo"
             className="h-9 sm:h-10 w-auto"
+           onClick={() => {navigateTo("/")}}
           />
 
           {/* Desktop Search */}
@@ -82,9 +82,6 @@ const TopBar = () => {
               <FiSearch size={20} />
             </button>
 
-            <div className="hidden sm:flex">
-              <ArticleMetaActions />
-            </div>
           </div>
         </div>
 
