@@ -9,31 +9,46 @@ const Header = ({
   author,
 }) => {
   return (
-    <header className="max-w-6xl mx-auto px-4 sm:px-0 mb-10">
+    <header className="max-w-6xl mx-auto px-4 sm:px-0 mb-12">
 
-      {/* TOP ROW: CATEGORY + META */}
-      <div className="flex flex-wrap items-center gap-3 mb-4">
+      <div className="flex flex-wrap items-center gap-4 mb-4">
 
         {category && (
-          <span className="bg-blue-50 text-blue-700 uppercase tracking-wide text-xs font-semibold px-3 py-1 rounded-full">
+          <span className="
+            bg-red-600 text-white
+            uppercase tracking-widest
+            text-xs font-bold
+            px-3 py-1 rounded-sm
+          ">
             {category}
           </span>
         )}
 
         {(publishedAt || author) && (
           <div className="flex items-center gap-3 text-xs text-neutral-500">
+
             {publishedAt && (
-              <time dateTime={publishedAt}>
+              <time
+                dateTime={publishedAt}
+                className="font-medium"
+              >
                 Updated {publishedAt}
               </time>
             )}
 
             {author && (
               <>
-                <span className="text-neutral-300">|</span>
+                <span className="text-neutral-300">•</span>
                 <NavLink
                   to={`/author/myitronline/${author}`}
-                  className="italic text-green-700 hover:text-blue-600 underline-offset-2 hover:underline transition"
+                  className="
+                    italic font-medium
+                    text-red-600
+                    hover:text-black
+                    underline-offset-2
+                    hover:underline
+                    transition
+                  "
                 >
                   By {author}
                 </NavLink>
@@ -43,29 +58,45 @@ const Header = ({
         )}
       </div>
 
-      {/* MAIN TITLE */}
       {title && (
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight text-neutral-900">
+        <h1 className="
+          text-3xl sm:text-4xl md:text-5xl
+          font-extrabold
+          leading-tight
+          text-black
+        ">
           {title}
         </h1>
       )}
 
-      {/* SUB HEADING */}
       {heading && (
-        <h2 className="mt-4 text-xl sm:text-2xl text-neutral-700 font-medium max-w-4xl">
+        <h2 className="
+          mt-4
+          text-xl sm:text-2xl
+          text-neutral-800
+          font-medium
+          max-w-4xl
+        ">
           {heading}
         </h2>
       )}
 
-      {/* SYNOPSIS / LEAD */}
       {synopsis && (
-        <p className="mt-6 text-lg sm:text-xl text-neutral-600 leading-relaxed max-w-4xl border-l-4 border-blue-600 pl-4">
+        <p className="
+          mt-6
+          text-lg sm:text-xl
+          text-neutral-700
+          leading-relaxed
+          max-w-4xl
+          border-l-4 border-red-600
+          pl-4
+          italic
+        ">
           {synopsis}
         </p>
       )}
 
-      {/* DIVIDER */}
-      <div className="mt-8 border-b border-neutral-300" />
+      <div className="mt-8 border-b-2 border-neutral-900/10" />
     </header>
   );
 };
