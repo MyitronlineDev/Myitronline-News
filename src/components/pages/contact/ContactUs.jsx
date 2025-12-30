@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import FormSkeleton from "../../utility/FormSkeleton";
+import toast from "react-hot-toast";
+import { contactUs } from "../../context/apiService/apiService";
 
 function Contact() {
   const [loading, setLoading] = useState(false);
@@ -24,103 +26,41 @@ function Contact() {
 
   const changeHandler = (e) => {
     const { name, value } = e.target;
-    const trimmedValue = value.trim();
 
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    setFormErrors((prev) => ({ ...prev, [name]: "" }));
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
 
-    if (name === "fullName") {
-      if (trimmedValue === "") {
-        setFormErrors((prev) => ({ ...prev, fullName: "Name is required." }));
-      } else if (trimmedValue.length < 3) {
-        setFormErrors((prev) => ({
-          ...prev,
-          fullName: "Name must be at least 3 characters.",
-        }));
-      } else if (!/^[a-zA-Z\s]*$/.test(trimmedValue)) {
-        setFormErrors((prev) => ({
-          ...prev,
-          fullName: "Name can only contain letters and spaces.",
-        }));
-      } else {
-        setFormErrors((prev) => ({ ...prev, fullName: "" }));
-      }
-    }
-
-    if (name === "mobileNumber") {
-      if (trimmedValue === "") {
-        setFormErrors((prev) => ({
-          ...prev,
-          mobileNumber: "Mobile Number is required.",
-        }));
-      } else if (!/^[6-9]\d{9}$/.test(trimmedValue)) {
-        setFormErrors((prev) => ({
-          ...prev,
-          mobileNumber: "Please enter a valid 10-digit number.",
-        }));
-      } else {
-        setFormErrors((prev) => ({ ...prev, mobileNumber: "" }));
-      }
-    }
-
-    if (name === "emailAddress") {
-      if (trimmedValue === "") {
-        setFormErrors((prev) => ({
-          ...prev,
-          emailAddress: "Email is required.",
-        }));
-      } else if (!validateEmail(trimmedValue)) {
-        setFormErrors((prev) => ({
-          ...prev,
-          emailAddress: "Please enter a valid email address.",
-        }));
-      } else {
-        setFormErrors((prev) => ({ ...prev, emailAddress: "" }));
-      }
-    }
-
-    if (name === "message") {
-      if (trimmedValue === "") {
-        setFormErrors((prev) => ({
-          ...prev,
-          message: "Message is required.",
-        }));
-      } else {
-        setFormErrors((prev) => ({ ...prev, message: "" }));
-      }
-    }
+    setFormErrors((prev) => ({
+      ...prev,
+      [name]: "",
+    }));
   };
 
   const sendEmailHandler = async (e) => {
     e.preventDefault();
+
     const errors = {};
+    const { fullName, mobileNumber, emailAddress, message } = formData;
 
-    const fullName = formData.fullName.trim();
-    const mobileNumber = formData.mobileNumber.trim();
-    const emailAddress = formData.emailAddress.trim();
-    const message = formData.message.trim();
-
-    if (fullName === "") {
+    if (!fullName.trim()) {
       errors.fullName = "Full Name is required.";
-    } else if (fullName.length < 3) {
-      errors.fullName = "Name must be at least 3 characters.";
-    } else if (!/^[a-zA-Z\s]*$/.test(fullName)) {
-      errors.fullName = "Name can only contain letters and spaces.";
     }
 
-    if (mobileNumber === "") {
+    if (!mobileNumber.trim()) {
       errors.mobileNumber = "Mobile Number is required.";
     } else if (!/^[6-9]\d{9}$/.test(mobileNumber)) {
       errors.mobileNumber = "Please enter a valid 10-digit number.";
     }
 
-    if (emailAddress === "") {
+    if (!emailAddress.trim()) {
       errors.emailAddress = "Email Address is required.";
     } else if (!validateEmail(emailAddress)) {
       errors.emailAddress = "Please enter a valid email address.";
     }
 
-    if (message === "") {
+    if (!message.trim()) {
       errors.message = "Message is required.";
     }
 
@@ -128,12 +68,30 @@ function Contact() {
       setFormErrors(errors);
       return;
     }
-    setLoading(true); // 🔥 SKELETON START
 
-    setTimeout(() => {
-      setLoading(false); // 🔥 SKELETON STOP
-      alert("Message sent successfully");
-    }, 2000);
+    setLoading(true);
+
+    try {
+      await contactUs({
+        full_name: fullName.trim(),
+        email: emailAddress.trim(),
+        phone_number: mobileNumber.trim(),
+        message: message.trim(),
+      });
+
+      toast.success("Message sent successfully 🚀");
+
+      setFormData({
+        fullName: "",
+        mobileNumber: "",
+        emailAddress: "",
+        message: "",
+      });
+    } catch (error) {
+     toast.error("Failed to send message ❌");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -270,7 +228,10 @@ function Contact() {
                 </p>
               </div>
 
-              <form className="grid grid-cols-1 gap-4 flex-1">
+              <form
+                onSubmit={sendEmailHandler}
+                className="grid grid-cols-1 gap-4 flex-1"
+              >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label
@@ -422,7 +383,7 @@ function Contact() {
                 <div className="mt-4">
                   <button
                     type="submit"
-                    onClick={sendEmailHandler}
+                    disabled={loading}
                     className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-60 transition"
                   >
                     {loading ? "Sending..." : "Submit"}
