@@ -6,7 +6,7 @@ const Header = ({
   synopsis,
   heading,
   publishedAt,
-  author,
+  author = "Krishna-Gopal-Varahney",
 }) => {
   return (
     <header className="max-w-6xl mx-auto px-4 sm:px-0 mb-12">

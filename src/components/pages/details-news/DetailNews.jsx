@@ -53,7 +53,7 @@ const DetailNews = () => {
           />
 
           {/* GRID */}
-          <div className="grid grid-cols-12 gap-6 mt-8">
+          <div className="grid grid-cols-12 gap-2 mt-8">
 
             <LeftSidebar />
 

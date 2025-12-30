@@ -2,7 +2,7 @@ import { FiThumbsUp, FiShare2, FiBookmark } from "react-icons/fi";
 
 const LeftSidebar = () => {
   return (
-    <aside className="col-span-12 lg:col-span-2">
+    <aside className="col-span-12 lg:col-span-1">
       <div
         className="
           flex justify-center gap-4
