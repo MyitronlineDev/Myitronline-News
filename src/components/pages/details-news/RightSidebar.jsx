@@ -73,7 +73,7 @@ const RightSidebar = () => {
         {/* OPTIONAL PROMO / INFO CARD */}
         <div
           className="
-            bg-gradient-to-br
+            bg-linear-to-br
             from-red-600 to-red-500
             text-white
             rounded-2xl
