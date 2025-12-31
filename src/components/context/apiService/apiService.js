@@ -25,12 +25,24 @@ export const searchNews = async (query) => {
 export const latestNews = async () => {
   try {
     const response = await api.get("/myitr-news/right-side");
+
     return response.data;
   } catch (error) {
     console.error("Latest News API error:", error);
     throw error;
   }
 };
+
+export const lendingPageNews = async () =>  {
+  try{
+    const response = await api.get("/myitr-news/latest");
+    return response.data;
+  }
+  catch(error){
+    console.error("Lending Page News API error:", error);
+    throw error;
+  }
+}
 
 export const contactUs = async (data) => {
   try {

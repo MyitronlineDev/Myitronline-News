@@ -66,7 +66,6 @@ const DetailNews = () => {
             </main>
 
             <RightSidebar />
-
           </div>
         </div>
       </div>

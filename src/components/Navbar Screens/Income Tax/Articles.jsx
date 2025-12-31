@@ -9,7 +9,6 @@ import {
   FiBookOpen
 } from "react-icons/fi";
 
-
 const Articles = () => {
   const categories = [
     { name: "All Articles", count: 12, active: true },
@@ -146,10 +145,6 @@ const articles = [
           <div className="lg:col-span-2">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-bold text-gray-900">Featured Articles</h2>
-              <div className="flex items-center text-blue-600 text-sm font-medium">
-                View all
-                <FiArrowRight className="w-4 h-4 ml-1" />
-              </div>
             </div>
 
             <div className="grid md:grid-cols-2 gap-6 mb-12">
@@ -263,27 +258,6 @@ const articles = [
                   </div>
                 ))}
               </div>
-            </div>
-
-            {/* Newsletter */}
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 border border-blue-100">
-              <h3 className="font-bold text-gray-900 mb-2">Stay Updated</h3>
-              <p className="text-sm text-gray-600 mb-4">
-                Get weekly tax updates and insights delivered to your inbox
-              </p>
-              <div className="space-y-3">
-                <input
-                  type="email"
-                  placeholder="Your email address"
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                />
-                <button className="w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors">
-                  Subscribe Now
-                </button>
-              </div>
-              <p className="text-xs text-gray-500 mt-3">
-                No spam. Unsubscribe anytime.
-              </p>
             </div>
           </div>
         </div>
