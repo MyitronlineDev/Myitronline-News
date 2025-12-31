@@ -10,6 +10,8 @@ const LendingPage = ({ landingPageData }) => {
     navigate(`/detail-news/${slug}/myitronline`);
   };
 
+  console.log("heell",sideNews.image)
+
   return (
     <div className="flex flex-col lg:flex-row gap-6 mb-7">
       {/* Featured Section */}
@@ -20,7 +22,7 @@ const LendingPage = ({ landingPageData }) => {
           <img
             src={featured.image}
             alt={featured.title}
-            className="w-full aspect-video object-cover"
+            className="w-full aspect-video object-contain bg-red-100"
           />
 
           <div className="border border-black absolute -bottom-4 left-1/2 -translate-x-1/2 px-3 bg-white">

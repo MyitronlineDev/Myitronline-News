@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://192.168.1.11:8089/api",
+  baseURL: "https://www.apnokaca.com/api",
   headers: {
     "Content-Type": "application/json",
     Authorization: "Bearer Myitee@123",

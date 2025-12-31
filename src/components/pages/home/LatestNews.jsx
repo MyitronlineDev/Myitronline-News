@@ -1,5 +1,7 @@
 import React from "react";
+import { FiCalendar } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
+import { getCategoryColor } from "../../utility/categoryColor";
 
 const LatestNews = ({ leftNews }) => {
   const navigate = useNavigate();
@@ -20,14 +22,19 @@ const LatestNews = ({ leftNews }) => {
             onClick={() => handleNavigate(item.slug)}
             className="border-b pb-3 pt-1"
           >
-            <div className="flex flex-row gap-2 text-sm text-gray-700">
-              <span className="font-semibold">{item.category}</span>
-              <span className="text-yellow-500">{item.date}</span>
+            <div className="flex flex-row gap-2 text-sm text-gray-700 items-center justify-between">
+              <span className={`font-semibold rounded-full px-3 font-medium text-xs py-1 ${getCategoryColor(item.category)}`}>
+                {item.category}
+              </span>
+              <div className="flex items-center">
+                <FiCalendar className="w-4 h-4 mr-1" />
+                <span className="text-blue-500 py-1">{item.date}</span>
+              </div>
             </div>
 
             <h3 className="text-lg font-semibold">
-              {item.title.length > 67
-                ? `${item.title.substring(0, 66)}...`
+              {item.title.length > 65
+                ? `${item.title.substring(0, 64)}...`
                 : item.title}
             </h3>
 

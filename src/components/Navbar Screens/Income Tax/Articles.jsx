@@ -11,8 +11,7 @@ import {
 
 const Articles = () => {
   const categories = [
-    { name: "All Articles", count: 12, active: true },
-    { name: "Income Tax", count: 4 },
+    { name: "Income Tax", count: 4, active: true},
     { name: "GST", count: 3 },
     { name: "Budget", count: 3 },
     { name: "Tax Saving", count: 2 },
@@ -30,7 +29,7 @@ const Articles = () => {
     {
       title: "GST rate changes on essential goods effective April 2025",
       description: "The GST council has revised tax rates on selected essential items impacting household budgets.",
-      category: "GST",
+      category: "Income Tax",
       date: "Mar 12, 2025",
       readTime: "5 min read",
       premium: false
@@ -51,7 +50,7 @@ const articles = [
     title: "New GST return filing system coming soon",
     description:
       "A simplified GST return filing mechanism is expected to reduce compliance burden significantly.",
-    category: "GST",
+    category: "Income Tax",
     date: "Mar 8, 2025",
     readTime: "4 min read",
     icon: FiFileText
@@ -60,7 +59,7 @@ const articles = [
     title: "Union Budget 2025 highlights for taxpayers",
     description:
       "Key announcements from the budget that directly impact salaried and business taxpayers.",
-    category: "Budget",
+    category: "Income Tax",
     date: "Mar 5, 2025",
     readTime: "6 min read",
     icon: FiShield
@@ -69,7 +68,7 @@ const articles = [
     title: "New tax regime vs old tax regime comparison",
     description:
       "Which tax regime should you choose in the current financial year? Detailed analysis inside.",
-    category: "Budget",
+    category: "Income Tax",
     date: "Mar 3, 2025",
     readTime: "5 min read",
     icon: FiBookOpen
@@ -78,7 +77,7 @@ const articles = [
     title: "Top tax-saving investments before March 31",
     description:
       "Smart investment options to reduce your tax liability legally with maximum returns.",
-    category: "Tax Saving",
+    category: "Income Tax",
     date: "Feb 28, 2025",
     readTime: "4 min read",
     icon: FiTrendingUp
@@ -87,7 +86,7 @@ const articles = [
     title: "Common mistakes to avoid while filing ITR",
     description:
       "Avoid these common errors that may lead to notices from the tax department.",
-    category: "Tax Saving",
+    category: "Income Tax",
     date: "Feb 25, 2025",
     readTime: "3 min read",
     icon: FiShield
@@ -113,13 +112,10 @@ const articles = [
                 analysis to optimize your financial planning.
               </p>
             </div>
-            <div className="hidden md:flex items-center space-x-2 text-gray-500">
-              <FiClock className="w-4 h-4" />
-              <span className="text-sm">Last updated: Today, 10:30 AM</span>
-            </div>
+
           </div>
 
-          {/* Category Filter */}
+          {/* Category Filter
           <div className="flex flex-wrap gap-3">
             {categories.map((cat) => (
               <button
@@ -134,7 +130,7 @@ const articles = [
                 <span className="ml-2 text-xs opacity-80">({cat.count})</span>
               </button>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -144,7 +140,7 @@ const articles = [
           {/* Featured Articles */}
           <div className="lg:col-span-2">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-bold text-gray-900">Featured Articles</h2>
+              <h2 className="text-2xl font-bold text-gray-900">Latest Article</h2>
             </div>
 
             <div className="grid md:grid-cols-2 gap-6 mb-12">
@@ -175,10 +171,6 @@ const articles = [
                         <FiCalendar className="w-4 h-4 mr-1" />
                         {article.date}
                       </div>
-                      <div className="flex items-center">
-                        <FiClock className="w-4 h-4 mr-1" />
-                        {article.readTime}
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -186,7 +178,7 @@ const articles = [
             </div>
 
             {/* All Articles */}
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Latest Articles</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Tax Articles Archive</h2>
             <div className="grid md:grid-cols-2 gap-6">
               {articles.map((article, index) => (
                 <div
@@ -204,7 +196,6 @@ const articles = [
                         <span className="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded">
                           {article.category}
                         </span>
-                        <span className="text-xs text-gray-500">{article.date}</span>
                       </div>
                       <h3 className="font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
                         {article.title}
@@ -215,7 +206,7 @@ const articles = [
                       <div className="flex items-center justify-between">
                         <span className="text-xs text-gray-500 flex items-center">
                           <FiClock className="w-3 h-3 mr-1" />
-                          {article.readTime}
+                          {article.date}
                         </span>
                         <button className="text-blue-600 text-sm font-medium flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
                           Read more

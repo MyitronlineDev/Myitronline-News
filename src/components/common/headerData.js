@@ -1,3 +1,6 @@
+const CURRENT_YEAR = new Date().getFullYear();
+
+console.log(CURRENT_YEAR)
 export const NAV_ITEMS = [
   {
     label: "Income Tax",
@@ -13,10 +16,10 @@ export const NAV_ITEMS = [
   {
     label: "Budget",
     content: [
-      { label: "Budget 2025", route: "navbar/budget/2025" },
-      { label: "Budget 2024", route: "navbar/budget/2024" },
-      { label: "Budget 2023", route: "navbar/budget/2023" },
-      { label: "Budget 2022", route: "navbar/budget/2022" },
+      { label: `Budget ${CURRENT_YEAR-0}`, route: `/navbar/budget/${CURRENT_YEAR-0}` },
+      { label: `Budget ${CURRENT_YEAR-1}`, route: `/navbar/budget/${CURRENT_YEAR-1}` },
+      { label: `Budget ${CURRENT_YEAR-2}`, route: `/navbar/budget/${CURRENT_YEAR-2}` },
+      { label: `Budget ${CURRENT_YEAR-3}`, route: `/navbar/budget/${CURRENT_YEAR-3}` },
     ],
   },
   {
