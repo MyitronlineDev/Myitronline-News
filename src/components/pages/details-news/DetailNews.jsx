@@ -1,30 +1,27 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-
-import Header from "./Header";
 import Content from "./Content";
-import LeftSidebar from "./LeftSidebar";
-import RightSidebar from "./RightSidebar";
 import ReadingProgress from "../../common/ReadingProgress";
+import { useEffect, useState } from "react";
 import { fetchDetailsNewsApi } from "../../context/apiService/apiService";
+import Header from "./Header";
+import LeftSideBar from "./LeftSidebar";
+import RightSidebar from "./RightSidebar";
 
 const DetailNews = () => {
   const { slug } = useParams();
   const [articles, setArticles] = useState();
 
+  const fetchShowNews = async (slug) => {
+    try {
+      const article = await fetchDetailsNewsApi(slug);
+      setArticles(article);
+    } catch (err) {
+      console.log("FetchShowNewsApi error", err.message);
+    }
+  };
+
   useEffect(() => {
-    if (!slug) return;
-
-    const fetchShowNews = async () => {
-      try {
-        const article = await fetchDetailsNewsApi(slug);
-        setArticles(article);
-      } catch (err) {
-        console.log("FetchShowNewsApi error", err.message);
-      }
-    };
-
-    fetchShowNews();
+    if (slug) fetchShowNews(slug);
   }, [slug]);
 
   if (!articles) {
@@ -38,26 +35,24 @@ const DetailNews = () => {
   return (
     <>
       <ReadingProgress />
-
-      <div className="bg-neutral-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-
-          {/* HEADER */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        {/* Keep article readable on large screens */}
+        <div className="max-w-7xl mx-auto">
           <Header
             category={articles?.category_name}
             title={articles?.news_title}
             heading={articles?.news_heading}
             synopsis={articles?.synopsis}
             publishedAt={articles?.published_at}
-            author={articles?.author || "Krishna Gopal Varahney"}
+            author={articles?.author || "~Krishna Gopal Varahney"}
           />
 
           {/* GRID */}
           <div className="grid grid-cols-12 gap-2 mt-8">
 
-            <LeftSidebar />
+            <LeftSideBar />
 
-            <main className="col-span-12 lg:col-span-8 order-2 lg:order-none">
+            <main className="col-span-12 lg:col-span-8 order-2 lg:order-0">
               <div className="bg-white rounded-2xl shadow-sm border border-neutral-200">
                 <div className="px-4 sm:px-8 lg:px-10 py-6 sm:py-8">
                   <Content contents={articles.content} />
