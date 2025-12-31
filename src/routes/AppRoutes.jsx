@@ -15,7 +15,9 @@ import AuthorPage from "../components/pages/details-news/AuthorPage";
 function AppRoutes() {
   return (
     <Routes>
+      
       <Route element={<MainLayout />}>
+           
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
