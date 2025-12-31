@@ -322,7 +322,7 @@ const Home = () => {
       style={{ maxWidth: "1400px" }}
     >
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 ">
-        <LatestNews leftNews={leftNews} />
+        <LatestNews leftNews={latestNewsData} />
 
         {/* side  Section */}
         <div className="col-span-full lg:col-span-9 ">
