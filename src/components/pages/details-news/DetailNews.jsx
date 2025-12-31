@@ -46,12 +46,30 @@ const DetailNews = () => {
             author={articles?.author || "~Krishna Gopal Varahney"}
           />
 
+<<<<<<< HEAD
           {/* ARTICLE CONTENT */}
           <Content
             contents={articles.content}
           // featuredImage={articles.images}
           />
 
+=======
+          {/* GRID */}
+          <div className="grid grid-cols-12 gap-2 mt-8">
+
+            <LeftSidebar />
+
+            <main className="col-span-12 lg:col-span-8 order-2 lg:order-none">
+              <div className="bg-white rounded-2xl shadow-sm border border-neutral-200">
+                <div className="px-4 sm:px-8 lg:px-10 py-6 sm:py-8">
+                  <Content contents={articles.content} />
+                </div>
+              </div>
+            </main>
+
+            <RightSidebar />
+          </div>
+>>>>>>> a582d398ac6b81ff3834a31c80c2b57d4fa76e6e
         </div>
       </div>
     </>

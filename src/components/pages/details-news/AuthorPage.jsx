@@ -69,11 +69,12 @@ const Facebook = () => (
 /* ================= MAIN ================= */
 
 const AuthorPage = () => {
-  const { name } = useParams();
+  let { name } = useParams();
 
+  name = name.replaceAll(" ", "-");
   const authorArticle = newsDetails.find((item) => item.author === name);
 
-  if (!authorArticle) return <Navigate to="/" replace />;
+  // if (!authorArticle) return <Navigate to="/" replace />;
 
   const { authorDetails } = authorArticle;
 
