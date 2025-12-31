@@ -17,150 +17,134 @@ const Home = () => {
   const [latestNewsData, setLatestNewsData] = useState([]);
   const [landingPageData, setLandingPageData] = useState(null);
 
+  console.log("heloow",import.meta.env.VITE_API_BASE_URL)
+
   // const leftNews = [
   //   {
   //     category: "TECHNOLOGY",
   //     date: "02/15/2019",
-  //     title:
-  //       "Angry Birds maker Rovio sees sales growth in 2019 after weak fourth ",
+  //     title: "Rovio reports strong mobile gaming growth in 2019",
   //     excerpt:
-  //       "Refreshingly, what was expected of her was the same thing that was expected that was expected of Lara Stone: take a Lara Stone: take a...",
+  //       "The Angry Birds maker recorded better-than-expected growth driven by mobile ads and in-game purchases...",
+  //   },
+  //   {
+  //     category: "BUSINESS",
+  //     date: "02/16/2019",
+  //     title: "Global markets rise as investors react to trade optimism",
+  //     excerpt:
+  //       "Stocks climbed worldwide after positive signals from ongoing trade negotiations between major economies...",
+  //   },
+  //   {
+  //     category: "SPORTS",
+  //     date: "02/17/2019",
+  //     title: "India clinches last-over thriller in T20 series",
+  //     excerpt:
+  //       "A stunning performance in the final over sealed a dramatic victory and thrilled fans across the country...",
+  //   },
+  //   {
+  //     category: "ENTERTAINMENT",
+  //     date: "02/18/2019",
+  //     title: "New blockbuster film breaks opening weekend records",
+  //     excerpt:
+  //       "The much-awaited release smashed box office expectations with massive global ticket sales...",
+  //   },
+  //   {
+  //     category: "HEALTH",
+  //     date: "02/19/2019",
+  //     title: "Experts recommend daily walking for heart health",
+  //     excerpt:
+  //       "Doctors say even 30 minutes of walking a day can significantly reduce the risk of heart disease...",
+  //   },
+  //   {
+  //     category: "TECHNOLOGY",
+  //     date: "02/20/2019",
+  //     title: "AI startups attract record funding in early 2019",
+  //     excerpt:
+  //       "Venture capital investment in artificial intelligence companies continues to surge globally...",
+  //   },
+  //   {
+  //     category: "BUSINESS",
+  //     date: "02/21/2019",
+  //     title: "Startup layoffs highlight challenges in tech sector",
+  //     excerpt:
+  //       "Several fast-growing startups announced workforce reductions amid rising operational costs...",
+  //   },
+  //   {
+  //     category: "SPORTS",
+  //     date: "02/22/2019",
+  //     title: "Football club announces new head coach",
+  //     excerpt:
+  //       "The management confirmed a major coaching change ahead of the upcoming season...",
+  //   },
+  //   {
+  //     category: "ENTERTAINMENT",
+  //     date: "02/23/2019",
+  //     title: "Music streaming platforms see surge in subscribers",
+  //     excerpt:
+  //       "Exclusive releases and affordable plans are driving user growth across major platforms...",
+  //   },
+  //   {
+  //     category: "HEALTH",
+  //     date: "02/24/2019",
+  //     title: "Study links better sleep habits to improved focus",
+  //     excerpt:
+  //       "Researchers found that consistent sleep schedules can enhance productivity and mental clarity...",
   //   },
   //   {
   //     category: "TECHNOLOGY",
   //     date: "02/15/2019",
-  //     title:
-  //       "Angry Birds maker Rovio sees sales growth in 2019 after weak fourth ",
+  //     title: "Rovio reports strong mobile gaming growth in 2019",
   //     excerpt:
-  //       "Refreshingly, what was expected of her was the same thing that was expected that was expected of Lara Stone: take a Lara Stone: take a...",
+  //       "The Angry Birds maker recorded better-than-expected growth driven by mobile ads and in-game purchases...",
+  //   },
+  //   {
+  //     category: "BUSINESS",
+  //     date: "02/16/2019",
+  //     title: "Global markets rise as investors react to trade optimism",
+  //     excerpt:
+  //       "Stocks climbed worldwide after positive signals from ongoing trade negotiations between major economies...",
+  //   },
+  //   {
+  //     category: "SPORTS",
+  //     date: "02/17/2019",
+  //     title: "India clinches last-over thriller in T20 series",
+  //     excerpt:
+  //       "A stunning performance in the final over sealed a dramatic victory and thrilled fans across the country...",
+  //   },
+  //   {
+  //     category: "ENTERTAINMENT",
+  //     date: "02/18/2019",
+  //     title: "New blockbuster film breaks opening weekend records",
+  //     excerpt:
+  //       "The much-awaited release smashed box office expectations with massive global ticket sales...",
+  //   },
+  //   {
+  //     category: "HEALTH",
+  //     date: "02/19/2019",
+  //     title: "Experts recommend daily walking for heart health",
+  //     excerpt:
+  //       "Doctors say even 30 minutes of walking a day can significantly reduce the risk of heart disease...",
   //   },
   //   {
   //     category: "TECHNOLOGY",
-  //     date: "02/15/2019",
-  //     title:
-  //       "Angry Birds maker Rovio sees sales growth in 2019 after weak fourth ",
+  //     date: "02/20/2019",
+  //     title: "AI startups attract record funding in early 2019",
   //     excerpt:
-  //       "Refreshingly, what was expected of her was the same thing that was expected that was expected of Lara Stone: take a Lara Stone: take a...",
+  //       "Venture capital investment in artificial intelligence companies continues to surge globally...",
   //   },
   //   {
-  //     category: "TECHNOLOGY",
-  //     date: "02/15/2019",
-  //     title:
-  //       "Angry Birds maker Rovio sees sales growth in 2019 after weak fourth ",
+  //     category: "BUSINESS",
+  //     date: "02/21/2019",
+  //     title: "Startup layoffs highlight challenges in tech sector",
   //     excerpt:
-  //       "Refreshingly, what was expected of her was the same thing that was expected that was expected of Lara Stone: take a Lara Stone: take a...",
+  //       "Several fast-growing startups announced workforce reductions amid rising operational costs...",
   //   },
   //   {
-  //     category: "TECHNOLOGY",
-  //     date: "02/15/2019",
-  //     title:
-  //       "Angry Birds maker Rovio sees sales growth in 2019 after weak fourth",
+  //     category: "HEALTH",
+  //     date: "02/24/2019",
+  //     title: "Study links better sleep habits to improved focus",
   //     excerpt:
-  //       "Refreshingly, what was expected of her was the same thing that was expected that was expected of Lara Stone: take a Lara Stone: take a...",
-  //   },
-  //   {
-  //     category: "TECHNOLOGY",
-  //     date: "02/15/2019",
-  //     title:
-  //       "Angry Birds maker Rovio sees sales growth in 2019 after weak fourth",
-  //     excerpt:
-  //       "Refreshingly, what was expected of her was the same thing that was expected that was expected of Lara Stone: take a Lara Stone: take a...",
-  //   },
-  //   {
-  //     category: "TECHNOLOGY",
-  //     date: "02/15/2019",
-  //     title:
-  //       "Angry Birds maker Rovio sees sales growth in 2019 after weak fourth",
-  //     excerpt:
-  //       "Refreshingly, what was expected of her was the same thing that was expected that was expected of Lara Stone: take a Lara Stone: take a...",
-  //   },
-  //   {
-  //     category: "TECHNOLOGY",
-  //     date: "02/15/2019",
-  //     title:
-  //       "Angry Birds maker Rovio sees sales growth in 2019 after weak fourth",
-  //     excerpt:
-  //       "Refreshingly, what was expected of her was the same thing that was expected that was expected of Lara Stone: take a Lara Stone: take a...",
-  //   },
-  //   {
-  //     category: "TECHNOLOGY",
-  //     date: "02/15/2019",
-  //     title:
-  //       "Angry Birds maker Rovio sees sales growth in 2019 after weak fourth",
-  //     excerpt:
-  //       "Refreshingly, what was expected of her was the same thing that was expected that was expected of Lara Stone: take a Lara Stone: take a...",
-  //   },
-  //   {
-  //     category: "TECHNOLOGY",
-  //     date: "02/15/2019",
-  //     title:
-  //       "Angry Birds maker Rovio sees sales growth in 2019 after weak fourth",
-  //     excerpt:
-  //       "Refreshingly, what was expected of her was the same thing that was expected that was expected of Lara Stone: take a Lara Stone: take a...",
-  //   },
-  //   {
-  //     category: "TECHNOLOGY",
-  //     date: "02/15/2019",
-  //     title:
-  //       "Angry Birds maker Rovio sees sales growth in 2019 after weak fourth",
-  //     excerpt:
-  //       "Refreshingly, what was expected of her was the same thing that was expected that was expected of Lara Stone: take a Lara Stone: take a...",
-  //   },
-  //   {
-  //     category: "TECHNOLOGY",
-  //     date: "02/15/2019",
-  //     title:
-  //       "Angry Birds maker Rovio sees sales growth in 2019 after weak fourth",
-  //     excerpt:
-  //       "Refreshingly, what was expected of her was the same thing that was expected that was expected of Lara Stone: take a Lara Stone: take a...",
-  //   },
-  //   {
-  //     category: "TECHNOLOGY",
-  //     date: "02/15/2019",
-  //     title:
-  //       "Angry Birds maker Rovio sees sales growth in 2019 after weak fourth",
-  //     excerpt:
-  //       "Refreshingly, what was expected of her was the same thing that was expected that was expected of Lara Stone: take a Lara Stone: take a...",
-  //   },
-  //   {
-  //     category: "TECHNOLOGY",
-  //     date: "02/15/2019",
-  //     title:
-  //       "Angry Birds maker Rovio sees sales growth in 2019 after weak fourth ",
-  //     excerpt:
-  //       "Refreshingly, what was expected of her was the same thing that was expected that was expected of Lara Stone: take a Lara Stone: take a...",
-  //   },
-  //   {
-  //     category: "TECHNOLOGY",
-  //     date: "02/15/2019",
-  //     title:
-  //       "Angry Birds maker Rovio sees sales growth in 2019 after weak fourth",
-  //     excerpt:
-  //       "Refreshingly, what was expected of her was the same thing that was expected that was expected of Lara Stone: take a Lara Stone: take a...",
-  //   },
-  //   {
-  //     category: "TECHNOLOGY",
-  //     date: "02/15/2019",
-  //     title:
-  //       "Angry Birds maker Rovio sees sales growth in 2019 after weak fourth",
-  //     excerpt:
-  //       "Refreshingly, what was expected of her was the same thing that was expected that was expected of Lara Stone: take a Lara Stone: take a...",
-  //   },
-  //   {
-  //     category: "TECHNOLOGY",
-  //     date: "02/15/2019",
-  //     title:
-  //       "Angry Birds maker Rovio sees sales growth in 2019 after weak fourth",
-  //     excerpt:
-  //       "Refreshingly, what was expected of her was the same thing that was expected that was expected of Lara Stone: take a Lara Stone: take a...",
-  //   },
-  //   {
-  //     category: "TECHNOLOGY",
-  //     date: "02/15/2019",
-  //     title:
-  //       "Angry Birds maker Rovio sees sales growth in 2019 after weak fourth",
-  //     excerpt:
-  //       "Refreshingly, what was expected of her was the same thing that was expected that was expected of Lara Stone: take a Lara Stone: take a...",
+  //       "Researchers found that consistent sleep schedules can enhance productivity and mental clarity...",
   //   },
   // ];
 
@@ -247,7 +231,7 @@ const Home = () => {
 
   async function latestNewsDisplay() {
     const cacheData = getCache("latestNews");
-    if(cacheData) {
+    if (cacheData) {
       setLatestNewsData(cacheData);
       return;
     }
@@ -259,7 +243,7 @@ const Home = () => {
         const formattedNews = response.news.map((item) => ({
           id: item.id,
           category: item.category_name.toUpperCase(),
-          date:formatDateDDMMYY(item.published_at),
+          date: formatDateDDMMYY(item.published_at),
           title: item.news_title,
           excerpt: item.synopsis,
           slug: item.slug,
@@ -275,7 +259,7 @@ const Home = () => {
 
   async function lendingPageDisplay() {
     const cacheData = getCache("lendingPageNews");
-    if(cacheData) {
+    if (cacheData) {
       setLandingPageData(cacheData);
       return;
     }
@@ -318,7 +302,7 @@ const Home = () => {
 
   return (
     <div
-      className="container mx-auto px-4 font-sans"
+      className="container mx-auto px-4 font-sans mt-1"
       style={{ maxWidth: "1400px" }}
     >
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 ">
