@@ -96,7 +96,7 @@ const articles = [
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+    <div className="min-h-screen bg-linear-to-br from-gray-50 to-gray-100">
       {/* Header */}
       <div className="bg-white border-b">
         <div className="container mx-auto px-4 py-8">
@@ -194,7 +194,7 @@ const articles = [
                   className="bg-white rounded-xl border border-gray-200 p-6 hover:border-blue-300 hover:shadow-md transition-all duration-200 group"
                 >
                   <div className="flex items-start">
-                    <div className="flex-shrink-0 mr-4">
+                    <div className="shrink-0 mr-4">
                       <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center group-hover:bg-blue-100 transition-colors">
                         <article.icon className="w-6 h-6 text-blue-600" />
                       </div>

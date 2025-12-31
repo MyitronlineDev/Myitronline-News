@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ITR = () => {
+function ITR() {
   return (
     <div>ITR</div>
   )
