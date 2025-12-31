@@ -16,10 +16,10 @@ export const NAV_ITEMS = [
   {
     label: "Budget",
     content: [
-      { label: CURRENT_YEAR-0, route: "/navbar/budget/2025" },
-      { label: CURRENT_YEAR-0, route: "/navbar/budget/2024" },
-      { label: CURRENT_YEAR-0, route: "/navbar/budget/2023" },
-      { label: "Budget 2022", route: "/navbar/budget/2022" },
+      { label: `Budget ${CURRENT_YEAR-0}`, route: `/navbar/budget/${CURRENT_YEAR-0}` },
+      { label: `Budget ${CURRENT_YEAR-1}`, route: `/navbar/budget/${CURRENT_YEAR-1}` },
+      { label: `Budget ${CURRENT_YEAR-2}`, route: `/navbar/budget/${CURRENT_YEAR-2}` },
+      { label: `Budget ${CURRENT_YEAR-3}`, route: `/navbar/budget/${CURRENT_YEAR-3}` },
     ],
   },
   {
