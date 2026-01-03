@@ -10,19 +10,18 @@ const LendingPage = ({ landingPageData }) => {
     navigate(`/detail-news/${slug}/myitronline`);
   };
 
-  console.log("heell",sideNews.image)
-
+console.log(sideNews)
   return (
     <div className="flex flex-col lg:flex-row gap-6 mb-7">
       {/* Featured Section */}
       <div className="lg:w-2/3"
-        onClick={() => handleNavigate(featured.id)}
+        onClick={() => handleNavigate(featured.slug)}
       >
         <div className="relative mb-8">
           <img
             src={featured.image}
             alt={featured.title}
-            className="w-full aspect-video object-contain bg-red-100"
+            className="w-full aspect-video object-contian bg-white-100"
           />
 
           <div className="border border-black absolute -bottom-4 left-1/2 -translate-x-1/2 px-3 bg-white">
@@ -50,14 +49,14 @@ const LendingPage = ({ landingPageData }) => {
         {sideNews.map((item) => (
           <div
             key={item.id}
-            onClick={() => handleNavigate(item.id)}
+            onClick={() => handleNavigate(item.slug)}
             className="space-y-2"
           >
             <div className="relative">
               <img
                 src={item.image}
                 alt={item.title}
-                className="w-full h-[180px] object-cover"
+                className="w-full h-[180px] object-contain bg-white-100 "
               />
 
               <div className="border border-black px-3 -bottom-2 left-0 bg-white absolute">
