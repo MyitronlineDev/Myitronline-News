@@ -12,141 +12,140 @@ import {
 } from "../../context/apiService/apiService";
 import { formatDateDDMMYY } from "../../utility/formatter";
 import { getCache, setCache } from "../../utility/cacheUtils";
+import { useDevice } from "../../context/DataProvider";
 
 const Home = () => {
-  const [latestNewsData, setLatestNewsData] = useState([]);
   const [landingPageData, setLandingPageData] = useState(null);
 
-  console.log("heloow",import.meta.env.VITE_API_BASE_URL)
-
-  // const leftNews = [
-  //   {
-  //     category: "TECHNOLOGY",
-  //     date: "02/15/2019",
-  //     title: "Rovio reports strong mobile gaming growth in 2019",
-  //     excerpt:
-  //       "The Angry Birds maker recorded better-than-expected growth driven by mobile ads and in-game purchases...",
-  //   },
-  //   {
-  //     category: "BUSINESS",
-  //     date: "02/16/2019",
-  //     title: "Global markets rise as investors react to trade optimism",
-  //     excerpt:
-  //       "Stocks climbed worldwide after positive signals from ongoing trade negotiations between major economies...",
-  //   },
-  //   {
-  //     category: "SPORTS",
-  //     date: "02/17/2019",
-  //     title: "India clinches last-over thriller in T20 series",
-  //     excerpt:
-  //       "A stunning performance in the final over sealed a dramatic victory and thrilled fans across the country...",
-  //   },
-  //   {
-  //     category: "ENTERTAINMENT",
-  //     date: "02/18/2019",
-  //     title: "New blockbuster film breaks opening weekend records",
-  //     excerpt:
-  //       "The much-awaited release smashed box office expectations with massive global ticket sales...",
-  //   },
-  //   {
-  //     category: "HEALTH",
-  //     date: "02/19/2019",
-  //     title: "Experts recommend daily walking for heart health",
-  //     excerpt:
-  //       "Doctors say even 30 minutes of walking a day can significantly reduce the risk of heart disease...",
-  //   },
-  //   {
-  //     category: "TECHNOLOGY",
-  //     date: "02/20/2019",
-  //     title: "AI startups attract record funding in early 2019",
-  //     excerpt:
-  //       "Venture capital investment in artificial intelligence companies continues to surge globally...",
-  //   },
-  //   {
-  //     category: "BUSINESS",
-  //     date: "02/21/2019",
-  //     title: "Startup layoffs highlight challenges in tech sector",
-  //     excerpt:
-  //       "Several fast-growing startups announced workforce reductions amid rising operational costs...",
-  //   },
-  //   {
-  //     category: "SPORTS",
-  //     date: "02/22/2019",
-  //     title: "Football club announces new head coach",
-  //     excerpt:
-  //       "The management confirmed a major coaching change ahead of the upcoming season...",
-  //   },
-  //   {
-  //     category: "ENTERTAINMENT",
-  //     date: "02/23/2019",
-  //     title: "Music streaming platforms see surge in subscribers",
-  //     excerpt:
-  //       "Exclusive releases and affordable plans are driving user growth across major platforms...",
-  //   },
-  //   {
-  //     category: "HEALTH",
-  //     date: "02/24/2019",
-  //     title: "Study links better sleep habits to improved focus",
-  //     excerpt:
-  //       "Researchers found that consistent sleep schedules can enhance productivity and mental clarity...",
-  //   },
-  //   {
-  //     category: "TECHNOLOGY",
-  //     date: "02/15/2019",
-  //     title: "Rovio reports strong mobile gaming growth in 2019",
-  //     excerpt:
-  //       "The Angry Birds maker recorded better-than-expected growth driven by mobile ads and in-game purchases...",
-  //   },
-  //   {
-  //     category: "BUSINESS",
-  //     date: "02/16/2019",
-  //     title: "Global markets rise as investors react to trade optimism",
-  //     excerpt:
-  //       "Stocks climbed worldwide after positive signals from ongoing trade negotiations between major economies...",
-  //   },
-  //   {
-  //     category: "SPORTS",
-  //     date: "02/17/2019",
-  //     title: "India clinches last-over thriller in T20 series",
-  //     excerpt:
-  //       "A stunning performance in the final over sealed a dramatic victory and thrilled fans across the country...",
-  //   },
-  //   {
-  //     category: "ENTERTAINMENT",
-  //     date: "02/18/2019",
-  //     title: "New blockbuster film breaks opening weekend records",
-  //     excerpt:
-  //       "The much-awaited release smashed box office expectations with massive global ticket sales...",
-  //   },
-  //   {
-  //     category: "HEALTH",
-  //     date: "02/19/2019",
-  //     title: "Experts recommend daily walking for heart health",
-  //     excerpt:
-  //       "Doctors say even 30 minutes of walking a day can significantly reduce the risk of heart disease...",
-  //   },
-  //   {
-  //     category: "TECHNOLOGY",
-  //     date: "02/20/2019",
-  //     title: "AI startups attract record funding in early 2019",
-  //     excerpt:
-  //       "Venture capital investment in artificial intelligence companies continues to surge globally...",
-  //   },
-  //   {
-  //     category: "BUSINESS",
-  //     date: "02/21/2019",
-  //     title: "Startup layoffs highlight challenges in tech sector",
-  //     excerpt:
-  //       "Several fast-growing startups announced workforce reductions amid rising operational costs...",
-  //   },
-  //   {
-  //     category: "HEALTH",
-  //     date: "02/24/2019",
-  //     title: "Study links better sleep habits to improved focus",
-  //     excerpt:
-  //       "Researchers found that consistent sleep schedules can enhance productivity and mental clarity...",
-  //   },
-  // ];
+  const{latestNewsData} = useDevice();
+  const leftNews = [
+    {
+      category: "TECHNOLOGY",
+      date: "02/15/2019",
+      title: "Rovio reports strong mobile gaming growth in 2019",
+      excerpt:
+        "The Angry Birds maker recorded better-than-expected growth driven by mobile ads and in-game purchases...",
+    },
+    {
+      category: "BUSINESS",
+      date: "02/16/2019",
+      title: "Global markets rise as investors react to trade optimism",
+      excerpt:
+        "Stocks climbed worldwide after positive signals from ongoing trade negotiations between major economies...",
+    },
+    {
+      category: "SPORTS",
+      date: "02/17/2019",
+      title: "India clinches last-over thriller in T20 series",
+      excerpt:
+        "A stunning performance in the final over sealed a dramatic victory and thrilled fans across the country...",
+    },
+    {
+      category: "ENTERTAINMENT",
+      date: "02/18/2019",
+      title: "New blockbuster film breaks opening weekend records",
+      excerpt:
+        "The much-awaited release smashed box office expectations with massive global ticket sales...",
+    },
+    {
+      category: "HEALTH",
+      date: "02/19/2019",
+      title: "Experts recommend daily walking for heart health",
+      excerpt:
+        "Doctors say even 30 minutes of walking a day can significantly reduce the risk of heart disease...",
+    },
+    {
+      category: "TECHNOLOGY",
+      date: "02/20/2019",
+      title: "AI startups attract record funding in early 2019",
+      excerpt:
+        "Venture capital investment in artificial intelligence companies continues to surge globally...",
+    },
+    {
+      category: "BUSINESS",
+      date: "02/21/2019",
+      title: "Startup layoffs highlight challenges in tech sector",
+      excerpt:
+        "Several fast-growing startups announced workforce reductions amid rising operational costs...",
+    },
+    {
+      category: "SPORTS",
+      date: "02/22/2019",
+      title: "Football club announces new head coach",
+      excerpt:
+        "The management confirmed a major coaching change ahead of the upcoming season...",
+    },
+    {
+      category: "ENTERTAINMENT",
+      date: "02/23/2019",
+      title: "Music streaming platforms see surge in subscribers",
+      excerpt:
+        "Exclusive releases and affordable plans are driving user growth across major platforms...",
+    },
+    {
+      category: "HEALTH",
+      date: "02/24/2019",
+      title: "Study links better sleep habits to improved focus",
+      excerpt:
+        "Researchers found that consistent sleep schedules can enhance productivity and mental clarity...",
+    },
+    {
+      category: "TECHNOLOGY",
+      date: "02/15/2019",
+      title: "Rovio reports strong mobile gaming growth in 2019",
+      excerpt:
+        "The Angry Birds maker recorded better-than-expected growth driven by mobile ads and in-game purchases...",
+    },
+    {
+      category: "BUSINESS",
+      date: "02/16/2019",
+      title: "Global markets rise as investors react to trade optimism",
+      excerpt:
+        "Stocks climbed worldwide after positive signals from ongoing trade negotiations between major economies...",
+    },
+    {
+      category: "SPORTS",
+      date: "02/17/2019",
+      title: "India clinches last-over thriller in T20 series",
+      excerpt:
+        "A stunning performance in the final over sealed a dramatic victory and thrilled fans across the country...",
+    },
+    {
+      category: "ENTERTAINMENT",
+      date: "02/18/2019",
+      title: "New blockbuster film breaks opening weekend records",
+      excerpt:
+        "The much-awaited release smashed box office expectations with massive global ticket sales...",
+    },
+    {
+      category: "HEALTH",
+      date: "02/19/2019",
+      title: "Experts recommend daily walking for heart health",
+      excerpt:
+        "Doctors say even 30 minutes of walking a day can significantly reduce the risk of heart disease...",
+    },
+    {
+      category: "TECHNOLOGY",
+      date: "02/20/2019",
+      title: "AI startups attract record funding in early 2019",
+      excerpt:
+        "Venture capital investment in artificial intelligence companies continues to surge globally...",
+    },
+    {
+      category: "BUSINESS",
+      date: "02/21/2019",
+      title: "Startup layoffs highlight challenges in tech sector",
+      excerpt:
+        "Several fast-growing startups announced workforce reductions amid rising operational costs...",
+    },
+    {
+      category: "HEALTH",
+      date: "02/24/2019",
+      title: "Study links better sleep habits to improved focus",
+      excerpt:
+        "Researchers found that consistent sleep schedules can enhance productivity and mental clarity...",
+    },
+  ];
 
   // const landingPageData = {
   //   featured: {
@@ -229,33 +228,35 @@ const Home = () => {
     },
   ];
 
-  async function latestNewsDisplay() {
-    const cacheData = getCache("latestNews");
-    if (cacheData) {
-      setLatestNewsData(cacheData);
-      return;
-    }
+  // async function latestNewsDisplay() {
+  //   const cacheData = getCache("latestNews");
+  //   if (cacheData) {
+  //     setLatestNewsData(cacheData);
+  //     return;
+  //   }
 
-    try {
-      const response = await latestNews();
+  //   try {
+  //     const response = await latestNews();
 
-      if (response?.status) {
-        const formattedNews = response.news.map((item) => ({
-          id: item.id,
-          category: item.category_name.toUpperCase(),
-          date: formatDateDDMMYY(item.published_at),
-          title: item.news_title,
-          excerpt: item.synopsis,
-          slug: item.slug,
-        }));
+  //     if (response?.status) {
+  //       const formattedNews = response.news.map((item) => ({
+  //         id: item.id,
+  //         category: item.category_name.toUpperCase(),
+  //         date: formatDateDDMMYY(item.published_at),
+  //         title: item.news_title,
+  //         excerpt: item.synopsis,
+  //         slug: item.slug,
+  //       }));
 
-        setLatestNewsData(formattedNews);
-        setCache("latestNews", formattedNews);
-      }
-    } catch (error) {
-      console.error("Latest news error:", error);
-    }
-  }
+  //       setLatestNewsData(formattedNews);
+  //       setCache("latestNews", formattedNews);
+  //     }
+  //   } catch (error) {
+  //     console.error("Latest news error:", error);
+  //   }
+  // }
+
+  
 
   async function lendingPageDisplay() {
     const cacheData = getCache("lendingPageNews");
@@ -271,6 +272,7 @@ const Home = () => {
         const formattedData = {
           featured: {
             id: data.latest.id,
+            slug: data.latest.slug,
             category: data.latest.category_name,
             author: "Krishna Gopal Varshney",
             title: data.latest.news_title,
@@ -281,6 +283,7 @@ const Home = () => {
           },
           sideNews: data.side.map((item) => ({
             id: item.id,
+            slug: item.slug,
             category: item.category_name,
             title: item.news_title,
             description: item.synopsis,
@@ -296,7 +299,7 @@ const Home = () => {
   }
 
   useEffect(() => {
-    latestNewsDisplay();
+
     lendingPageDisplay();
   }, []);
 
