@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-const IMAGE_BASE_URL = "http://192.168.1.7:8089/";
+const IMAGE_BASE_URL = import.meta.env.VITE_API_BASE_URL
 
 const SearchInput = ({
   value,
@@ -11,6 +11,7 @@ const SearchInput = ({
   loading = false,
 }) => {
   const wrapperRef = useRef(null);
+  console.log(IMAGE_BASE_URL)
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -50,76 +51,15 @@ const SearchInput = ({
         "
       />
 
-      {/* {showDropdown && (
-        <ul
-          className="
-            absolute left-0 right-0 mt-2
-            bg-white rounded-xl shadow-xl
-            ring-1 ring-black/5
-            z-[60] max-h-72 overflow-auto
-          "
-        >
-          {trimmedValue.length < 3 && (
-            <li className="px-4 py-3 text-sm text-gray-500 text-center">
-              Type at least 3 characters
-            </li>
-          )}
-
-          {trimmedValue.length >= 3 && loading && (
-            <li className="px-4 py-3 text-sm text-gray-500 text-center">
-              Searching...
-            </li>
-          )}
-
-          {trimmedValue.length >= 3 &&
-            !loading &&
-            suggestions.map((item) => (
-              <li
-                key={item.id}
-                onClick={() => onSelect(item.title)}
-                className="
-                  flex gap-3 px-4 py-3 cursor-pointer
-                  hover:bg-blue-50 transition
-                "
-              >
-
-                <img
-                  src={IMAGE_BASE_URL + item.intro_image}
-                  alt={item.title}
-                  className="w-14 h-14 rounded-md object-cover flex-shrink-0"
-                />
-
-                <div className="flex flex-col">
-                  <p className="text-sm font-medium text-gray-800 line-clamp-2">
-                    {item.title}
-                  </p>
-
-                  <span className="text-xs text-gray-500 mt-0.5">
-                    {item.category} • {formatDate(item.published_at)}
-                  </span>
-                </div>
-
-              </li>
-            ))}
-
-          {trimmedValue.length >= 3 &&
-            !loading &&
-            suggestions.length === 0 && (
-              <li className="px-4 py-3 text-sm text-gray-500 text-center">
-                No results found
-              </li>
-            )}
-        </ul>
-      )} */}
 
       {showDropdown && (
         <ul
           className="
-      absolute left-0 right-0 mt-2
-      bg-white rounded-xl shadow-xl
-      ring-1 ring-black/5
-      z-[60] max-h-80 overflow-auto
-    "
+          absolute left-0 right-0 mt-2
+          bg-white rounded-xl shadow-xl
+          ring-1 ring-black/5
+          z-[60] max-h-80 overflow-auto
+        "
         >
           {trimmedValue.length < 3 && (
             <li className="px-4 py-3 text-sm text-gray-500 text-center">
@@ -138,14 +78,14 @@ const SearchInput = ({
             suggestions.map((item) => (
               <li
                 key={item.id}
-                onClick={() => onSelect(item.title)}
+                onClick={() => onSelect(item.slug)}
                 className="
-            flex gap-3 px-4 py-3 cursor-pointer
-            hover:bg-blue-50 transition
-          "
+                flex gap-3 px-4 py-3 cursor-pointer
+                hover:bg-blue-50 transition
+              "
               >
                 <img
-                  src={IMAGE_BASE_URL + item.intro_image}
+                  src={`${IMAGE_BASE_URL}/${item.intro_image}`}
                   alt={item.title}
                   className="w-14 h-14 rounded-md object-cover flex-shrink-0"
                 />
@@ -179,10 +119,10 @@ const SearchInput = ({
                     key={cat}
                     onClick={() => onSelect(cat)}
                     className="
-                px-3 py-1 text-xs font-medium
-                rounded-full border border-gray-300
-                bg-gray-100 hover:bg-blue-100 transition
-              "
+                    px-3 py-1 text-xs font-medium
+                    rounded-full border border-gray-300
+                    bg-gray-100 hover:bg-blue-100 transition
+                  "
                   >
                     {cat}
                   </button>

@@ -5,7 +5,7 @@ import LiveTime from "./liveClock/LiveTime";
 import SearchInput from "./SearchInput";
 
 import { searchNews } from "../context/apiService/apiService";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 const TopBar = () => {
@@ -39,9 +39,10 @@ const TopBar = () => {
     return () => clearTimeout(debounce);
   }, [query]);
 
-  const handleSelect = (title) => {
-    setQuery(title);
+  const handleSelect = (slug) => {
+    setQuery(slug);
     setSuggestions([]);
+    navigateTo(`/detail-news/${slug}/myitronline`)
     setOpenSearch(false);
   };
 
@@ -55,7 +56,7 @@ const TopBar = () => {
             src="/logo.jpeg"
             alt="Myitronline logo"
             className="h-9 sm:h-10 w-auto"
-           onClick={() => {navigateTo("/")}}
+            onClick={() => { navigateTo("/") }}
           />
 
           {/* Desktop Search */}

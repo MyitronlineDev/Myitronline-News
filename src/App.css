@@ -33,3 +33,48 @@
   }
 }
 
+/* ===== ARTICLE TABLE FIX FOR MOBILE ===== */
+
+.article-content table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Wrap table in horizontal scroll */
+.article-content table {
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+/* Smooth scrolling on mobile */
+.article-content table {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Optional: Better spacing */
+.article-content th,
+.article-content td {
+  padding: 8px 12px;
+  border: 1px solid #e5e7eb;
+  text-align: left;
+}
+
+/* Prevent breaking layout */
+.article-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 640px) {
+  .article-content table::after {
+    content: "← Scroll →";
+    display: block;
+    text-align: center;
+    font-size: 12px;
+    color: #6b7280;
+    margin-top: 4px;
+  }
+}
+
+

@@ -7,17 +7,25 @@ const RightSidebar = () => {
       <div className="lg:sticky lg:top-28 space-y-6">
 
         {/* RELATED ARTICLES */}
-        <div
-          className="
-            bg-white
-            border border-neutral-200
-            rounded-2xl
-            shadow-sm
-            overflow-hidden
-          "
-        >
+        <div className="bg-white border border-neutral-200 rounded-2xl shadow-sm overflow-hidden">
+
           {/* HEADER */}
-          <div className="px-4 py-3 border-b bg-neutral-50">
+          <div className="px-4 py-3 border-b bg-neutral-50 flex items-center gap-2">
+            {/* SVG INDICATOR */}
+            <svg
+              className="w-4 h-4 text-red-600"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M13.828 10.172a4 4 0 015.656 5.656l-1.414 1.414a4 4 0 01-5.656-5.656M10.172 13.828a4 4 0 01-5.656-5.656l1.414-1.414a4 4 0 015.656 5.656"
+              />
+            </svg>
+
             <h3 className="text-sm font-semibold tracking-wide text-neutral-800">
               Related Articles
             </h3>
@@ -26,32 +34,26 @@ const RightSidebar = () => {
           {/* LIST */}
           <ul className="divide-y text-sm">
             {[
-              {
-                title: "GST changes you should know",
-                link: "#",
-              },
-              {
-                title: "Income tax filing tips for 2025",
-                link: "#",
-              },
-              {
-                title: "Budget 2025: Key highlights",
-                link: "#",
-              },
+              { title: "GST changes you should know", link: "#" },
+              { title: "Income tax filing tips for 2025", link: "#" },
+              { title: "Budget 2025: Key highlights", link: "#" },
             ].map((item, index) => (
               <li key={index}>
                 <NavLink
                   to={item.link}
                   className="
                     group
-                    flex items-start justify-between gap-2
+                    flex items-start gap-3
                     px-4 py-3
                     text-neutral-700
                     hover:bg-neutral-50
                     transition
                   "
                 >
-                  <span className="leading-snug group-hover:text-black">
+                  {/* DOT INDICATOR */}
+                  <span className="mt-2 w-1.5 h-1.5 rounded-full bg-neutral-300 group-hover:bg-red-500 transition" />
+
+                  <span className="flex-1 leading-snug group-hover:text-black">
                     {item.title}
                   </span>
 
@@ -70,17 +72,8 @@ const RightSidebar = () => {
           </ul>
         </div>
 
-        {/* OPTIONAL PROMO / INFO CARD */}
-        <div
-          className="
-            bg-linear-to-br
-            from-red-600 to-red-500
-            text-white
-            rounded-2xl
-            p-5
-            shadow-sm
-          "
-        >
+        {/* INFO / PROMO CARD */}
+        <div className="bg-gradient-to-br from-red-600 to-red-500 text-white rounded-2xl p-5 shadow-sm">
           <h4 className="font-semibold text-sm mb-1">
             Myitronline Insights
           </h4>

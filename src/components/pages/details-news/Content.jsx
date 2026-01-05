@@ -7,7 +7,12 @@ const Content = ({ contents }) => {
 
   return (
     <article
-      className="article-content max-w-3xl mx-auto leading-relaxed"
+      className="
+        article-content
+        prose
+        max-w-none
+        overflow-x-hidden
+      "
       style={{ fontSize: `${scale}rem` }}
       dangerouslySetInnerHTML={{ __html: contents }}
     />
@@ -15,3 +20,4 @@ const Content = ({ contents }) => {
 };
 
 export default Content;
+

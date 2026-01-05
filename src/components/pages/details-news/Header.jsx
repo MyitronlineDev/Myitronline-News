@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { formatDateDDMMYY } from "../../utility/formatter";
 
 const Header = ({
   category,
@@ -7,15 +8,17 @@ const Header = ({
   heading,
   publishedAt,
   author = "Krishna-Gopal-Varahney",
+  intro_image = ""
 }) => {
   return (
-    <header className="max-w-6xl mx-auto px-4 sm:px-0 mb-10">
+    <header className="max-w-8xl mx-auto  grid-cols-12 sm:px-0 mb-10">
+
 
       {/* TOP ROW: CATEGORY + META */}
       <div className="flex flex-wrap items-center gap-3 mb-4">
 
         {category && (
-          <span className="bg-blue-50 text-blue-700 uppercase tracking-wide text-xs font-semibold px-3 py-1 rounded-full">
+          <span className="bg-blue-50 text-blue-700 uppercase tracking-wide text-xs font-semibold sm:px-3 py-1 rounded-full">
             {category}
           </span>
         )}
@@ -24,7 +27,7 @@ const Header = ({
           <div className="flex items-center gap-3 text-xs text-neutral-500">
             {publishedAt && (
               <time dateTime={publishedAt}>
-                Updated {publishedAt}
+                {formatDateDDMMYY(publishedAt)}
               </time>
             )}
 
@@ -45,24 +48,56 @@ const Header = ({
 
       {/* MAIN TITLE */}
       {title && (
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight text-neutral-900">
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight text-neutral-900 ">
           {title}
         </h1>
       )}
 
       {/* SUB HEADING */}
       {heading && (
-        <h2 className="mt-4 text-xl sm:text-2xl text-neutral-700 font-medium max-w-4xl">
+        <h2 className="mt-4 text-xl sm:text-2xl text-neutral-700 font-medium">
           {heading}
         </h2>
-      )}  
+      )}
+
 
       {/* SYNOPSIS / LEAD */}
       {synopsis && (
-        <p className="mt-6 text-lg sm:text-xl text-neutral-600 leading-relaxed max-w-4xl border-l-4 border-blue-600 pl-4">
+        <p
+          className="
+          mt-6
+          px-2
+          sm:px-4 
+          py-4
+          text-lg sm:text-xl
+          text-neutral-700
+          leading-relaxed
+          italic
+          font-serif
+          text-justify
+          border-l-4 border-red-600
+          bg-gradient-to-r from-yellow-50 to-white
+          rounded-r-lg
+          shadow-sm
+        "
+        >
           {synopsis}
         </p>
       )}
+
+
+      {/* {
+        intro_image && (
+          <div className="flex justify-center items-center ">
+            {
+              <img src={`${import.meta.env.VITE_API_BASE_URL}/${intro_image}`} alt="intro_image" />
+            }
+          </div>
+        )
+      } */}
+
+
+
 
       {/* DIVIDER */}
       <div className="mt-8 border-b border-neutral-300" />
