@@ -13,8 +13,8 @@ const localApi = axios.create({
   headers: {
     "Content-Type": "application/json",
     Authorization: "Bearer Myitee@123",
-  }
-})
+  },
+});
 
 export const searchNews = async (query) => {
   try {
@@ -45,12 +45,11 @@ export const lendingPageNews = async () => {
   try {
     const response = await api.get("/myitr-news/latest");
     return response.data;
-  }
-  catch (error) {
+  } catch (error) {
     console.error("Lending Page News API error:", error);
     throw error;
   }
-}
+};
 
 export const contactUs = async (data) => {
   try {
@@ -64,7 +63,9 @@ export const contactUs = async (data) => {
 
 export const fetchDetailsNewsApi = async (slug, lng = "en") => {
   try {
-    const response = await api.get(`/myitr-news/show/${slug}/translate?lang=${lng}`);
+    const response = await api.get(
+      `/myitr-news/show/${slug}/translate?lang=${lng}`
+    );
 
     if (response.status === 200) {
       return response.data.news;
@@ -77,4 +78,13 @@ export const fetchDetailsNewsApi = async (slug, lng = "en") => {
   }
 };
 
+export const getCategories = async () => {
+  try {
+    const response = await api.get("/myitr-news/categories");
+    return response.data;
+  } catch (error) {
+    console.error("Categories API error:", error);
+    throw error;
+  }
+};
 
