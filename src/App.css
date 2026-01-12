@@ -77,4 +77,13 @@
   }
 }
 
+.article-content {
+  font-family:
+    "Noto Sans Devanagari",
+    "Hind",
+    "Mukta",
+    system-ui,
+    sans-serif;
+}
+
 

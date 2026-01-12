@@ -8,7 +8,7 @@ function MainLayout() {
   return (
     <>
       <TopBar />
-      <TranslateWidget />
+      {/* <TranslateWidget /> */}
       {/* Visual separator */}
       <div className="h-2 bg-gray-50 border-b sm:hidden" />
 
