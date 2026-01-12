@@ -48,7 +48,11 @@ const Header = ({
 
       {/* MAIN TITLE */}
       {title && (
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight text-neutral-900 ">
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl
+        font-extrabold
+        leading-[1.25]
+        tracking-tight
+        break-words">
           {title}
         </h1>
       )}
@@ -79,25 +83,14 @@ const Header = ({
           bg-gradient-to-r from-yellow-50 to-white
           rounded-r-lg
           shadow-sm
+          leading-[1.9]
+          text-justify
+          hyphens-auto
         "
         >
           {synopsis}
         </p>
       )}
-
-
-      {/* {
-        intro_image && (
-          <div className="flex justify-center items-center ">
-            {
-              <img src={`${import.meta.env.VITE_API_BASE_URL}/${intro_image}`} alt="intro_image" />
-            }
-          </div>
-        )
-      } */}
-
-
-
 
       {/* DIVIDER */}
       <div className="mt-8 border-b border-neutral-300" />

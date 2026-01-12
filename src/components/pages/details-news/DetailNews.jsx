@@ -1,7 +1,8 @@
 import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+
 import Content from "./Content";
 import ReadingProgress from "../../common/ReadingProgress";
-import { useEffect, useState } from "react";
 import { fetchDetailsNewsApi } from "../../context/apiService/apiService";
 import Header from "./Header";
 import LeftSideBar from "./LeftSidebar";
@@ -10,41 +11,51 @@ import DetailNewsSkeleton from "../../utility/DetailNewsSkeleton";
 import { useDevice } from "../../context/DataProvider";
 import LatestNews from "../home/LatestNews";
 
-
 const DetailNews = () => {
   const { slug } = useParams();
-  const [articles, setArticles] = useState();
 
-  const { latestNewsData } = useDevice()
+  const [articles, setArticles] = useState(null);
+  const [lang, setLang] = useState("hn"); // hn | en
+  const [loading, setLoading] = useState(false);
 
-  const fetchShowNews = async (slug) => {
+  const { latestNewsData } = useDevice();
+
+  // 🔹 Fetch news by slug & language
+  const fetchShowNews = async (slug, language) => {
     try {
-      const article = await fetchDetailsNewsApi(slug);
+      setLoading(true);
+      const article = await fetchDetailsNewsApi(slug, language);
       setArticles(article);
     } catch (err) {
       console.log("FetchShowNewsApi error", err.message);
+    } finally {
+      setLoading(false);
     }
   };
 
+  // 🔹 Refetch when slug or language changes
   useEffect(() => {
-    if (slug) fetchShowNews(slug);
-    
-  }, [slug]);
+    if (slug) fetchShowNews(slug, lang);
+  }, [slug, lang]);
 
-  if (!articles) {
-    return (
-      <DetailNewsSkeleton />
-    );
+  if (!articles || loading) {
+    return <DetailNewsSkeleton />;
   }
 
-  console.log(import.meta.env.VITE_API_BASE_URL)
+  // 🔹 Image URL builder (safe)
+  const buildImageUrl = (base, path) => {
+    if (!path) return "";
+    return `${base.replace(/\/$/, "")}/${path.replace(/^\//, "")}`;
+  };
 
   return (
     <>
       <ReadingProgress />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 min-h-screen">
-        {/* Keep article readable on large screens */}
-        <div className="max-w-7xl ">
+        <div className="max-w-7xl">
+
+          {/* 🔹 Header */}
           <Header
             category={articles?.category_name}
             title={articles?.news_title}
@@ -54,10 +65,37 @@ const DetailNews = () => {
             author={articles?.author || "~Krishna Gopal Varahney"}
           />
 
-          {/* GRID */}
+          {/* 🔹 Language Toggle */}
+          <div className="flex justify-end gap-2 mt-4">
+            <button
+              onClick={() => setLang("en")}
+              className={`px-4 py-1.5 rounded-full text-sm font-medium border transition
+                ${
+                  lang === "en"
+                    ? "bg-black text-white"
+                    : "bg-white text-black hover:bg-gray-100"
+                }`}
+            >
+              English
+            </button>
+
+            <button
+              onClick={() => setLang("hn")}
+              className={`px-4 py-1.5 rounded-full text-sm font-medium border transition
+                ${
+                  lang === "hn"
+                    ? "bg-black text-white"
+                    : "bg-white text-black hover:bg-gray-100"
+                }`}
+            >
+              हिंदी
+            </button>
+          </div>
+
+          {/* 🔹 GRID */}
           <div className="grid grid-cols-12 gap-4 mt-8">
 
-            {/* LEFT */}
+            {/* LEFT SIDEBAR */}
             <aside className="hidden lg:block col-span-3">
               <div className="sticky top-20 h-[calc(100vh-5rem)] overflow-y-auto">
                 <LatestNews leftNews={latestNewsData} />
@@ -73,23 +111,21 @@ const DetailNews = () => {
                 {articles?.intro_image && (
                   <div className="relative w-full aspect-video bg-gray-100">
                     <img
-                      src={`${import.meta.env.VITE_API_BASE_URL}/${articles.intro_image}`}
+                      src={buildImageUrl(
+                        import.meta.env.VITE_API_BASE_URL,
+                        articles.intro_image
+                      )}
                       alt={articles?.news_title || "News image"}
-                      className="
-                      absolute inset-0
-                      w-full h-full
-                      object-cover
-                    "
+                      className="absolute inset-0 w-full h-full object-cover"
                       loading="lazy"
                     />
                   </div>
                 )}
 
                 {/* CONTENT */}
-                <div className="p-2">
-                  <Content contents={articles.content} />
+                <div className="p-4">
+                  <Content contents={articles?.content} />
                 </div>
-
               </article>
 
               {/* RIGHT / RELATED */}
