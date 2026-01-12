@@ -7,17 +7,18 @@ import FashionStay from "./FashionStay";
 import CalibrityFood from "./CalibrityFood";
 import LatestNews from "./LatestNews";
 import {
-  latestNews,
+  featureData,
   lendingPageNews,
 } from "../../context/apiService/apiService";
-import { formatDateDDMMYY } from "../../utility/formatter";
 import { getCache, setCache } from "../../utility/cacheUtils";
 import { useDevice } from "../../context/DataProvider";
+import { TbWashDryP } from "react-icons/tb";
 
 const Home = () => {
   const [landingPageData, setLandingPageData] = useState(null);
+  const [featuredData, setFeaturedData] = useState([]);
 
-  const{latestNewsData} = useDevice();
+  const { latestNewsData } = useDevice();
   const leftNews = [
     {
       category: "TECHNOLOGY",
@@ -147,6 +148,8 @@ const Home = () => {
     },
   ];
 
+  console.log(import.meta.env.VITE_API_LOCAL_URL)
+
   // const landingPageData = {
   //   featured: {
   //     category: "Celebrities",
@@ -228,35 +231,31 @@ const Home = () => {
     },
   ];
 
-  // async function latestNewsDisplay() {
-  //   const cacheData = getCache("latestNews");
-  //   if (cacheData) {
-  //     setLatestNewsData(cacheData);
-  //     return;
-  //   }
+  async function fetchFeatureData() {
+  try {
+    const response = await featureData();
 
-  //   try {
-  //     const response = await latestNews();
+    if (response?.status && Array.isArray(response.featured)) {
+      const formattedData = response.featured.map((item) => ({
+        id: item.id,
+        category: item.category_name,
+        title: item.news_title,
+        image: `${import.meta.env.VITE_API_LOCAL_URL}/${item.intro_image}`,
+        date: item.published_at,
+      }));
+      
+      setFeaturedData(formattedData);
+    }
+  } catch (error) {
+    console.error("Feature Data error:", error);
+  }
+}
 
-  //     if (response?.status) {
-  //       const formattedNews = response.news.map((item) => ({
-  //         id: item.id,
-  //         category: item.category_name.toUpperCase(),
-  //         date: formatDateDDMMYY(item.published_at),
-  //         title: item.news_title,
-  //         excerpt: item.synopsis,
-  //         slug: item.slug,
-  //       }));
 
-  //       setLatestNewsData(formattedNews);
-  //       setCache("latestNews", formattedNews);
-  //     }
-  //   } catch (error) {
-  //     console.error("Latest news error:", error);
-  //   }
-  // }
-
-  
+  useEffect(() => {
+    fetchFeatureData();
+    lendingPageDisplay();
+  }, []);
 
   async function lendingPageDisplay() {
     const cacheData = getCache("lendingPageNews");
@@ -298,10 +297,7 @@ const Home = () => {
     }
   }
 
-  useEffect(() => {
-
-    lendingPageDisplay();
-  }, []);
+  
 
   return (
     <div
@@ -315,7 +311,7 @@ const Home = () => {
         <div className="col-span-full lg:col-span-9 ">
           {landingPageData && <LendingPage landingPageData={landingPageData} />}
 
-          <Featured featuredItems={featuredItems} />
+          <Featured featuredItems={featuredData} />
           <FashionStay />
 
           <div className="grid grid-cols-1 lg:grid-cols-12 ">

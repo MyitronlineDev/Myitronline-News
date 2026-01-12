@@ -1,10 +1,18 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { NAV_ITEMS } from "./headerData";
+import { NAV_CONTENT } from "./headerData";
+import { useDevice } from "../context/DataProvider";
 
 function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileIndex, setMobileIndex] = useState(null);
+
+  const { navbarData } = useDevice(); 
+
+  
+  const NAV_LABELS = (navbarData || []).map((item) => item.name);
+
+  console.log(NAV_LABELS);
 
   return (
     <nav className="bg-black text-white sticky top-0 z-50 mb-1">
@@ -19,17 +27,17 @@ function Header() {
 
         {/* DESKTOP MENU */}
         <ul className="hidden lg:flex mx-auto space-x-7 text-md">
-          {NAV_ITEMS.map((item) => (
-            <li key={item.label} className="relative group">
+          {NAV_LABELS.map((label) => (
+            <li key={label} className="relative group">
               {/* MENU */}
               <span className="cursor-pointer hover:text-yellow-300">
-                {item.label}
+                {label}
               </span>
 
               {/* DROPDOWN */}
               <div className="absolute left-0 top-full hidden group-hover:block">
                 <div className="mt-2 w-45 bg-gray-900 border border-gray-800 rounded shadow-lg">
-                  {item.content.map((sub) => (
+                  {(NAV_CONTENT[label] || []).map((sub) => (
                     <Link
                       key={sub.route}
                       to={sub.route}
@@ -48,21 +56,19 @@ function Header() {
       {/* MOBILE MENU */}
       {mobileOpen && (
         <div className="lg:hidden bg-gray-900 border-t border-gray-700">
-          {NAV_ITEMS.map((item, i) => (
-            <div key={item.label} className="border-b border-gray-700">
+          {NAV_LABELS.map((label, i) => (
+            <div key={label} className="border-b border-gray-700">
               <button
                 className="w-full px-4 py-3 flex justify-between"
-                onClick={() =>
-                  setMobileIndex(mobileIndex === i ? null : i)
-                }
+                onClick={() => setMobileIndex(mobileIndex === i ? null : i)}
               >
-                {item.label}
+                {label}
                 <span>{mobileIndex === i ? "−" : "+"}</span>
               </button>
 
               {mobileIndex === i && (
                 <div className="bg-gray-800">
-                  {item.content.map((sub) => (
+                  {(NAV_CONTENT[label] || []).map((sub) => (
                     <Link
                       key={sub.route}
                       to={sub.route}

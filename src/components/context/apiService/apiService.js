@@ -9,7 +9,7 @@ const api = axios.create({
 });
 
 const localApi = axios.create({
-  baseURL: "http://192.168.1.8:8089/api",
+  baseURL: "http://192.168.1.4:8089/api",
   headers: {
     "Content-Type": "application/json",
     Authorization: "Bearer Myitee@123",
@@ -51,6 +51,16 @@ export const lendingPageNews = async () => {
   }
 };
 
+export const featureData = async() => {
+  try{
+    const response = await localApi.get("/myitr-news/featured");
+    return response.data;
+  }catch (error){
+    console.log("Error while fetching Features: ", error);
+    throw error;
+  }
+}
+
 export const contactUs = async (data) => {
   try {
     const response = await api.post("contact-us", data);
@@ -80,7 +90,7 @@ export const fetchDetailsNewsApi = async (slug, lng = "en") => {
 
 export const getCategories = async () => {
   try {
-    const response = await api.get("/myitr-news/categories");
+    const response = await localApi.get("/myitr-news/categories");
     return response.data;
   } catch (error) {
     console.error("Categories API error:", error);

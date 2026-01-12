@@ -1,12 +1,13 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { getCache, setCache } from "../utility/cacheUtils";
-import { latestNews } from "./apiService/apiService";
+import { getCategories, latestNews } from "./apiService/apiService";
 import { formatDateDDMMYY } from "../utility/formatter";
 
 const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
   const [latestNewsData, setLatestNewsData] = useState([]);
+  const [navbarData, setNavBarData] = useState([]);
 
   async function latestNewsDisplay() {
     const cacheData = getCache("latestNews");
@@ -36,12 +37,31 @@ export const DataProvider = ({ children }) => {
     }
   }
 
+  async function getNavbarData(){
+    const cacheData = getCache("navbarData");
+    if(cacheData){
+      setNavBarData(cacheData);
+      return;
+    }
+    try{
+      const response = await getCategories();
+      if(response?.status ){
+        setNavBarData(response?.categories);
+        setCache("navbarData", response?.categories, 24 * 60 * 60 * 1000);
+        return;
+      }
+    }catch(error){
+      console.error("Navbar error", error);
+    }
+  }
+
   useEffect(() => {
     latestNewsDisplay();
+    getNavbarData();
   }, []);
 
   return(
-    <DataContext.Provider value={{latestNewsData}}>
+    <DataContext.Provider value={{latestNewsData, navbarData}}>
         {children}
     </DataContext.Provider>
   )
