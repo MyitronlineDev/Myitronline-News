@@ -71,7 +71,7 @@ const DetailNews = () => {
 
                 {/* HERO IMAGE */}
                 {articles?.intro_image && (
-                  <div className="relative w-full aspect-[16/9] bg-gray-100">
+                  <div className="relative w-full aspect-video bg-gray-100">
                     <img
                       src={`${import.meta.env.VITE_API_BASE_URL}/${articles.intro_image}`}
                       alt={articles?.news_title || "News image"}

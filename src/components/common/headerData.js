@@ -1,6 +1,6 @@
 const CURRENT_YEAR = new Date().getFullYear();
 
-console.log(CURRENT_YEAR)
+console.log(CURRENT_YEAR);
 export const NAV_ITEMS = [
   {
     label: "Income Tax",
@@ -8,37 +8,28 @@ export const NAV_ITEMS = [
       { label: "Articles", route: "navbar/income-tax/article" },
       { label: "News", route: "navbar/income-tax/news" },
       { label: "Circular", route: "navbar/income-tax/circular" },
-      { label: "Notifications", route: "navbar/income-tax/notifications" },
-      { label: "Judiciary", route: "navbar/income-tax/judiciary" },
-      { label: "ITR", route: "navbar/income-tax/itr" },
     ],
   },
   {
     label: "Budget",
     content: [
-      { label: `Budget ${CURRENT_YEAR-0}`, route: `/navbar/budget/${CURRENT_YEAR-0}` },
-      { label: `Budget ${CURRENT_YEAR-1}`, route: `/navbar/budget/${CURRENT_YEAR-1}` },
-      { label: `Budget ${CURRENT_YEAR-2}`, route: `/navbar/budget/${CURRENT_YEAR-2}` },
-      { label: `Budget ${CURRENT_YEAR-3}`, route: `/navbar/budget/${CURRENT_YEAR-3}` },
+      {
+        label: `Budget ${CURRENT_YEAR - 0}`,
+        route: `/navbar/budget/${CURRENT_YEAR - 0}`,
+      },
+      {
+        label: `Budget ${CURRENT_YEAR - 1}`,
+        route: `/navbar/budget/${CURRENT_YEAR - 1}`,
+      },
     ],
   },
-  {
-    label: "Company Law",
-    content: [
-      { label: "Articles", route: "navbar/company-law/article" },
-      { label: "News", route: "navbar/company-law/news" },
-    ],
-  },
+
   {
     label: "GST",
     content: [
       { label: "Articles", route: "navbar/gst/article" },
       { label: "News", route: "navbar/gst/news" },
       { label: "Circular", route: "navbar/gst/circular" },
-      { label: "Notifications", route: "navbar/gst/notifications" },
-      { label: "Notifications CGST", route: "navbar/gst/notifications-cgst" },
-      { label: "Notifications IGST", route: "navbar/gst/notifications-igst" },
-      { label: "Notifications SGST", route: "navbar/gst/notifications-sgst" },
     ],
   },
   {
@@ -47,7 +38,6 @@ export const NAV_ITEMS = [
       { label: "Articles", route: "navbar/rbi/article" },
       { label: "News", route: "navbar/rbi/news" },
       { label: "Circular", route: "navbar/rbi/circular" },
-      { label: "Notifications", route: "navbar/rbi/notifications" },
     ],
   },
   {
@@ -71,13 +61,6 @@ export const NAV_ITEMS = [
     content: [
       { label: "Articles", route: "navbar/global/article" },
       { label: "News", route: "navbar/global/news" },
-    ],
-  },
-  {
-    label: "Crypto",
-    content: [
-      { label: "Articles", route: "navbar/crypto/article" },
-      { label: "News", route: "navbar/crypto/news" },
     ],
   },
 ];
