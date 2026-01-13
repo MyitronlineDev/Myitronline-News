@@ -50,9 +50,9 @@ const Header = ({
       {title && (
         <h1 className="text-3xl sm:text-4xl lg:text-5xl
         font-extrabold
-        leading-[1.25]
+        leading-tight
         tracking-tight
-        break-words">
+        wrap-break-word">
           {title}
         </h1>
       )}
@@ -75,12 +75,10 @@ const Header = ({
           py-4
           text-lg sm:text-xl
           text-neutral-700
-          leading-relaxed
           italic
           font-serif
-          text-justify
           border-l-4 border-red-600
-          bg-gradient-to-r from-yellow-50 to-white
+          bg-linear-to-r from-yellow-50 to-white
           rounded-r-lg
           shadow-sm
           leading-[1.9]

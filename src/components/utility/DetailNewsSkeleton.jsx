@@ -35,7 +35,7 @@ const DetailNewsSkeleton = () => {
           <article className="bg-white rounded-2xl border border-neutral-200 overflow-hidden">
 
             {/* HERO IMAGE */}
-            <div className="w-full aspect-[16/9] bg-gray-200 animate-pulse" />
+            <div className="w-full aspect-video bg-gray-200 animate-pulse" />
 
             {/* CONTENT LINES */}
             <div className="p-4 space-y-4">
