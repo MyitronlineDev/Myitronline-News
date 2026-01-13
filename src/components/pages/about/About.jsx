@@ -2,70 +2,182 @@ import React from "react";
 
 const About = () => {
   return (
-    <section className="bg-linear-to-b from-zinc-950 to-zinc-900 text-white py-20">
-      <div className="max-w-6xl mx-auto px-6">
+    <main className="w-full font-sans text-gray-800">
 
-        {/* ===== TOP SECTION ===== */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      {/* ================= HERO ================= */}
+      <section className="bg-[#0f172a]">
+        <div className="max-w-7xl mx-auto px-6 py-16 grid lg:grid-cols-2 gap-20 items-center">
 
-          {/* Left Content */}
-          <div>
-            <span className="inline-block mb-4 px-4 py-1 text-xs tracking-widest uppercase bg-yellow-300 text-yellow-600 rounded-full">
-              About Us
-            </span>
+          {/* TEXT */}
+          <div className="text-white max-w-lg">
+            <h1 className="text-5xl font-light leading-tight mb-3">
+              We are a <br />
+              <span className="font-semibold text-[#c9a24d]">Digital Studio</span>
+            </h1>
 
-            <h2 className="text-4xl md:text-5xl font-semibold leading-tight mb-6">
-              Safe, Comprehensive <br />
-              <span className="text-yellow-400">and Fast Platform</span>
-            </h2>
-
-            <p className="text-gray-400 leading-relaxed text-lg">
-              The world’s financial industry is shifting from traditional,
-              centralized systems to transparent, technology-driven and
-              decentralized platforms. We believe the advancement of
-              blockchain technology represents the fourth industrial and
-              revolution.
+            <p className="text-white/70 mb-6 leading-relaxed">
+              We create meaningful digital experiences that help brands grow,
+              connect, and stand out in the modern world.
             </p>
 
-          
+            <button className="px-10 py-3 rounded-full border-2 border-[#c9a24d] text-sm tracking-wide text-[#c9a24d] hover:bg-[#c9a24d] hover:text-[#0f172a] transition duration-300">
+              READ MORE
+            </button>
           </div>
 
-          {/* Right Image */}
-          <div className="relative">
-            <div className="absolute inset-0 bg-linear-to-tr from-yellow-400/20 to-blue-500/10 rounded-2xl blur-2xl"></div>
-
+          {/* IMAGE */}
+          <div className="rounded-xl overflow-hidden shadow-2xl border-2 border-[#c9a24d]/20">
             <img
-              src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d"
-              alt="Team discussion"
-              className="relative rounded-2xl shadow-2xl border border-zinc-900"
+              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c"
+              alt="Digital Studio"
+              className="w-full h-full object-cover hover:scale-105 transition duration-500"
             />
           </div>
         </div>
+      </section>
 
-        {/* ===== STATS SECTION ===== */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-24">
+      {/* ================= ABOUT INTRO ================= */}
+      <section className="bg-white py-10">
+        <div className="max-w-6xl mx-auto px-6">
+          <span className="uppercase text-md font-semibold tracking-[0.25em] text-gray-500">
+            About Us
+          </span>
 
-          {[
-            { label: "Number of Transactions", value: "20,123+" },
-            { label: "Established Year", value: "2014" },
-            { label: "Active Users", value: "13,560+" },
-          ].map((item, index) => (
-            <div
-              key={index}
-              className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-8 text-center hover:-translate-y-1 transition-transform duration-300"
-            >
-              <h3 className="text-4xl font-semibold text-yellow-400 mb-2">
-                {item.value}
-              </h3>
-              <p className="text-gray-400 tracking-wide text-sm uppercase">
-                {item.label}
-              </p>
+          <h2 className="text-4xl font-semibold mt-3 mb-5 leading-tight text-gray-900">
+            An overview of your <br />
+            <span className="font-bold text-[#c9a24d]">digital strategy.</span>
+          </h2>
+
+          <button className="px-8 py-3 rounded-full border-2 border-[#c9a24d] text-sm text-[#c9a24d] hover:bg-[#c9a24d] hover:text-white transition duration-300">
+            OUR MISSION
+          </button>
+        </div>
+      </section>
+
+      {/* ================= DARK SERVICES BLOCK ================= */}
+      <section className="bg-white py-10">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="relative bg-[#0f172a] rounded-2xl shadow-2xl overflow-hidden">
+
+            <div className="grid grid-cols-[40%_60%] min-h-[520px]">
+
+              {/* LEFT IMAGE */}
+              <div>
+                <img
+                  src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d"
+                  alt="Team Work"
+                  className="w-full h-[520px] object-cover hover:scale-105 transition duration-500 rounded-l-2xl"
+                />
+              </div>
+
+              {/* RIGHT CONTENT */}
+              <div className="px-20 py-20 flex items-center">
+                <div className="grid sm:grid-cols-2 gap-x-20 gap-y-14 text-sm text-white">
+
+                  {[
+                    {
+                      title: "Design",
+                      items: ["Web Design", "Art Direction", "Logo & Branding", "UI / UX"],
+                    },
+                    {
+                      title: "Digital & Mobile",
+                      items: ["Websites", "Responsive Design", "Mobile & Tablet", "iOS & Android Apps"],
+                    },
+                    {
+                      title: "Development",
+                      items: ["Front-end & Back-end", "Interaction Design", "Magento", "WordPress / Laravel"],
+                    },
+                    {
+                      title: "Social Marketing",
+                      items: ["Social Strategy", "Community Management", "Influencers", "Reporting"],
+                    },
+                  ].map((block, i) => (
+                    <div key={i}>
+                      <span className="block text-md uppercase tracking-widest text-[#c9a24d] mb-2">
+                        Services
+                      </span>
+                      <h4 className="font-semibold mb-2">{block.title}</h4>
+                      <ul className="space-y-3 text-white/70">
+                        {block.items.map((item, idx) => (
+                          <li key={idx} className="hover:text-[#c9a24d] transition duration-200">→ {item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+
+                </div>
+              </div>
             </div>
-          ))}
+
+          </div>
+        </div>
+      </section>
+
+      {/* ================= CTA ================= */}
+      <section className="bg-[#0f172a] py-16 text-center text-white">
+        <h2 className="text-3xl font-light mb-10 leading-snug">
+          Do you need professionals for <br />
+          your next business project?
+        </h2>
+
+        <button className="px-10 py-3 rounded-full border-2 border-[#c9a24d] text-[#c9a24d] text-sm tracking-wide hover:bg-[#c9a24d] hover:text-[#0f172a] transition duration-300">
+          CONTACT US
+        </button>
+      </section>
+
+      {/* ================= PRODUCT CARDS ================= */}
+      <section className="bg-white py-10">
+        <div className="max-w-7xl mx-auto px-6">
+
+          <h2 className="text-center text-3xl font-semibold mb-10 text-gray-900">
+            We build <span className="font-bold text-[#c9a24d]">usable</span> products
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-12">
+            {[
+              {
+                title: "Design",
+                img: "https://images.unsplash.com/photo-1492724441997-5dc865305da7",
+                items: ["Product Mockup", "Branding", "Illustrations", "UI/UX", "Websites"],
+              },
+              {
+                title: "Marketing",
+                img: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2",
+                items: ["SEO", "Content Strategy", "Affiliate", "Keywords", "Copywriting"],
+              },
+              {
+                title: "Development",
+                img: "https://images.unsplash.com/photo-1518770660439-4636190af475",
+                items: ["WordPress", "Web Apps", "Front-end", "APIs", "JavaScript"],
+              },
+            ].map((card, i) => (
+              <div
+                key={i}
+                className="bg-gray-50 rounded-2xl shadow-lg hover:shadow-xl transition overflow-hidden hover:border border-[#c9a24d] hover:border-[#c9a24d]/50"
+              >
+                <img
+                  src={card.img}
+                  alt={card.title}
+                  className="w-full h-44 object-cover hover:scale-105 transition duration-500"
+                />
+                <div className="p-8">
+                  <h3 className="font-semibold text-lg mb-2 text-gray-900 hover:text-[#c9a24d] transition duration-300">
+                    {card.title}
+                  </h3>
+                  <ul className="text-sm text-gray-600 space-y-1">
+                    {card.items.map((item, idx) => (
+                      <li key={idx} className="hover:text-[#c9a24d] transition duration-200">✓ {item}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
+          </div>
 
         </div>
-      </div>
-    </section>
+      </section>
+
+    </main>
   );
 };
 
