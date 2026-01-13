@@ -6,7 +6,6 @@ const RightSidebar = () => {
     <aside className="col-span-12 lg:col-span-3">
       <div className="lg:sticky lg:top-28 space-y-6">
 
-        {/* ================= RELATED ARTICLES ================= */}
         <div className="bg-white border border-neutral-200 rounded-2xl shadow-sm overflow-hidden">
           <div className="px-4 py-3 border-b bg-neutral-50 flex items-center gap-2">
             <span className="w-2 h-2 bg-red-600 rounded-full" />

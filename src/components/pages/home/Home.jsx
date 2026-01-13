@@ -286,7 +286,7 @@ const Home = () => {
             category: item.category_name,
             title: item.news_title,
             description: item.synopsis,
-            image: `${import.meta.env.VITE_API_BASE_URL}/${item.intro_image}`,
+            image: `${import.meta.env.VITE_API_INTRO_IMG}/${item.intro_image}`,
           })),
         };
         setLandingPageData(formattedData);

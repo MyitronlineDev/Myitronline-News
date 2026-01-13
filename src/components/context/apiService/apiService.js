@@ -73,9 +73,7 @@ export const contactUs = async (data) => {
 
 export const fetchDetailsNewsApi = async (slug, lng = "en") => {
   try {
-    const response = await api.get(
-      `/myitr-news/show/${slug}/translate?lang=${lng}`
-    );
+    const response = await localApi.get(`/myitr-news/show/${slug}?lang=${lng}`);
 
     if (response.status === 200) {
       return response.data.news;
