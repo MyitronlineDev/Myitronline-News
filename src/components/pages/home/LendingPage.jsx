@@ -9,8 +9,6 @@ const LendingPage = ({ landingPageData }) => {
   const handleNavigate = (slug) => {
     navigate(`/detail-news/${slug}/myitronline`);
   };
-
-console.log(sideNews)
   return (
     <div className="flex flex-col lg:flex-row gap-6 mb-7">
       {/* Featured Section */}

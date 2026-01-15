@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Featured = ({featuredItems}) => {
 
@@ -6,6 +7,7 @@ const Featured = ({featuredItems}) => {
   const ITEMS_PER_SLIDE = 3;
   const SLIDE_STEP = 1;
   const endIndex = startIndex + ITEMS_PER_SLIDE;
+  const navigate = useNavigate();
 
   const handleNext = () => {
     if (endIndex < featuredItems.length) {
@@ -18,6 +20,12 @@ const Featured = ({featuredItems}) => {
       setStartIndex(startIndex - SLIDE_STEP);
     }
   };
+  console.log("slug",featuredItems.slug)
+
+  const handleNavigate = (slug) =>{
+    navigate(`/detail-news/${slug}/myitronline`);
+  };
+
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 h-auto mb-4">
@@ -39,7 +47,8 @@ const Featured = ({featuredItems}) => {
         <div className="grid md:grid-cols-3 gap-2">
           {featuredItems.slice(startIndex, endIndex).map((item, i) => (
             <div 
-              key={i} 
+              key={item.id}
+              onClick={() => handleNavigate(item.slug)} 
               className="group cursor-pointer min-h-[280px] flex flex-col"
             >    
               {/* IMAGE */}
@@ -47,7 +56,7 @@ const Featured = ({featuredItems}) => {
                 <img
                   src={item.image}
                 //   alt={item.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full aspect-insta"
                 />
                 <span className="absolute border border-black -bottom-2 left-0 bg-white text-black text-xs font-semibold px-2 py-1 uppercase">
                   {item.category}

@@ -12,7 +12,8 @@ import {
 } from "../../context/apiService/apiService";
 import { getCache, setCache } from "../../utility/cacheUtils";
 import { useDevice } from "../../context/DataProvider";
-import { TbWashDryP } from "react-icons/tb";
+import { formatDateDDMMYY } from "../../utility/formatter";
+import { buildImageUrl } from "../../utility/imageUtils";
 
 const Home = () => {
   const [landingPageData, setLandingPageData] = useState(null);
@@ -148,8 +149,6 @@ const Home = () => {
     },
   ];
 
-  console.log(import.meta.env.VITE_API_LOCAL_URL)
-
   // const landingPageData = {
   //   featured: {
   //     category: "Celebrities",
@@ -232,25 +231,34 @@ const Home = () => {
   ];
 
   async function fetchFeatureData() {
-  try {
-    const response = await featureData();
-
-    if (response?.status && Array.isArray(response.featured)) {
-      const formattedData = response.featured.map((item) => ({
-        id: item.id,
-        category: item.category_name,
-        title: item.news_title,
-        image: `${import.meta.env.VITE_API_LOCAL_URL}/${item.intro_image}`,
-        date: item.published_at,
-      }));
-      
-      setFeaturedData(formattedData);
+    const cacheData = getCache("featureData");
+    if (cacheData) {
+      setFeaturedData(cacheData);
+      return;
     }
-  } catch (error) {
-    console.error("Feature Data error:", error);
-  }
-}
+    try {
+      const response = await featureData();
 
+      if (response?.status) {
+        const formattedData = response.featured.map((item) => ({
+          id: item.id,
+          category: item.category_name,
+          title: item.news_title,
+          image: buildImageUrl(
+            import.meta.env.VITE_API_INTRO_IMG,
+            item.intro_image
+          ),
+          slug: item.slug,
+          date: formatDateDDMMYY(item.published_at),
+        }));
+        setCache("featureData", formattedData);
+        setFeaturedData(formattedData);
+        
+      }
+    } catch (error) {
+      console.error("Feature Data error:", error);
+    }
+  }
 
   useEffect(() => {
     fetchFeatureData();
@@ -286,7 +294,7 @@ const Home = () => {
             category: item.category_name,
             title: item.news_title,
             description: item.synopsis,
-            image: `${import.meta.env.VITE_API_INTRO_IMG}/${item.intro_image}`,
+            image: `${import.meta.env.VITE_API_BASE_URL}/${item.intro_image}`,
           })),
         };
         setLandingPageData(formattedData);
@@ -296,8 +304,6 @@ const Home = () => {
       console.error("Lending page news error:", error);
     }
   }
-
-  
 
   return (
     <div
