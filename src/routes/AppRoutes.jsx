@@ -48,6 +48,8 @@ import CorporateNotifications from "../components/Navbar Screens/corporatelaw/Co
 import GlobalArticles from "../components/Navbar Screens/globalnews/GlobalArticles";
 import GlobalNews from "../components/Navbar Screens/globalnews/GlobalNews";
 
+import TermsAndConditions from "../components/pages/Policy/TermsandConditions";
+
 function AppRoutes() {
   return (
     <Routes>
@@ -55,6 +57,7 @@ function AppRoutes() {
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
+        <Route path="TermsAndConditions" element={<TermsAndConditions />} />
         <Route path="/detail-news/:slug/myitronline" element={<DetailNews />} />
 
         {/* Income Tax */}

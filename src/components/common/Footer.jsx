@@ -37,15 +37,15 @@ function Footer() {
             {[
               ["About Us", "/about"],
               ["Contact Us", "/contact"],
-              ["Subscribe", "#subscribe"],
-              ["Podcast", "#podcast"],
+              ["Terms & Conditions", "TermsAndConditions"],
+              ["Privacy Policy", "#podcast"],
               ["Video", "#video"],
               ["Long News", "#longnews"],
             ].map(([label, link]) => (
               <NavLink
                 key={label}
                 to={link}
-                onClick={scrollToTop} 
+                onClick={scrollToTop}
                 className="text-gray-300 hover:text-yellow-400 border-b border-transparent hover:border-yellow-400 pb-1 transition"
               >
                 {label}
