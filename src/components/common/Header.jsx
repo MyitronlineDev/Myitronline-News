@@ -3,15 +3,15 @@ import { Link } from "react-router-dom";
 import { NAV_CONTENT } from "./headerData";
 import { useDevice } from "../context/DataProvider";
 
-/* ================= FALLBACK NAV (NAME ONLY) ================= */
+/* ================= FALLBACK NAV (FIXED ORDER) ================= */
 const FALLBACK_NAV = [
+  { name: "Income Tax" },
+  { name: "GST" },
   { name: "Budget" },
+  { name: "RBI" },
   { name: "Corporate Law" },
   { name: "Finance" },
   { name: "Global News" },
-  { name: "GST" },
-  { name: "Income Tax" },
-  { name: "RBI" },
 ];
 
 function Header() {
@@ -27,7 +27,10 @@ function Header() {
       ? navbarData
       : FALLBACK_NAV;
 
-  const NAV_LABELS = safeNavbarData.map((item) => item.name);
+  /* ================= REMOVE DUPLICATES (SAFETY) ================= */
+  const NAV_LABELS = [
+    ...new Set(safeNavbarData.map(item => item.name)),
+  ];
 
   return (
     <nav className="bg-black text-white sticky top-0 z-50 mb-1">
