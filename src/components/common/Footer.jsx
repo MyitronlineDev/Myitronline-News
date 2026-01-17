@@ -38,7 +38,7 @@ function Footer() {
               ["About Us", "/about"],
               ["Contact Us", "/contact"],
               ["Terms & Conditions", "TermsAndConditions"],
-              ["Privacy Policy", "#podcast"],
+              ["Privacy Policy", "PrivacyPolicy"],
               ["Video", "#video"],
               ["Long News", "#longnews"],
             ].map(([label, link]) => (

@@ -49,6 +49,7 @@ import GlobalArticles from "../components/Navbar Screens/globalnews/GlobalArticl
 import GlobalNews from "../components/Navbar Screens/globalnews/GlobalNews";
 
 import TermsAndConditions from "../components/pages/Policy/TermsandConditions";
+import PrivacyPolicy from "../components/pages/Policy/PrivacyPolicy";
 
 function AppRoutes() {
   return (
@@ -58,6 +59,7 @@ function AppRoutes() {
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
         <Route path="TermsAndConditions" element={<TermsAndConditions />} />
+           <Route path="PrivacyPolicy" element={<PrivacyPolicy />} />
         <Route path="/detail-news/:slug/myitronline" element={<DetailNews />} />
 
         {/* Income Tax */}
