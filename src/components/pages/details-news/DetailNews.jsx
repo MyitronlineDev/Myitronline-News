@@ -11,7 +11,7 @@ import DetailNewsSkeleton from "../../utility/DetailNewsSkeleton";
 import { useDevice } from "../../context/DataProvider";
 import LatestNews from "../home/LatestNews";
 
-// import sidenews1 from "../../../../src/assets/sidenews1.jpeg";
+import sidenews1 from "../../../../src/assets/sidenews1.jpeg";
 
 const DetailNews = () => {
   const { slug } = useParams();
@@ -104,11 +104,11 @@ const DetailNews = () => {
             {/* LEFT SIDEBAR */}
             <aside className="hidden lg:block col-span-3">
               <div className="sticky top-20 h-[calc(100vh-5rem)] overflow-y-auto">
-                <LatestNews leftNews={articles?.right_side_news} />
-                {/* <div className="flex flex-col gap-4 justify-center items-center">
+                {/* <LatestNews leftNews={articles?.right_side_news} /> */}
+                <div className="flex flex-col gap-4 justify-center items-center">
                   <img src={sidenews1} alt="side news" height={"400px"} />
                   <img src={sidenews1} alt="side news" />
-                </div> */}
+                </div>
               </div>
             </aside>
 
