@@ -1,10 +1,11 @@
 import axios from "axios";
+const token="eyJpdiI6Ii9RelVjdW9LZVVoTWUxcVRKRGxQanc9PSIsInZhbHVlIjoiNTl3WWlrTU05ZUc5V1g2dW9TMGpJQT09IiwibWFjIjoiZTk3M2NiZDQxNGRkYWRiZGJhNjhlMWEwNmI0OGQwZDUxNDk5MzUzMWYxN2U3ODFkYzFjNzY2YTQ2MGQ4NzZiZCIsInRhZyI6IiJ9"
 
 const api = axios.create({
   baseURL: "https://www.apnokaca.com/api",
   headers: {
     "Content-Type": "application/json",
-    Authorization: "Bearer Myitee@123",
+    Authorization: `Bearer ${token}`,
   },
 });
 
@@ -12,7 +13,7 @@ const localApi = axios.create({
   baseURL: "http://192.168.1.4:8089/api",
   headers: {
     "Content-Type": "application/json",
-    Authorization: "Bearer Myitee@123",
+    Authorization: `Bearer ${token}`,
   },
 });
 
@@ -32,7 +33,7 @@ export const searchNews = async (query) => {
 
 export const latestNews = async () => {
   try {
-    const response = await api.get("/myitr-news/right-side");
+    const response = await localApi.get("/myitr-news/right-side");
 
     return response.data;
   } catch (error) {
@@ -51,11 +52,11 @@ export const lendingPageNews = async () => {
   }
 };
 
-export const featureData = async() => {
-  try{
+export const featureData = async () => {
+  try {
     const response = await localApi.get("/myitr-news/featured");
     return response.data;
-  }catch (error){
+  } catch (error) {
     console.log("Error while fetching Features: ", error);
     throw error;
   }
@@ -76,7 +77,7 @@ export const fetchDetailsNewsApi = async (slug, lng = "en") => {
     const response = await localApi.get(`/myitr-news/show/${slug}?lang=${lng}`);
 
     if (response.status === 200) {
-      return response.data.news;
+      return response.data;
     }
 
     throw new Error("Invalid response");

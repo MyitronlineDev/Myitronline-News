@@ -113,7 +113,7 @@ const SearchInput = ({
           {/* CATEGORY PILLS INSIDE SAME DROPDOWN */}
           <li className="px-4 py-3 border-t border-gray-100">
             <div className="flex flex-wrap gap-2">
-              {["Politics", "Sports", "Business", "Tech", "Entertainment"].map(
+              {["Income Tax", "Budget", "Gst", "RBI", "Finance", "Corporate Law", "Global News"].map(
                 (cat) => (
                   <button
                     key={cat}

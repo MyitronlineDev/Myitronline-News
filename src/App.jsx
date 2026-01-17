@@ -2,6 +2,8 @@ import { BrowserRouter } from "react-router-dom";
 import AppRoutes from "./routes/AppRoutes";
 import { TextSizeProvider } from "./components/context/TextSizeContext";
 import { Toaster } from "react-hot-toast"; 
+import StickySocials from "./components/pages/socials/StickySocials";
+import ScrollToTop from "./components/common/ScrollToTop";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
 
       <BrowserRouter>
         <TextSizeProvider>
+          <ScrollToTop />
+          <StickySocials />
           <AppRoutes />
         </TextSizeProvider>
       </BrowserRouter>

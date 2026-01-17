@@ -33,16 +33,13 @@ const LatestNews = ({ leftNews }) => {
             </div>
 
             <h3 className="text-lg font-semibold">
-              {item.title.length > 65
-                ? `${item.title.substring(0, 64)}...`
-                : item.title}
+              { item.news_title}
             </h3>
 
             <p className="text-gray-600 text-sm leading-relaxed">
-              {item.excerpt.length > 137
-                ? `${item.excerpt.substring(0, 137)}...`
-                : item.excerpt}
+              {item.synopsis}
             </p>
+            
           </div>
         ))}
       </div>

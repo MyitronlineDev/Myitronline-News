@@ -7,6 +7,8 @@ import SearchInput from "./SearchInput";
 import { searchNews } from "../context/apiService/apiService";
 import { useNavigate } from "react-router-dom";
 
+import { FaInstagram, FaFacebookF, FaXTwitter } from "react-icons/fa6";
+
 
 const TopBar = () => {
   const navigateTo = useNavigate()
@@ -72,6 +74,28 @@ const TopBar = () => {
 
           {/* Right Actions */}
           <div className="flex items-center sm:gap-2 lg:gap-4">
+            <div className="hidden md:flex gap-3 items-center">
+              <a
+                href="#"
+                className="p-2 rounded-full border-b hover:bg-pink-500 hover:text-white transition"
+              >
+                <FaInstagram className="text-xl" />
+              </a>
+
+              <a
+                href="#"
+                className="p-2 rounded-full  border-b hover:bg-blue-600 hover:text-white transition"
+              >
+                <FaFacebookF className="text-xl" />
+              </a>
+
+              <a
+                href="#"
+                className="p-2 rounded-full  border-b hover:bg-black hover:text-white transition"
+              >
+                <FaXTwitter className="text-xl" />
+              </a>
+            </div>
             <div className="hidden sm:flex">
               <LiveTime color="text-black" size="text-sm" />
             </div>
@@ -82,7 +106,6 @@ const TopBar = () => {
             >
               <FiSearch size={20} />
             </button>
-
           </div>
         </div>
 
