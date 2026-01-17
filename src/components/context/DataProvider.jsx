@@ -35,10 +35,10 @@ export const DataProvider = ({ children }) => {
       if (response?.status && Array.isArray(response.news)) {
         const formattedNews = response.news.map((item) => ({
           id: item.id,
-          category: item.category_name?.toUpperCase(),
-          date: formatDateDDMMYY(item.published_at),
-          title: item.news_title,
-          excerpt: item.synopsis,
+          category_name: item.category_name?.toUpperCase(),
+          published_at: formatDateDDMMYY(item.published_at),
+          news_title: item.news_title,
+          synopsis: item.synopsis,
           slug: item.slug,
         }));
 

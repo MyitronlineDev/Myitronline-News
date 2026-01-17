@@ -245,7 +245,7 @@ const Home = () => {
           category: item.category_name,
           title: item.news_title,
           image: buildImageUrl(
-            import.meta.env.VITE_API_INTRO_IMG,
+            import.meta.env.VITE_API_BASE_URL,
             item.intro_image
           ),
           slug: item.slug,

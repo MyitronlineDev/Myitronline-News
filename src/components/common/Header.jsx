@@ -42,7 +42,7 @@ function Header() {
           onClick={() => setMobileOpen(!mobileOpen)}
         >
           ☰
-        </button>gh
+        </button>
 
         {/* ================= DESKTOP MENU ================= */}
         <ul className="hidden lg:flex mx-auto space-x-7 text-md">
