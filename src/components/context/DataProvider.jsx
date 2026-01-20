@@ -12,17 +12,17 @@ const NAVBAR_SEQUENCE = [
   { name: "GST" },
   { name: "Budget" },
   { name: "RBI" },
-  { name: "Finance" },
   { name: "Corporate Law" },
+  { name: "Finance" },
   { name: "Global News" },
 ];
 
 export const DataProvider = ({ children }) => {
   const [latestNewsData, setLatestNewsData] = useState([]);
-  const [navbarData, setNavbarData] = useState([]);
+  const [navbarData, setNavBarData] = useState([]);
 
   /* ================= LATEST NEWS ================= */
-  const latestNewsDisplay = async () => {
+  async function latestNewsDisplay() {
     const cacheData = getCache("latestNews");
     if (cacheData) {
       setLatestNewsData(cacheData);
@@ -35,7 +35,7 @@ export const DataProvider = ({ children }) => {
       if (response?.status && Array.isArray(response.news)) {
         const formattedNews = response.news.map((item) => ({
           id: item.id,
-          category: item.category_name?.toUpperCase() || "",
+          category: item.category_name?.toUpperCase(),
           date: formatDateDDMMYY(item.published_at),
           title: item.news_title,
           excerpt: item.synopsis,
@@ -46,15 +46,15 @@ export const DataProvider = ({ children }) => {
         setCache("latestNews", formattedNews);
       }
     } catch (error) {
-      console.error("Latest News Error:", error);
+      console.error("Latest news error:", error);
     }
-  };
+  }
 
-  /* ================= NAVBAR DATA ================= */
-  const getNavbarData = async () => {
+  /* ================= NAVBAR DATA (FIXED ORDER) ================= */
+  async function getNavbarData() {
     const cacheData = getCache("navbarData");
     if (cacheData) {
-      setNavbarData(cacheData);
+      setNavBarData(cacheData);
       return;
     }
 
@@ -62,34 +62,31 @@ export const DataProvider = ({ children }) => {
       const response = await getCategories();
 
       if (response?.status && Array.isArray(response.categories)) {
+        // Convert API response → fallback style
         const apiData = response.categories.map((item) => ({
-          name: item.name?.trim(),
+          name: item.name,
         }));
 
-        // Always maintain fixed order + fallback
-        const arrangedNavbar = NAVBAR_SEQUENCE.map(
-          (seq) =>
-            apiData.find(
-              (apiItem) =>
-                apiItem.name?.toLowerCase() === seq.name.toLowerCase(),
-            ) || seq,
-        );
+        // Arrange according to fixed sequence
+        const arrangedNavbar = NAVBAR_SEQUENCE
+          .map(seq =>
+            apiData.find(apiItem => apiItem.name === seq.name)
+          )
+          .filter(Boolean);
 
-        setNavbarData(arrangedNavbar);
+        setNavBarData(arrangedNavbar);
 
+        // Cache FINAL navbar data
         setCache(
           "navbarData",
           arrangedNavbar,
-          24 * 60 * 60 * 1000, // 24 hours
+          24 * 60 * 60 * 1000
         );
-      } else {
-        setNavbarData(NAVBAR_SEQUENCE);
       }
     } catch (error) {
-      console.error("Navbar Error:", error);
-      setNavbarData(NAVBAR_SEQUENCE);
+      console.error("Navbar error:", error);
     }
-  };
+  }
 
   /* ================= INITIAL LOAD ================= */
   useEffect(() => {
