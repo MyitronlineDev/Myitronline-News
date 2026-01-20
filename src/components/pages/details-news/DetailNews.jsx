@@ -10,6 +10,7 @@ import RightSidebar from "./RightSidebar";
 import DetailNewsSkeleton from "../../utility/DetailNewsSkeleton";
 import { useDevice } from "../../context/DataProvider";
 import LatestNews from "../home/LatestNews";
+import LoaderUi from "../../common/LoaderUi";
 
 import sidenews1 from "../../../../src/assets/sidenews1.jpeg";
 
@@ -43,7 +44,8 @@ const DetailNews = () => {
   }, [slug, lang]);
 
   if (!articles || loading) {
-    return <DetailNewsSkeleton />;
+    // return <DetailNewsSkeleton />;
+    return <LoaderUi />
   }
 
   // Image URL builder (safe)

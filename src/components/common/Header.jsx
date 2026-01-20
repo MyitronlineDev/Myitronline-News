@@ -9,8 +9,8 @@ const FALLBACK_NAV = [
   { name: "GST" },
   { name: "Budget" },
   { name: "RBI" },
-  { name: "Corporate Law" },
   { name: "Finance" },
+  { name: "Corporate Law" },
   { name: "Global News" },
 ];
 
@@ -28,9 +28,7 @@ function Header() {
       : FALLBACK_NAV;
 
   /* ================= REMOVE DUPLICATES (SAFETY) ================= */
-  const NAV_LABELS = [
-    ...new Set(safeNavbarData.map(item => item.name)),
-  ];
+  const NAV_LABELS = [...new Set(safeNavbarData.map((item) => item.name))];
 
   return (
     <nav className="bg-black text-white sticky top-0 z-50 mb-1">
