@@ -10,6 +10,7 @@ import RightSidebar from "./RightSidebar";
 import DetailNewsSkeleton from "../../utility/DetailNewsSkeleton";
 import { useDevice } from "../../context/DataProvider";
 import LatestNews from "../home/LatestNews";
+import LoaderUi from "../../common/LoaderUi"
 
 import sidenews1 from "../../../../src/assets/sidenews1.jpeg";
 
@@ -21,8 +22,8 @@ const DetailNews = () => {
   const [lang, setLang] = useState("en"); // hn | en
   const [loading, setLoading] = useState(false);
 
-  // const { latestNewsData } = useDevice();
- 
+  const { latestNewsData } = useDevice();
+
 
   //  Fetch news by slug & language
   const fetchShowNews = async (slug, language) => {
@@ -42,8 +43,9 @@ const DetailNews = () => {
     if (slug) fetchShowNews(slug, lang);
   }, [slug, lang]);
 
-  if (!articles || loading) {
-    return <DetailNewsSkeleton />;
+  if (true) {
+    // return <DetailNewsSkeleton />;
+    return <LoaderUi />
   }
 
   // Image URL builder (safe)
@@ -70,7 +72,7 @@ const DetailNews = () => {
             heading={articles?.news?.news_heading}
             synopsis={articles?.news?.synopsis}
             publishedAt={articles?.news?.published_at}
-            author={articles?.news?.author || "~Krishna Gopal Varahney"}
+            author={articles?.news?.created_by_alias || "~Krishna Gopal Varahney"}
           />
 
           {/*  Language Toggle */}
@@ -104,11 +106,11 @@ const DetailNews = () => {
             {/* LEFT SIDEBAR */}
             <aside className="hidden lg:block col-span-3">
               <div className="sticky top-20 h-[calc(100vh-5rem)] overflow-y-auto">
-                {/* <LatestNews leftNews={articles?.right_side_news} /> */}
-                <div className="flex flex-col gap-4 justify-center items-center">
+                <LatestNews leftNews={articles?.right_side_news} />
+                {/* <div className="flex flex-col gap-4 justify-center items-center">
                   <img src={sidenews1} alt="side news" height={"400px"} />
                   <img src={sidenews1} alt="side news" />
-                </div>
+                </div> */}
               </div>
             </aside>
 
@@ -119,10 +121,10 @@ const DetailNews = () => {
 
                 {/* HERO IMAGE */}
                 {articles?.news?.intro_image && (
-                  <div className="relative w-full aspect-video bg-gray-100">
+                  <div className="relative w-full aspect-video bg-gray-100 p-2">
                     <img
                       src={buildImageUrl(
-                        import.meta.env.VITE_API_INTRO_IMG,
+                        import.meta.env.VITE_API_BASE_URL,
                         articles?.news?.intro_image
                       )}
                       alt={articles?.news?.news_title || "News image"}
@@ -140,7 +142,7 @@ const DetailNews = () => {
               {/* RIGHT / RELATED */}
               <div className="mt-8">
                 <RightSidebar relatedNews={articles?.related_news} />
-                
+
               </div>
 
             </main>
