@@ -43,7 +43,7 @@ const DetailNews = () => {
     if (slug) fetchShowNews(slug, lang);
   }, [slug, lang]);
 
-  if (true) {
+  if (!articles || loading) {
     // return <DetailNewsSkeleton />;
     return <LoaderUi />
   }
