@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { NAV_CONTENT } from "./headerData";
 import { useDevice } from "../context/DataProvider";
+import { fetchNewsByCategory } from "../context/apiService/apiService";
 
 /* ================= FALLBACK NAV ================= */
 const FALLBACK_NAV = [
@@ -17,6 +18,8 @@ const FALLBACK_NAV = [
 function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileIndex, setMobileIndex] = useState(null);
+  const [data, setData] = useState(null);
+  console.log(data);
 
   /* ================= CONTEXT ================= */
   const { navbarData, getCategoryNews } = useDevice();
@@ -27,29 +30,21 @@ function Header() {
       ? navbarData
       : FALLBACK_NAV;
 
-  /* ================= CLICK HANDLER ================= */
-  const handleDropdownClick = (category, subRoute) => {
-    if (!category?.id) {
-      console.warn("❌ Category ID missing", category);
-      return;
+  useEffect(() => {
+    const fetch = async (id, type) => {
+      try {
+        const data = await fetchNewsByCategory(id, type);
+        setData(data);
+      } catch (e) {
+        console.error(`fetchNewsByCategory error from header component\n`, e)
+      }
     }
-
-    // ✅ ALWAYS ARRAY
-    let types = ["news", "article"];
-
-    if (subRoute.includes("news")) {
-      types = ["news"];
-    } else if (subRoute.includes("article")) {
-      types = ["article"];
-    }
-
-    console.log("✅ HEADER → API HIT", {
-      categoryId: category.id,
-      types,
-    });
-
-    getCategoryNews(category.id, types);
-  };
+    fetch(6, "news");
+  }, []);
+  /* ================= REMOVE DUPLICATES (SAFETY) ================= */
+  const NAV_LABELS = [
+    ...new Set(safeNavbarData.map(item => item.name)),
+  ];
 
   return (
     <nav className="bg-black text-white sticky top-0 z-50 mb-1">

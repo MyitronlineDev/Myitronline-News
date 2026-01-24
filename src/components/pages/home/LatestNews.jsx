@@ -1,4 +1,3 @@
-import React from "react";
 import { FiCalendar } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import { getCategoryColor } from "../../utility/categoryColor";
@@ -7,7 +6,6 @@ import ReadMoreLess from "../../common/ReadMoreLess";
 
 const LatestNews = ({ leftNews }) => {
   const navigate = useNavigate();
-  console.log(`left news from home:`, leftNews);
   const handleNavigate = (slug) => {
     navigate(`/detail-news/${slug}/myitronline`);
   };

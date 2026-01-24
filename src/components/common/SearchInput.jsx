@@ -11,7 +11,6 @@ const SearchInput = ({
   loading = false,
 }) => {
   const wrapperRef = useRef(null);
-  console.log(IMAGE_BASE_URL)
 
   useEffect(() => {
     const handleClickOutside = (e) => {

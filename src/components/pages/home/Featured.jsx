@@ -20,7 +20,6 @@ const Featured = ({featuredItems}) => {
       setStartIndex(startIndex - SLIDE_STEP);
     }
   };
-  console.log("slug",featuredItems.slug)
 
   const handleNavigate = (slug) =>{
     navigate(`/detail-news/${slug}/myitronline`);

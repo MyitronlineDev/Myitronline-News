@@ -8,42 +8,73 @@ const Header = ({
   heading,
   publishedAt,
   author = "Krishna-Gopal-Varahney",
-  intro_image = ""
+  intro_image = "",
+  setLang,
+  lang
 }) => {
   return (
     <header className="max-w-8xl mx-auto  grid-cols-12 sm:px-0 mb-10">
 
 
       {/* TOP ROW: CATEGORY + META */}
-      <div className="flex flex-wrap items-center gap-3 mb-4">
+      <div className="flex flex-wrap items-center gap-3 mb-4 justify-between">
 
-        {category && (
-          <span className="bg-blue-50 text-blue-700 uppercase tracking-wide text-xs font-semibold sm:px-3 py-1 rounded-full">
-            {category}
-          </span>
-        )}
+        <div className="flex">
+          {category && (
+            <span className="bg-blue-50 text-blue-700 uppercase tracking-wide text-xs font-semibold sm:px-3 py-1 rounded-full">
+              {category}
+            </span>
+          )}
 
-        {(publishedAt || author) && (
-          <div className="flex items-center gap-3 text-xs text-neutral-500">
-            {publishedAt && (
-              <time dateTime={publishedAt}>
-                {formatDateDDMMYY(publishedAt)}
-              </time>
-            )}
+          {(publishedAt || author) && (
+            <div className="flex items-center gap-3 text-xs text-neutral-500">
+              {publishedAt && (
+                <time dateTime={publishedAt}>
+                  {formatDateDDMMYY(publishedAt)}
+                </time>
+              )}
 
-            {author && (
-              <>
-                <span className="text-neutral-300">|</span>
-                <NavLink
-                  to={`/author/myitronline/${author}`}
-                  className="italic text-green-700 hover:text-blue-600 underline-offset-2 hover:underline transition"
-                >
-                  By {author}
-                </NavLink>
-              </>
-            )}
-          </div>
-        )}
+              {author && (
+                <>
+                  <span className="text-neutral-300">|</span>
+                  <NavLink
+                    to={`/author/myitronline/${author}`}
+                    className="italic text-green-700 hover:text-blue-600 underline-offset-2 hover:underline transition"
+                  >
+                    By {author}
+                  </NavLink>
+                </>
+              )}
+            </div>
+          )}
+        </div>
+
+        <div className="flex gap-2">
+          <button
+            onClick={() => setLang("en")}
+            className={`
+            px-4 py-1.5 text-sm rounded-full transition-all duration-300 border
+            ${lang === "en"
+                      ? "bg-black text-white border-black shadow-sm"
+                      : "bg-gray-200 text-gray-500 border-gray-300 hover:bg-gray-300 hover:text-black"}
+          `}
+          >
+            English
+          </button>
+
+          <button
+            onClick={() => setLang("hn")}
+            className={`
+            px-4 py-1.5 text-sm rounded-full transition-all duration-300 border
+            ${lang === "hn"
+                      ? "bg-black text-white border-black shadow-sm"
+                      : "bg-gray-200 text-gray-500 border-gray-300 hover:bg-gray-300 hover:text-black"}
+          `}
+          >
+            हिंदी
+          </button>
+        </div>
+
       </div>
 
       {/* MAIN TITLE */}
