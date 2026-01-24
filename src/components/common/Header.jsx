@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { NAV_CONTENT } from "./headerData";
 import { useDevice } from "../context/DataProvider";
+import { fetchNewsByCategory } from "../context/apiService/apiService";
 
 /* ================= FALLBACK NAV (FIXED ORDER) ================= */
 const FALLBACK_NAV = [
@@ -17,6 +18,8 @@ const FALLBACK_NAV = [
 function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileIndex, setMobileIndex] = useState(null);
+  const [data, setData] = useState(null);
+  console.log(data);
 
   /* ================= CONTEXT DATA ================= */
   const { navbarData } = useDevice();
@@ -27,6 +30,17 @@ function Header() {
       ? navbarData
       : FALLBACK_NAV;
 
+  useEffect(() => {
+    const fetch = async (id, type) => {
+      try {
+        const data = await fetchNewsByCategory(id, type);
+        setData(data);
+      } catch (e) {
+        console.error(`fetchNewsByCategory error from header component\n`, e)
+      }
+    }
+    fetch(6, "news");
+  }, []);
   /* ================= REMOVE DUPLICATES (SAFETY) ================= */
   const NAV_LABELS = [
     ...new Set(safeNavbarData.map(item => item.name)),

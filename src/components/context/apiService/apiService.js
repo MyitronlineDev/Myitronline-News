@@ -1,11 +1,10 @@
 import axios from "axios";
-const token="eyJpdiI6IlREbHpIWjROL2Jma2JkOFlWYnA0VUE9PSIsInZhbHVlIjoiN0ZTZ2hlWVZMcjNTV2h0Qlp4SUtMdz09IiwibWFjIjoiNzBmMmE0YjRmMjcyMjVjNTI1MGMwNzY1ZGQ5MzlmMTljZGY0M2I1YzExZTJiMDQ2OGEwNjBkODExZWM0MDc1ZSIsInRhZyI6IiJ9"
 
 const api = axios.create({
   baseURL: "https://www.apnokaca.com/api",
   headers: {
     "Content-Type": "application/json",
-    Authorization: `Bearer ${token}`,
+    Authorization: `Bearer ${import.meta.env.VITE_LIVE_TOKEN}`,
   },
 });
 
@@ -13,13 +12,13 @@ const localApi = axios.create({
   baseURL: "http://192.168.1.4:8089/api",
   headers: {
     "Content-Type": "application/json",
-    Authorization: `Bearer ${token}`,
+    Authorization: `Bearer ${import.meta.env.VITE_LOCAL_TOKEN}`,
   },
 });
 
 export const searchNews = async (query) => {
   try {
-    const response = await api.get(
+    const response = await localApi.get(
       `/news/search?query=${encodeURIComponent(query)}`
     );
 
@@ -33,7 +32,7 @@ export const searchNews = async (query) => {
 
 export const latestNews = async () => {
   try {
-    const response = await api.get("/myitr-news/right-side");
+    const response = await localApi.get("/myitr-news/right-side");
 
     return response.data;
   } catch (error) {
@@ -44,7 +43,7 @@ export const latestNews = async () => {
 
 export const lendingPageNews = async () => {
   try {
-    const response = await api.get("/myitr-news/latest");
+    const response = await localApi.get("/myitr-news/latest");
     return response.data;
   } catch (error) {
     console.error("Lending Page News API error:", error);
@@ -54,17 +53,17 @@ export const lendingPageNews = async () => {
 
 export const featureData = async () => {
   try {
-    const response = await api.get("/myitr-news/featured");
+    const response = await localApi.get("/myitr-news/featured");
     return response.data;
   } catch (error) {
-    console.log("Error while fetching Features: ", error);
+    console.error("Error while fetching Features: ", error);
     throw error;
   }
 }
 
 export const contactUs = async (data) => {
   try {
-    const response = await api.post("contact-us", data);
+    const response = await localApi.post("contact-us", data);
     return response.data;
   } catch (error) {
     console.error("Contact API error:", error);
@@ -74,7 +73,7 @@ export const contactUs = async (data) => {
 
 export const fetchDetailsNewsApi = async (slug, lng = "en") => {
   try {
-    const response = await api.get(`/myitr-news/show/${slug}?lang=${lng}`);
+    const response = await localApi.get(`/myitr-news/show/${slug}?lang=${lng}`);
 
     if (response.status === 200) {
       return response.data;
@@ -89,7 +88,7 @@ export const fetchDetailsNewsApi = async (slug, lng = "en") => {
 
 export const getCategories = async () => {
   try {
-    const response = await api.get("/myitr-news/categories");
+    const response = await localApi.get("/myitr-news/categories");
     return response.data;
   } catch (error) {
     console.error("Categories API error:", error);
@@ -97,3 +96,15 @@ export const getCategories = async () => {
   }
 };
 
+export const fetchNewsByCategory = async (id, categoryType) => {
+  try {
+    const response = await localApi.get(`/myitr-news/by-category-type?category_id=${id}&type=${categoryType}`);
+
+    if (response.status) {
+      return response.data
+    }
+  } catch (e) {
+    console.error(`fetching news by category: `)
+    return 1
+  }
+}

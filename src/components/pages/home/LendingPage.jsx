@@ -63,15 +63,15 @@ const LendingPage = ({ landingPageData }) => {
             </div>
 
             <h2 className="text-xl font-semibold leading-tight">
-              {item.title.length > 45
+              {/* {item.title.length > 45
                 ? `${item.title.substring(0, 44)}...`
-                : item.title}
+                : item.title} */}
             </h2>
 
             <p className="leading-tight text-gray-600">
-              {item.description.length > 53
+              {/* {item.description.length > 53
                 ? `${item.description.substring(0, 52)}...`
-                : item.description}
+                : item.description} */}
             </p>
           </div>
         ))}
