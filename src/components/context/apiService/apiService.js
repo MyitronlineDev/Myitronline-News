@@ -97,3 +97,21 @@ export const getCategories = async () => {
   }
 };
 
+
+export const getNewsByCategoryType = async (
+  categoryId,
+  type = "news,article"
+) => {
+  try {
+    const response = await api.get(
+      `/myitr-news/by-category-type?category_id=${categoryId}&type=${type}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error("News by category API error:", error);
+    throw error;
+  }
+};
+
+
+

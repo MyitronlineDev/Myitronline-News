@@ -1,25 +1,30 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { getCache, setCache } from "../utility/cacheUtils";
-import { getCategories, latestNews } from "./apiService/apiService";
+import {
+  getCategories,
+  latestNews,
+  getNewsByCategoryType,
+} from "./apiService/apiService";
 import { formatDateDDMMYY } from "../utility/formatter";
 
 /* ================= CONTEXT ================= */
 const DataContext = createContext();
 
-/* ================= FIXED NAVBAR ORDER (SOURCE OF TRUTH) ================= */
+/* ================= FIXED NAVBAR ORDER ================= */
 const NAVBAR_SEQUENCE = [
   { name: "Income Tax" },
   { name: "GST" },
   { name: "Budget" },
   { name: "RBI" },
-  { name: "Corporate Law" },
   { name: "Finance" },
+  { name: "Corporate Law" },
   { name: "Global News" },
 ];
 
 export const DataProvider = ({ children }) => {
   const [latestNewsData, setLatestNewsData] = useState([]);
-  const [navbarData, setNavBarData] = useState([]);
+  const [navbarData, setNavbarData] = useState([]);
+  const [categoryNews, setCategoryNews] = useState([]);
 
   /* ================= LATEST NEWS ================= */
   async function latestNewsDisplay() {
@@ -50,11 +55,11 @@ export const DataProvider = ({ children }) => {
     }
   }
 
-  /* ================= NAVBAR DATA (FIXED ORDER) ================= */
-  async function getNavbarData() {
+  /* ================= NAVBAR DATA ================= */
+  const getNavbarData = async () => {
     const cacheData = getCache("navbarData");
     if (cacheData) {
-      setNavBarData(cacheData);
+      setNavbarData(cacheData);
       return;
     }
 
@@ -62,31 +67,54 @@ export const DataProvider = ({ children }) => {
       const response = await getCategories();
 
       if (response?.status && Array.isArray(response.categories)) {
-        // Convert API response → fallback style
         const apiData = response.categories.map((item) => ({
+          id: item.id,
           name: item.name,
         }));
 
-        // Arrange according to fixed sequence
-        const arrangedNavbar = NAVBAR_SEQUENCE
-          .map(seq =>
-            apiData.find(apiItem => apiItem.name === seq.name)
-          )
-          .filter(Boolean);
+        const arrangedNavbar = NAVBAR_SEQUENCE.map((seq) =>
+          apiData.find((a) => a.name === seq.name),
+        ).filter(Boolean);
 
-        setNavBarData(arrangedNavbar);
-
-        // Cache FINAL navbar data
-        setCache(
-          "navbarData",
-          arrangedNavbar,
-          24 * 60 * 60 * 1000
-        );
+        setNavbarData(arrangedNavbar);
+        setCache("navbarData", arrangedNavbar, 24 * 60 * 60 * 1000);
       }
-    } catch (error) {
-      console.error("Navbar error:", error);
+    } catch (e) {
+      console.error("Navbar error:", e);
     }
-  }
+  };
+
+  /* ================= CATEGORY NEWS (FIXED) ================= */
+  const getCategoryNews = async (
+    categoryId,
+    types = ["news", "article"],
+  ) => {
+    if (!categoryId) {
+      console.warn("Category ID missing");
+      return;
+    }
+
+    try {
+      // 🔒 FORCE STRING FOR BACKEND
+      const safeType = Array.isArray(types)
+        ? types.join(",")
+        : types;
+
+      const response = await getNewsByCategoryType(
+        categoryId,
+        safeType,
+      );
+
+      if (response?.status && Array.isArray(response.data)) {
+        setCategoryNews(response.data);
+      } else {
+        setCategoryNews([]);
+      }
+    } catch (e) {
+      console.error("Category news error:", e);
+      setCategoryNews([]);
+    }
+  };
 
   /* ================= INITIAL LOAD ================= */
   useEffect(() => {
@@ -99,6 +127,8 @@ export const DataProvider = ({ children }) => {
       value={{
         latestNewsData,
         navbarData,
+        categoryNews,
+        getCategoryNews,
       }}
     >
       {children}

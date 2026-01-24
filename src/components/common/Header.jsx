@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 import { NAV_CONTENT } from "./headerData";
 import { useDevice } from "../context/DataProvider";
 
-/* ================= FALLBACK NAV (FIXED ORDER) ================= */
+/* ================= FALLBACK NAV ================= */
 const FALLBACK_NAV = [
   { name: "Income Tax" },
   { name: "GST" },
   { name: "Budget" },
   { name: "RBI" },
-  { name: "Corporate Law" },
   { name: "Finance" },
+  { name: "Corporate Law" },
   { name: "Global News" },
 ];
 
@@ -18,8 +18,8 @@ function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileIndex, setMobileIndex] = useState(null);
 
-  /* ================= CONTEXT DATA ================= */
-  const { navbarData } = useDevice();
+  /* ================= CONTEXT ================= */
+  const { navbarData, getCategoryNews } = useDevice();
 
   /* ================= SAFE NAVBAR DATA ================= */
   const safeNavbarData =
@@ -27,14 +27,32 @@ function Header() {
       ? navbarData
       : FALLBACK_NAV;
 
-  /* ================= REMOVE DUPLICATES (SAFETY) ================= */
-  const NAV_LABELS = [
-    ...new Set(safeNavbarData.map(item => item.name)),
-  ];
+  /* ================= CLICK HANDLER ================= */
+  const handleDropdownClick = (category, subRoute) => {
+    if (!category?.id) {
+      console.warn("❌ Category ID missing", category);
+      return;
+    }
+
+    // ✅ ALWAYS ARRAY
+    let types = ["news", "article"];
+
+    if (subRoute.includes("news")) {
+      types = ["news"];
+    } else if (subRoute.includes("article")) {
+      types = ["article"];
+    }
+
+    console.log("✅ HEADER → API HIT", {
+      categoryId: category.id,
+      types,
+    });
+
+    getCategoryNews(category.id, types);
+  };
 
   return (
     <nav className="bg-black text-white sticky top-0 z-50 mb-1">
-      {/* ================= TOP BAR ================= */}
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center">
         {/* MOBILE TOGGLE */}
         <button
@@ -46,20 +64,23 @@ function Header() {
 
         {/* ================= DESKTOP MENU ================= */}
         <ul className="hidden lg:flex mx-auto space-x-7 text-md">
-          {NAV_LABELS.map((label, i) => (
-            <li key={`${label}-${i}`} className="relative group">
+          {safeNavbarData.map((category, i) => (
+            <li key={category.name} className="relative group">
               <span className="cursor-pointer hover:text-yellow-300 transition">
-                {label}
+                {category.name}
               </span>
 
               {/* DROPDOWN */}
-              {(NAV_CONTENT[label] || []).length > 0 && (
+              {(NAV_CONTENT[category.name] || []).length > 0 && (
                 <div className="absolute left-0 top-full hidden group-hover:block">
                   <div className="mt-2 min-w-[180px] bg-gray-900 border border-gray-800 rounded shadow-lg">
-                    {(NAV_CONTENT[label] || []).map((sub) => (
+                    {(NAV_CONTENT[category.name] || []).map((sub) => (
                       <Link
                         key={sub.route}
                         to={sub.route}
+                        onClick={() =>
+                          handleDropdownClick(category, sub.route)
+                        }
                         className="block px-4 py-2 text-sm hover:bg-gray-800 hover:text-yellow-300 transition"
                       >
                         {sub.label}
@@ -76,27 +97,30 @@ function Header() {
       {/* ================= MOBILE MENU ================= */}
       {mobileOpen && (
         <div className="lg:hidden bg-gray-900 border-t border-gray-700">
-          {NAV_LABELS.map((label, i) => (
-            <div key={`${label}-${i}`} className="border-b border-gray-700">
+          {safeNavbarData.map((category, i) => (
+            <div key={category.name} className="border-b border-gray-700">
               <button
                 className="w-full px-4 py-3 flex justify-between items-center"
-                onClick={() => setMobileIndex(mobileIndex === i ? null : i)}
+                onClick={() =>
+                  setMobileIndex(mobileIndex === i ? null : i)
+                }
               >
-                <span>{label}</span>
+                <span>{category.name}</span>
                 <span>{mobileIndex === i ? "−" : "+"}</span>
               </button>
 
               {mobileIndex === i && (
                 <div className="bg-gray-800">
-                  {(NAV_CONTENT[label] || []).map((sub) => (
+                  {(NAV_CONTENT[category.name] || []).map((sub) => (
                     <Link
                       key={sub.route}
                       to={sub.route}
-                      className="block px-6 py-2 text-sm hover:bg-gray-700 hover:text-yellow-300 transition"
                       onClick={() => {
+                        handleDropdownClick(category, sub.route);
                         setMobileOpen(false);
                         setMobileIndex(null);
                       }}
+                      className="block px-6 py-2 text-sm hover:bg-gray-700 hover:text-yellow-300 transition"
                     >
                       {sub.label}
                     </Link>
