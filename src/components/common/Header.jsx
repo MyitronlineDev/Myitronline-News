@@ -27,14 +27,10 @@ function Header() {
       ? navbarData
       : FALLBACK_NAV;
 
-  /* ================= CLICK HANDLER ================= */
+  /* ================= CLICK HANDLER (UNCHANGED) ================= */
   const handleDropdownClick = (category, subRoute) => {
-    if (!category?.id) {
-      console.warn("❌ Category ID missing", category);
-      return;
-    }
+    if (!category?.id) return;
 
-    // ✅ ALWAYS ARRAY
     let types = ["news", "article"];
 
     if (subRoute.includes("news")) {
@@ -47,34 +43,29 @@ function Header() {
   };
 
   return (
-    <nav className="bg-black text-white sticky top-0 z-50 mb-1">
-      <div className="max-w-6xl mx-auto px-4 py-3 flex items-center">
-        {/* MOBILE TOGGLE */}
-        <button
-          className="ml-auto lg:hidden text-xl"
-          onClick={() => setMobileOpen(!mobileOpen)}
-        >
-          ☰
-        </button>
-
+    <nav className="bg-black text-white sticky top-0 z-50 w-full">
+      {/* ================= TOP BAR ================= */}
+      <div className="max-w-7xl mx-auto px-4 h-14 flex items-center justify-center relative">
+        
         {/* ================= DESKTOP MENU ================= */}
-        <ul className="hidden lg:flex mx-auto space-x-7 text-md">
-          {safeNavbarData.map((category, i) => (
+        <ul className="hidden lg:flex gap-8 text-md font-medium tracking-wide">
+          {safeNavbarData.map((category) => (
             <li key={category.name} className="relative group">
-              <span className="cursor-pointer hover:text-yellow-300 transition">
+              <span className="cursor-pointer hover:text-yellow-400 transition">
                 {category.name}
               </span>
 
-              {/* DROPDOWN */}
               {(NAV_CONTENT[category.name] || []).length > 0 && (
-                <div className="absolute left-0 top-full hidden group-hover:block">
-                  <div className="mt-2 min-w-[180px] bg-gray-900 border border-gray-800 rounded shadow-lg">
+                <div className="absolute left-1/2 -translate-x-1/2 top-full hidden group-hover:block">
+                  <div className="mt-3 min-w-[190px] bg-gray-900 border border-gray-800 rounded-md shadow-xl overflow-hidden">
                     {(NAV_CONTENT[category.name] || []).map((sub) => (
                       <Link
                         key={sub.route}
                         to={sub.route}
-                        onClick={() => handleDropdownClick(category, sub.route)}
-                        className="block px-4 py-2 text-sm hover:bg-gray-800 hover:text-yellow-300 transition"
+                        onClick={() =>
+                          handleDropdownClick(category, sub.route)
+                        }
+                        className="block px-4 py-2.5 text-sm hover:bg-gray-800 hover:text-yellow-400 transition"
                       >
                         {sub.label}
                       </Link>
@@ -85,19 +76,37 @@ function Header() {
             </li>
           ))}
         </ul>
+
+        {/* ================= MOBILE TOGGLE ================= */}
+        <button
+          className="lg:hidden absolute right-4 text-2xl"
+          onClick={() => setMobileOpen(!mobileOpen)}
+        >
+          ☰
+        </button>
       </div>
 
       {/* ================= MOBILE MENU ================= */}
-      {mobileOpen && (
-        <div className="lg:hidden bg-gray-900 border-t border-gray-700">
+      <div
+        className={`lg:hidden overflow-hidden transition-all duration-300 ${
+          mobileOpen ? "max-h-screen" : "max-h-0"
+        }`}
+      >
+        <div className="bg-gray-900 border-t border-gray-800">
           {safeNavbarData.map((category, i) => (
-            <div key={category.name} className="border-b border-gray-700">
+            <div key={category.name} className="border-b border-gray-800">
               <button
-                className="w-full px-4 py-3 flex justify-between items-center"
-                onClick={() => setMobileIndex(mobileIndex === i ? null : i)}
+                className="w-full px-4 py-3 flex justify-between items-center text-left"
+                onClick={() =>
+                  setMobileIndex(mobileIndex === i ? null : i)
+                }
               >
-                <span>{category.name}</span>
-                <span>{mobileIndex === i ? "−" : "+"}</span>
+                <span className="text-md font-medium">
+                  {category.name}
+                </span>
+                <span className="text-lg">
+                  {mobileIndex === i ? "−" : "+"}
+                </span>
               </button>
 
               {mobileIndex === i && (
@@ -111,7 +120,7 @@ function Header() {
                         setMobileOpen(false);
                         setMobileIndex(null);
                       }}
-                      className="block px-6 py-2 text-sm hover:bg-gray-700 hover:text-yellow-300 transition"
+                      className="block px-6 py-2.5 text-sm hover:bg-gray-700 hover:text-yellow-400 transition"
                     >
                       {sub.label}
                     </Link>
@@ -121,7 +130,7 @@ function Header() {
             </div>
           ))}
         </div>
-      )}
+      </div>
     </nav>
   );
 }

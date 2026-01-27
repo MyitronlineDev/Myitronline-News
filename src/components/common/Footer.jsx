@@ -2,12 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 function Footer() {
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
+
 
   return (
     <footer className="bg-black text-gray-400 mt-2">
@@ -18,7 +13,7 @@ function Footer() {
           <div className="flex flex-col gap-4">
             <div className="leading-tight">
               <div className="text-white text-2xl font-bold tracking-tight">
-                Renaz
+              Myitronline News
               </div>
 
               {/* Tagline */}
@@ -45,7 +40,6 @@ function Footer() {
               <NavLink
                 key={label}
                 to={link}
-                onClick={scrollToTop}
                 className="text-gray-300 hover:text-yellow-400 border-b border-transparent hover:border-yellow-400 pb-1 transition"
               >
                 {label}
