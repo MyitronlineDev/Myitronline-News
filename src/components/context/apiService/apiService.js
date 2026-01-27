@@ -61,6 +61,16 @@ export const featureData = async () => {
   }
 }
 
+export const fetchGstFinanceBudget = async () => {
+  try{
+    const response = await api.get("/myitr-news/group-new");
+    return response.data;
+  }catch(error){
+    console.log("Error while fetchin Data: ", error);
+    throw error;
+  }
+}
+
 export const contactUs = async (data) => {
   try {
     const response = await api.post("contact-us", data);
