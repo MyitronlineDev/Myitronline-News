@@ -8,6 +8,7 @@ import CalibrityFood from "./CalibrityFood";
 import LatestNews from "./LatestNews";
 import {
   featureData,
+  fetchGstFinanceBudget,
   lendingPageNews,
 } from "../../context/apiService/apiService";
 import { getCache, setCache } from "../../utility/cacheUtils";
@@ -18,6 +19,9 @@ import { buildImageUrl } from "../../utility/imageUtils";
 const Home = () => {
   const [landingPageData, setLandingPageData] = useState(null);
   const [featuredData, setFeaturedData] = useState([]);
+  const [gstData, setGstData] = useState([]);
+  const [budgetData, setBudgetData] = useState([]);
+  const [financeData, setFinanceData] = useState([]);
 
   const { latestNewsData } = useDevice();
   const leftNews = [
@@ -245,24 +249,96 @@ const Home = () => {
           category: item.category_name,
           title: item.news_title,
           image: buildImageUrl(
-            import.meta.env.VITE_API_INTRO_IMG,
-            item.intro_image
+            import.meta.env.VITE_API_BASE_URL,
+            item.intro_image,
           ),
           slug: item.slug,
           date: formatDateDDMMYY(item.published_at),
         }));
         setCache("featureData", formattedData);
         setFeaturedData(formattedData);
-        
       }
     } catch (error) {
       console.error("Feature Data error:", error);
     }
   }
 
+  async function fetchFashionAndBelow() {
+    const cacheData = getCache("fashionAndBelowData");
+
+    // ✅ if cache exists
+    if (cacheData) {
+      setGstData(cacheData.gst);
+      setBudgetData(cacheData.budget);
+      setFinanceData(cacheData.finance);
+      return;
+    }
+
+    try {
+      const response = await fetchGstFinanceBudget(); // ✅ your api function
+
+      if (response?.status) {
+        const gstFormatted = response.data.gst.map((item, index) => ({
+          id: index + 1,
+          category: item.category_name,
+          title: item.news_title,
+          heading: item.news_heading,
+          slug: item.slug,
+          author: item.created_by_alias,
+          date: formatDateDDMMYY(item.published_at),
+        }));
+
+        const budgetFormatted = response.data.budget.map((item, index) => ({
+          id: index + 1,
+          category: item.category_name,
+          title: item.news_title,
+          heading: item.news_heading,
+          image: buildImageUrl(
+            import.meta.env.VITE_API_BASE_URL,
+            item.intro_image,
+          ),
+          slug: item.slug,
+          author: item.created_by_alias,
+          date: formatDateDDMMYY(item.published_at),
+        }));
+
+        const financeFormatted = response.data.finance.map((item, index) => ({
+          id: index + 1,
+          category: item.category_name,
+          title: item.news_title,
+          heading: item.news_heading,
+          image: buildImageUrl(
+            import.meta.env.VITE_API_BASE_URL,
+            item.intro_image,
+          ),
+          slug: item.slug,
+          author: item.created_by_alias,
+          date: formatDateDDMMYY(item.published_at),
+        }));
+
+        // ✅ Store in cache as an object
+        const finalData = {
+          gst: gstFormatted,
+          budget: budgetFormatted,
+          finance: financeFormatted,
+        };
+
+        setCache("fashionAndBelowData", finalData);
+
+        // ✅ set state for three components
+        setGstData(gstFormatted);
+        setBudgetData(budgetFormatted);
+        setFinanceData(financeFormatted);
+      }
+    } catch (error) {
+      console.error("FashionAndBelow error:", error);
+    }
+  }
+
   useEffect(() => {
     fetchFeatureData();
     lendingPageDisplay();
+    fetchFashionAndBelow();
   }, []);
 
   async function lendingPageDisplay() {
@@ -318,7 +394,7 @@ const Home = () => {
           {landingPageData && <LendingPage landingPageData={landingPageData} />}
 
           <Featured featuredItems={featuredData} />
-          <FashionStay />
+          <FashionStay fashionData={gstData} />
 
           <div className="grid grid-cols-1 lg:grid-cols-12 ">
             <div className="lg:col-span-8 ">

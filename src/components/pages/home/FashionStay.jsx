@@ -2,53 +2,13 @@ import React from "react";
 import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
-const FashionStay = () => {
+const FashionStay = ({fashionData}) => {
 
   const navigate = useNavigate();
   // function ClickHandler(){
   //   navigate()
   // }
-  const fashionData = [
-    {
-      id: 1,
-      title: "Led Zeppelin to launch collection with Vans",
-      author: "VAUGHAN CHANCE",
-      date: "02/15/2019",
-    },
-    {
-      id: 2,
-      title: "This £55 Bag Is Fast Becoming Part of the It–Girl Uniform",
-      author: "VAUGHAN CHANCE",
-      date: "02/15/2019",
-    },
-    {
-      id: 3,
-      title:
-        "Elsa Hosk Looks Like an Absolute Vision in Victoria’s Secret’s $1M Fantasy Bra",
-      author: "VAUGHAN CHANCE",
-      date: "02/15/2019",
-    },
-    {
-      id: 4,
-      title:
-        "Gabriela Hearst’s Fall Collection Is for the Sophisticated Minimalist",
-      author: "VAUGHAN CHANCE",
-      date: "02/15/2019",
-    },
-    {
-      id: 5,
-      title:
-        "Selena Gomez Celebrates Her BFF’s Bachelorette Party in Cabo San Lucas",
-      author: "VAUGHAN CHANCE",
-      date: "02/15/2019",
-    },
-    {
-      id: 6,
-      title: "Lucy Beale looks dramatically different as she poses in a bikini",
-      author: "VAUGHAN CHANCE",
-      date: "02/15/2019",
-    },
-  ];
+
 
    const socialData = [
     {
@@ -83,7 +43,7 @@ const FashionStay = () => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 h-auto mb-4">
       <div className="lg:col-span-7">
-        <h2 className="text-3xl font-bold mb-6">Fashion</h2>
+        <h2 className="text-3xl font-bold mb-6">Goods and Services Tax</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pe-4">
           {fashionData.map((item, index) => (
             <div key={index} 

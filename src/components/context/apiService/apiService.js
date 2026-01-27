@@ -19,7 +19,7 @@ const localApi = axios.create({
 export const searchNews = async (query) => {
   try {
     const response = await api.get(
-      `/news/search?query=${encodeURIComponent(query)}`,
+      `/news/search?query=${encodeURIComponent(query)}`
     );
 
     // expected: { status: true, results: [] }
@@ -61,6 +61,16 @@ export const featureData = async () => {
   }
 };
 
+export const fetchGstFinanceBudget = async () => {
+  try{
+    const response = await api.get("/myitr-news/group-new");
+    return response.data;
+  }catch(error){
+    console.log("Error while fetchin Data: ", error);
+    throw error;
+  }
+}
+
 export const contactUs = async (data) => {
   try {
     const response = await api.post("contact-us", data);
@@ -73,7 +83,7 @@ export const contactUs = async (data) => {
 
 export const fetchDetailsNewsApi = async (slug, lng = "en") => {
   try {
-    const response = await localApi.get(`/myitr-news/show/${slug}?lang=${lng}`);
+    const response = await api.get(`/myitr-news/show/${slug}?lang=${lng}`);
 
     if (response.status === 200) {
       return response.data;

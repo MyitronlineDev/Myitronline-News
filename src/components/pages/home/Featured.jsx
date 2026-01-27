@@ -32,7 +32,7 @@ const Featured = ({featuredItems}) => {
       {/* LEFT SECTION */}
       <div className="lg:col-span-3 grid px-4 ">
         <div className="">
-          <h2 className="text-3xl font-bold">Featured</h2>
+          <h2 className="text-3xl font-bold">Income Tax</h2>
           <p className="text-gray-600 text-xl font-semibold">
             Most popular life news you must read today
           </p >
