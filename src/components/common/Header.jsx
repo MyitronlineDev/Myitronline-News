@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { NAV_CONTENT } from "./headerData";
 import { useDevice } from "../context/DataProvider";
 
@@ -17,9 +17,9 @@ const FALLBACK_NAV = [
 function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileIndex, setMobileIndex] = useState(null);
-
+  const navigate = useNavigate();
   /* ================= CONTEXT ================= */
-  const { navbarData, getCategoryNews } = useDevice();
+  const { navbarData } = useDevice();
 
   /* ================= SAFE NAVBAR DATA ================= */
   const safeNavbarData =
@@ -28,23 +28,23 @@ function Header() {
       : FALLBACK_NAV;
 
   /* ================= CLICK HANDLER ================= */
-  const handleDropdownClick = (category, subRoute) => {
-    if (!category?.id) {
-      console.warn("❌ Category ID missing", category);
-      return;
-    }
+  // const handleDropdownClick = (category, subRoute) => {
+  //   if (!category?.id) {
+  //     console.warn("❌ Category ID missing", category);
+  //     return;
+  //   }
 
-    // ✅ ALWAYS ARRAY
-    let types = ["news", "article"];
+  //   // ✅ ALWAYS ARRAY
+  //   let types = ["news", "article"];
 
-    if (subRoute.includes("news")) {
-      types = ["news"];
-    } else if (subRoute.includes("article")) {
-      types = ["article"];
-    }
+  //   if (subRoute.includes("news")) {
+  //     types = ["news"];
+  //   } else if (subRoute.includes("article")) {
+  //     types = ["article"];
+  //   }
 
-    getCategoryNews(category.id, types);
-  };
+  //   getCategoryNews(category.id, types);
+  // };
 
   return (
     <nav className="bg-black text-white sticky top-0 z-50 mb-1">
@@ -70,14 +70,18 @@ function Header() {
                 <div className="absolute left-0 top-full hidden group-hover:block">
                   <div className="mt-2 min-w-[180px] bg-gray-900 border border-gray-800 rounded shadow-lg">
                     {(NAV_CONTENT[category.name] || []).map((sub) => (
-                      <Link
-                        key={sub.route}
-                        to={sub.route}
-                        onClick={() => handleDropdownClick(category, sub.route)}
-                        className="block px-4 py-2 text-sm hover:bg-gray-800 hover:text-yellow-300 transition"
+                      <button
+                        key={`${category.name}-${sub.type}`}
+                        onClick={() => {
+                          navigate(`/navbar?id=${category.id}&type=${sub.type || news}`);
+                          setMobileOpen(false);
+                          setMobileIndex(null);
+                        }}
+                        className="block w-full text-left px-6 py-2 text-sm hover:bg-gray-700 hover:text-yellow-300 transition"
                       >
                         {sub.label}
-                      </Link>
+                      </button>
+
                     ))}
                   </div>
                 </div>
@@ -103,18 +107,30 @@ function Header() {
               {mobileIndex === i && (
                 <div className="bg-gray-800">
                   {(NAV_CONTENT[category.name] || []).map((sub) => (
-                    <Link
-                      key={sub.route}
-                      to={sub.route}
+                    // <Link
+                    //   key={sub.route}
+                    //   to={sub.route}
+                    //   onClick={() => {
+                    //     handleDropdownClick(category, sub.route);
+                    //     setMobileOpen(false);
+                    //     setMobileIndex(null);
+                    //   }}
+                    //   className="block px-6 py-2 text-sm hover:bg-gray-700 hover:text-yellow-300 transition"
+                    // >
+                    //   {sub.label}
+                    // </Link>
+                    <button
+                      key={`${category.name}-${sub.type}`}
                       onClick={() => {
-                        handleDropdownClick(category, sub.route);
+                        navigate(`/navbar?id=${category.id}&type=${sub.type || sub.news}`);
                         setMobileOpen(false);
                         setMobileIndex(null);
                       }}
-                      className="block px-6 py-2 text-sm hover:bg-gray-700 hover:text-yellow-300 transition"
+                      className="block w-full text-left px-6 py-2 text-sm hover:bg-gray-700 hover:text-yellow-300 transition"
                     >
                       {sub.label}
-                    </Link>
+                    </button>
+
                   ))}
                 </div>
               )}
