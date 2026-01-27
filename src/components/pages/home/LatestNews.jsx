@@ -17,7 +17,7 @@ const LatestNews = ({ leftNews }) => {
 
       <div className="space-y-4">
         <div className="space-y-4">
-          {leftNews.slice(0, 15).map((item, index) => (
+          {leftNews.slice(0, 14).map((item, index) => (
             <div
               key={index}
               onClick={() => handleNavigate(item.slug)}

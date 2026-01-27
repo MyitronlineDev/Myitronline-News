@@ -1,50 +1,57 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
-const tvArticles = [
-  {
-    id: 1,
-    title:
-      "Ariana Grande supports fans boycotting her song 7 Rings for this funny reason",
-    date: "02/15/2019",
-    image:
-      "https://images.pexels.com/photos/210182/pexels-photo-210182.jpeg?auto=compress&cs=tinysrgb&w=600",
-  },
-  {
-    id: 2,
-    title:
-      "Frozen 2 trailer: Elsa and crew are back in a scarier, darker sequel",
-    date: "02/15/2019",
-    image:
-      "https://images.pexels.com/photos/1117132/pexels-photo-1117132.jpeg?auto=compress&cs=tinysrgb&w=600",
-  },
-  {
-    id: 3,
-    title: "Chance the Rapper releasing debut album this summer",
-    date: "02/15/2019",
-    image:
-      "https://th.bing.com/th/id/OIP.EyWHRmqhSvwcqyeR-85GBAHaGR?w=179&h=180&c=7&r=0&o=7&cb=ucfimg2&pid=1.7&rm=3&ucfimg=1",
-  },
-  {
-    id: 4,
-    title:
-      "Kate Gosselin to star in new reality show, Kate Plus Date",
-    date: "02/15/2019",
-    image:
-      "https://images.pexels.com/photos/2706379/pexels-photo-2706379.jpeg?auto=compress&cs=tinysrgb&w=600",
-  },
-];
+// const tvArticles = [
+//   {
+//     id: 1,
+//     title:
+//       "Ariana Grande supports fans boycotting her song 7 Rings for this funny reason",
+//     date: "02/15/2019",
+//     image:
+//       "https://images.pexels.com/photos/210182/pexels-photo-210182.jpeg?auto=compress&cs=tinysrgb&w=600",
+//   },
+//   {
+//     id: 2,
+//     title:
+//       "Frozen 2 trailer: Elsa and crew are back in a scarier, darker sequel",
+//     date: "02/15/2019",
+//     image:
+//       "https://images.pexels.com/photos/1117132/pexels-photo-1117132.jpeg?auto=compress&cs=tinysrgb&w=600",
+//   },
+//   {
+//     id: 3,
+//     title: "Chance the Rapper releasing debut album this summer",
+//     date: "02/15/2019",
+//     image:
+//       "https://th.bing.com/th/id/OIP.EyWHRmqhSvwcqyeR-85GBAHaGR?w=179&h=180&c=7&r=0&o=7&cb=ucfimg2&pid=1.7&rm=3&ucfimg=1",
+//   },
+//   {
+//     id: 4,
+//     title:
+//       "Kate Gosselin to star in new reality show, Kate Plus Date",
+//     date: "02/15/2019",
+//     image:
+//       "https://images.pexels.com/photos/2706379/pexels-photo-2706379.jpeg?auto=compress&cs=tinysrgb&w=600",
+//   },
+// ];
 
-function TvSection() {
+function TvSection({tvArticles = []}) {
+  const navigate = useNavigate();
+
+  const handleNavigate = (slug) => {
+    navigate(`/detail-news/${slug}/myitronline`);
+  }
   return (
     <section className="w-full px-2 py-6">
       {/* Heading */}
-      <h2 className="text-2xl font-bold tracking-tight mb-4">TV</h2>
+      <h2 className="text-2xl font-bold tracking-tight mb-4">Finance</h2>
 
       {/* List */}
       <div className="space-y-5">
         {tvArticles.map((item) => (
           <article
             key={item.id}
+            onClick={() => handleNavigate(item.slug)}
             className="flex gap-4 items-start"
           >
             {/* Thumbnail */}

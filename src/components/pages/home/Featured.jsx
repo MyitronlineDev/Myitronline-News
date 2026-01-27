@@ -54,7 +54,7 @@ const Featured = ({featuredItems}) => {
               <div className="relative h-40 w-full">
                 <img
                   src={item.image}
-                //   alt={item.title}
+                  alt={item.title}
                   className="w-full h-full aspect-insta"
                 />
                 <span className="absolute border border-black -bottom-2 left-0 bg-white text-black text-xs font-semibold px-2 py-1 uppercase">
