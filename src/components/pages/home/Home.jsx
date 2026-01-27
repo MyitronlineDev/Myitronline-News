@@ -398,10 +398,10 @@ const Home = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 ">
             <div className="lg:col-span-8 ">
-              <Technology />
+              <Technology articles={budgetData}/>
             </div>
             <div className="lg:col-span-4 ">
-              <TvSection />
+              <TvSection tvArticles={financeData} />
             </div>
           </div>
           <CalibrityFood />
