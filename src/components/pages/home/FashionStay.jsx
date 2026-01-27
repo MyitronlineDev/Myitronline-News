@@ -5,9 +5,9 @@ import { useNavigate } from "react-router-dom";
 const FashionStay = ({fashionData}) => {
 
   const navigate = useNavigate();
-  // function ClickHandler(){
-  //   navigate()
-  // }
+  const handleNavigate = (slug) => {
+    navigate(`/detail-news/${slug}/myitronline`);
+  };
 
 
    const socialData = [
@@ -47,6 +47,7 @@ const FashionStay = ({fashionData}) => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pe-4">
           {fashionData.map((item, index) => (
             <div key={index} 
+            onClick={() => handleNavigate(item.slug)}
             >
               <h3 className="font-semibold text-xl">{item.title}</h3>
               <div className="text-xs font-semibold uppercase text-gray-500 flex items-center gap-2">

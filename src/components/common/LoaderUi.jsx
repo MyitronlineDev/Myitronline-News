@@ -1,8 +1,7 @@
-import React from "react";
 
 export default function LoaderUi() {
   return (
-    <div className="flex flex-col items-center justify-center  min-h-screen text-center">
+    <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">
       
       {/* Logo */}
       <div className="w-100 h-50 mb-4 animate-pulse">

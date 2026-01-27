@@ -6,6 +6,7 @@ import News from "./News";
 import Articles from "./Articles";
 import Budget from "./Budget";
 import Circular from "./Circular";
+import LoaderUi from "../common/LoaderUi";
 
 const NavbarDataLayout = () => {
   const { search } = useLocation();
@@ -14,7 +15,7 @@ const NavbarDataLayout = () => {
   const categoryId = params.get("id");
   const type = params.get("type");
 
-  const { getCategoryNews, categoryNews } = useDevice();
+  const { getCategoryNews, categoryNews, loadingCategory } = useDevice();
 
   useEffect(() => {
     if (categoryId && type) {
@@ -26,8 +27,16 @@ const NavbarDataLayout = () => {
     return <p className="text-center py-10">Invalid request</p>;
   }
 
+  if (loadingCategory) {
+    return <LoaderUi />;
+  }
+
   if (!categoryNews.length) {
-    return <p className="text-center py-10">Loading...</p>;
+    return (
+      <p className="text-center py-10 text-gray-300">
+        No {type} found for this category.
+      </p>
+    );
   }
 
   return (
@@ -39,5 +48,6 @@ const NavbarDataLayout = () => {
     </>
   );
 };
+
 
 export default NavbarDataLayout;

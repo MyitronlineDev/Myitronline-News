@@ -6,6 +6,7 @@ const LendingPage = ({ landingPageData }) => {
 
   const navigate = useNavigate();
 
+
   const handleNavigate = (slug) => {
     navigate(`/detail-news/${slug}/myitronline`);
   };
@@ -50,28 +51,27 @@ const LendingPage = ({ landingPageData }) => {
             onClick={() => handleNavigate(item.slug)}
             className="space-y-2"
           >
-            <div className="relative">
-              <img
-                src={item.image}
-                alt={item.title}
-                className="w-full h-[180px] object-contain bg-white-100 "
-              />
-
-              <div className="border border-black px-3 -bottom-2 left-0 bg-white absolute">
-                <span className="uppercase font-semibold">{item.category}</span>
+            <div className="relative h-40 w-full">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full aspect-insta"
+                />
+                <span className="absolute border border-black -bottom-2 left-0 bg-white text-black text-xs font-semibold px-2 py-1 uppercase">
+                  {item.category}
+                </span>
               </div>
-            </div>
 
             <h2 className="text-xl font-semibold leading-tight">
-              {/* {item.title.length > 45
+              {item.title.length > 45
                 ? `${item.title.substring(0, 44)}...`
-                : item.title} */}
+                : item.title}
             </h2>
 
             <p className="leading-tight text-gray-600">
-              {/* {item.description.length > 53
+              {item.description.length > 53
                 ? `${item.description.substring(0, 52)}...`
-                : item.description} */}
+                : item.description}
             </p>
           </div>
         ))}
