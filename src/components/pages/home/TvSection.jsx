@@ -65,7 +65,7 @@ function TvSection({tvArticles = []}) {
 
             {/* Text */}
             <div className="flex-1">
-              <h3 className="text-sm md:text-base font-semibold leading-snug hover:text-blue-600 cursor-pointer line-clamp-2">
+              <h3 className="text-sm md:text-base font-semibold leading-snug cursor-pointer line-clamp-2">
                 {item.title}
               </h3>
 

@@ -61,6 +61,16 @@ export const featureData = async () => {
   }
 };
 
+export const globalRbiData = async () => {
+  try{
+    const response = await api.get("myitr-news/global-rbi");
+    return response.data;
+  }catch(error){
+    console.error("Error while fetching Global RBI: ", error);
+    throw error;
+  }
+}
+
 export const fetchGstFinanceBudget = async () => {
   try{
     const response = await api.get("/myitr-news/group-new");

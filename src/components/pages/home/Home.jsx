@@ -9,6 +9,7 @@ import LatestNews from "./LatestNews";
 import {
   featureData,
   fetchGstFinanceBudget,
+  globalRbiData,
   lendingPageNews,
 } from "../../context/apiService/apiService";
 import { getCache, setCache } from "../../utility/cacheUtils";
@@ -22,6 +23,7 @@ const Home = () => {
   const [gstData, setGstData] = useState([]);
   const [budgetData, setBudgetData] = useState([]);
   const [financeData, setFinanceData] = useState([]);
+  const [globalRBIData, setGlobalRBIData] = useState(null);
 
   const { latestNewsData } = useDevice();
   const leftNews = [
@@ -185,54 +187,54 @@ const Home = () => {
   //   ],
   // };
 
-  const featuredItems = [
-    {
-      category: "FASHION",
-      title:
-        "Elsa Hosk Looks Like an Absolute Vision in Victoria’s Secret’s $1M Fantasy Bra",
-      date: "02/15/2019",
-      image:
-        "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-    },
-    {
-      category: "FASHION",
-      title:
-        "Gabriela Hearst’s Fall Collection Is for the Sophisticated Minimalist",
-      date: "02/15/2019",
-      image:
-        "https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-    },
-    {
-      category: "FASHION",
-      title: "This £55 Bag Is Fast Becoming Part of the It-Girl Uniform",
-      date: "02/15/2019",
-      image:
-        "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-    },
-    {
-      category: "FASHION",
-      title:
-        "Elsa Hosk Looks Like an Absolute Vision in Victoria’s Secret’s $1M Fantasy Bra",
-      date: "02/15/2019",
-      image:
-        "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-    },
-    {
-      category: "FASHION",
-      title:
-        "Gabriela Hearst’s Fall Collection Is for the Sophisticated Minimalist",
-      date: "02/15/2019",
-      image:
-        "https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-    },
-    {
-      category: "FASHION",
-      title: "This £55 Bag Is Fast Becoming Part of the It-Girl Uniform",
-      date: "02/15/2019",
-      image:
-        "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-    },
-  ];
+  // const featuredItems = [
+  //   {
+  //     category: "FASHION",
+  //     title:
+  //       "Elsa Hosk Looks Like an Absolute Vision in Victoria’s Secret’s $1M Fantasy Bra",
+  //     date: "02/15/2019",
+  //     image:
+  //       "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+  //   },
+  //   {
+  //     category: "FASHION",
+  //     title:
+  //       "Gabriela Hearst’s Fall Collection Is for the Sophisticated Minimalist",
+  //     date: "02/15/2019",
+  //     image:
+  //       "https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+  //   },
+  //   {
+  //     category: "FASHION",
+  //     title: "This £55 Bag Is Fast Becoming Part of the It-Girl Uniform",
+  //     date: "02/15/2019",
+  //     image:
+  //       "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+  //   },
+  //   {
+  //     category: "FASHION",
+  //     title:
+  //       "Elsa Hosk Looks Like an Absolute Vision in Victoria’s Secret’s $1M Fantasy Bra",
+  //     date: "02/15/2019",
+  //     image:
+  //       "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+  //   },
+  //   {
+  //     category: "FASHION",
+  //     title:
+  //       "Gabriela Hearst’s Fall Collection Is for the Sophisticated Minimalist",
+  //     date: "02/15/2019",
+  //     image:
+  //       "https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+  //   },
+  //   {
+  //     category: "FASHION",
+  //     title: "This £55 Bag Is Fast Becoming Part of the It-Girl Uniform",
+  //     date: "02/15/2019",
+  //     image:
+  //       "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+  //   },
+  // ];
 
   async function fetchFeatureData() {
     const cacheData = getCache("featureData");
@@ -339,6 +341,7 @@ const Home = () => {
     fetchFeatureData();
     lendingPageDisplay();
     fetchFashionAndBelow();
+    globalRbiPageDisplay();
   }, []);
 
   async function lendingPageDisplay() {
@@ -381,6 +384,48 @@ const Home = () => {
     }
   }
 
+  async function globalRbiPageDisplay() {
+    const cacheData = getCache("globalRbiNews");
+    if (cacheData) {
+      setGlobalRBIData(cacheData);
+      return;
+    }
+
+    try {
+      const response = await globalRbiData();
+      if (response?.status) {
+        const data = response.data;
+
+        const formattedData = {
+          globalNews: data.global_news.map((item) => ({
+            id: item.id,
+            slug: item.slug,
+            category: item.category_name,
+            title: item.news_title,
+            heading: item.news_heading,
+            publishedAt: formatDateDDMMYY(item.published_at),
+            image: `${import.meta.env.VITE_API_BASE_URL}/${item.intro_image}`,
+          })),
+
+          rbiNews: data.rbi.map((item) => ({
+            id: item.id,
+            slug: item.slug,
+            category: item.category_name,
+            title: item.news_title,
+            heading: item.news_heading,
+            publishedAt: formatDateDDMMYY(item.published_at),
+            image: `${import.meta.env.VITE_API_BASE_URL}/${item.intro_image}`,
+          })),
+        };
+
+        setGlobalRBIData(formattedData);
+        setCache("globalRbiNews", formattedData);
+      }
+    } catch (error) {
+      console.error("Global & RBI news error:", error);
+    }
+  }
+
   return (
     <div
       className="container mx-auto px-4 font-sans mt-1"
@@ -398,13 +443,13 @@ const Home = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 ">
             <div className="lg:col-span-8 ">
-              <Technology articles={budgetData}/>
+              <Technology articles={budgetData} />
             </div>
             <div className="lg:col-span-4 ">
               <TvSection tvArticles={financeData} />
             </div>
           </div>
-          <CalibrityFood />
+          <CalibrityFood globalRbiData={globalRBIData} />
         </div>
       </div>
     </div>
