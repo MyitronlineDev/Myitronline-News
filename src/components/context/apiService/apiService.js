@@ -72,10 +72,10 @@ export const globalRbiData = async () => {
 }
 
 export const fetchGstFinanceBudget = async () => {
-  try{
+  try {
     const response = await api.get("/myitr-news/group-new");
     return response.data;
-  }catch(error){
+  } catch (error) {
     console.log("Error while fetchin Data: ", error);
     throw error;
   }

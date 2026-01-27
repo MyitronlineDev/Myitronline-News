@@ -25,6 +25,8 @@ export const DataProvider = ({ children }) => {
   const [latestNewsData, setLatestNewsData] = useState([]);
   const [navbarData, setNavbarData] = useState([]);
   const [categoryNews, setCategoryNews] = useState([]);
+  const [loadingCategory, setLoadingCategory] = useState(false);
+
 
   /* ================= LATEST NEWS ================= */
   async function latestNewsDisplay() {
@@ -87,8 +89,9 @@ export const DataProvider = ({ children }) => {
   /* ================= CATEGORY NEWS (FIXED) ================= */
   const getCategoryNews = async (
     categoryId,
-    types = ["news", "article"],
+    types = ["news", "article", "circular", "budget"],
   ) => {
+    setLoadingCategory(true);
     if (!categoryId) {
       console.warn("Category ID missing");
       return;
@@ -113,6 +116,8 @@ export const DataProvider = ({ children }) => {
     } catch (e) {
       console.error("Category news error:", e);
       setCategoryNews([]);
+    } finally {
+      setLoadingCategory(false); 
     }
   };
 
@@ -129,6 +134,7 @@ export const DataProvider = ({ children }) => {
         navbarData,
         categoryNews,
         getCategoryNews,
+        loadingCategory
       }}
     >
       {children}

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { NAV_CONTENT } from "./headerData";
 import { useDevice } from "../context/DataProvider";
 
@@ -17,30 +17,15 @@ const FALLBACK_NAV = [
 function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileIndex, setMobileIndex] = useState(null);
-
+  const navigate = useNavigate();
   /* ================= CONTEXT ================= */
-  const { navbarData, getCategoryNews } = useDevice();
+  const { navbarData } = useDevice();
 
   /* ================= SAFE NAVBAR DATA ================= */
   const safeNavbarData =
     Array.isArray(navbarData) && navbarData.length > 0
       ? navbarData
       : FALLBACK_NAV;
-
-  /* ================= CLICK HANDLER (UNCHANGED) ================= */
-  const handleDropdownClick = (category, subRoute) => {
-    if (!category?.id) return;
-
-    let types = ["news", "article"];
-
-    if (subRoute.includes("news")) {
-      types = ["news"];
-    } else if (subRoute.includes("article")) {
-      types = ["article"];
-    }
-
-    getCategoryNews(category.id, types);
-  };
 
   return (
     <nav className="bg-black text-white sticky top-0 z-50 w-full">
@@ -59,16 +44,18 @@ function Header() {
                 <div className="absolute left-1/2 -translate-x-1/2 top-full hidden group-hover:block">
                   <div className="mt-3 min-w-[190px] bg-gray-900 border border-gray-800 rounded-md shadow-xl overflow-hidden">
                     {(NAV_CONTENT[category.name] || []).map((sub) => (
-                      <Link
-                        key={sub.route}
-                        to={sub.route}
-                        onClick={() =>
-                          handleDropdownClick(category, sub.route)
-                        }
-                        className="block px-4 py-2.5 text-sm hover:bg-gray-800 hover:text-yellow-400 transition"
+                      <button
+                        key={`${category.name}-${sub.type}`}
+                        onClick={() => {
+                          navigate(`/navbar?id=${category.id}&type=${sub.type || news}`);
+                          setMobileOpen(false);
+                          setMobileIndex(null);
+                        }}
+                        className="block w-full text-left px-6 py-2 text-sm hover:bg-gray-700 hover:text-yellow-300 transition"
                       >
                         {sub.label}
-                      </Link>
+                      </button>
+
                     ))}
                   </div>
                 </div>
@@ -112,18 +99,18 @@ function Header() {
               {mobileIndex === i && (
                 <div className="bg-gray-800">
                   {(NAV_CONTENT[category.name] || []).map((sub) => (
-                    <Link
-                      key={sub.route}
-                      to={sub.route}
+                    <button
+                      key={`${category.name}-${sub.type}`}
                       onClick={() => {
-                        handleDropdownClick(category, sub.route);
+                        navigate(`/navbar?id=${category.id}&type=${sub.type || sub.news}`);
                         setMobileOpen(false);
                         setMobileIndex(null);
                       }}
                       className="block px-6 py-2.5 text-sm hover:bg-gray-700 hover:text-yellow-400 transition"
                     >
                       {sub.label}
-                    </Link>
+                    </button>
+
                   ))}
                 </div>
               )}
