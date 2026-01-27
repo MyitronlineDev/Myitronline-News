@@ -2,8 +2,6 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 function Footer() {
-
-
   return (
     <footer className="bg-black text-gray-400 mt-2">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-10 py-10">
@@ -13,7 +11,7 @@ function Footer() {
           <div className="flex flex-col gap-4">
             <div className="leading-tight">
               <div className="text-white text-2xl font-bold tracking-tight">
-              Myitronline News
+                Myitronline News
               </div>
 
               {/* Tagline */}
@@ -34,8 +32,6 @@ function Footer() {
               ["Contact Us", "/contact"],
               ["Terms & Conditions", "TermsAndConditions"],
               ["Privacy Policy", "PrivacyPolicy"],
-              ["Video", "#video"],
-              ["Long News", "#longnews"],
             ].map(([label, link]) => (
               <NavLink
                 key={label}
@@ -57,7 +53,7 @@ function Footer() {
           <p className="text-sm text-gray-300 leading-relaxed max-w-3xl">
             <span className="font-semibold text-white">Copyright:</span> Any
             unauthorized use or reproduction of{" "}
-            <span className="font-semibold text-white">Renaz</span> content for
+            <span className="font-bold text-white">Myitronline News</span> content for
             commercial purposes is strictly prohibited and constitutes copyright
             infringement liable to legal action.
           </p>
