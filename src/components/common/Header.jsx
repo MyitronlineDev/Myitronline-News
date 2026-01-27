@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { NAV_CONTENT } from "./headerData";
 import { useDevice } from "../context/DataProvider";
-import { fetchNewsByCategory } from "../context/apiService/apiService";
 
 /* ================= FALLBACK NAV ================= */
 const FALLBACK_NAV = [
@@ -18,8 +17,6 @@ const FALLBACK_NAV = [
 function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileIndex, setMobileIndex] = useState(null);
-  const [data, setData] = useState(null);
-  console.log(data);
 
   /* ================= CONTEXT ================= */
   const { navbarData, getCategoryNews } = useDevice();
@@ -30,21 +27,24 @@ function Header() {
       ? navbarData
       : FALLBACK_NAV;
 
-  useEffect(() => {
-    const fetch = async (id, type) => {
-      try {
-        const data = await fetchNewsByCategory(id, type);
-        setData(data);
-      } catch (e) {
-        console.error(`fetchNewsByCategory error from header component\n`, e)
-      }
+  /* ================= CLICK HANDLER ================= */
+  const handleDropdownClick = (category, subRoute) => {
+    if (!category?.id) {
+      console.warn("❌ Category ID missing", category);
+      return;
     }
-    fetch(6, "news");
-  }, []);
-  /* ================= REMOVE DUPLICATES (SAFETY) ================= */
-  const NAV_LABELS = [
-    ...new Set(safeNavbarData.map(item => item.name)),
-  ];
+
+    // ✅ ALWAYS ARRAY
+    let types = ["news", "article"];
+
+    if (subRoute.includes("news")) {
+      types = ["news"];
+    } else if (subRoute.includes("article")) {
+      types = ["article"];
+    }
+
+    getCategoryNews(category.id, types);
+  };
 
   return (
     <nav className="bg-black text-white sticky top-0 z-50 mb-1">
@@ -73,9 +73,7 @@ function Header() {
                       <Link
                         key={sub.route}
                         to={sub.route}
-                        onClick={() =>
-                          handleDropdownClick(category, sub.route)
-                        }
+                        onClick={() => handleDropdownClick(category, sub.route)}
                         className="block px-4 py-2 text-sm hover:bg-gray-800 hover:text-yellow-300 transition"
                       >
                         {sub.label}
@@ -96,9 +94,7 @@ function Header() {
             <div key={category.name} className="border-b border-gray-700">
               <button
                 className="w-full px-4 py-3 flex justify-between items-center"
-                onClick={() =>
-                  setMobileIndex(mobileIndex === i ? null : i)
-                }
+                onClick={() => setMobileIndex(mobileIndex === i ? null : i)}
               >
                 <span>{category.name}</span>
                 <span>{mobileIndex === i ? "−" : "+"}</span>

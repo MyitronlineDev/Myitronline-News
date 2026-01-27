@@ -18,8 +18,8 @@ const localApi = axios.create({
 
 export const searchNews = async (query) => {
   try {
-    const response = await localApi.get(
-      `/news/search?query=${encodeURIComponent(query)}`
+    const response = await api.get(
+      `/news/search?query=${encodeURIComponent(query)}`,
     );
 
     // expected: { status: true, results: [] }
@@ -32,7 +32,7 @@ export const searchNews = async (query) => {
 
 export const latestNews = async () => {
   try {
-    const response = await localApi.get("/myitr-news/right-side");
+    const response = await api.get("/myitr-news/right-side");
 
     return response.data;
   } catch (error) {
@@ -43,7 +43,7 @@ export const latestNews = async () => {
 
 export const lendingPageNews = async () => {
   try {
-    const response = await localApi.get("/myitr-news/latest");
+    const response = await api.get("/myitr-news/latest");
     return response.data;
   } catch (error) {
     console.error("Lending Page News API error:", error);
@@ -53,17 +53,17 @@ export const lendingPageNews = async () => {
 
 export const featureData = async () => {
   try {
-    const response = await localApi.get("/myitr-news/featured");
+    const response = await api.get("/myitr-news/featured");
     return response.data;
   } catch (error) {
     console.error("Error while fetching Features: ", error);
     throw error;
   }
-}
+};
 
 export const contactUs = async (data) => {
   try {
-    const response = await localApi.post("contact-us", data);
+    const response = await api.post("contact-us", data);
     return response.data;
   } catch (error) {
     console.error("Contact API error:", error);
@@ -88,7 +88,7 @@ export const fetchDetailsNewsApi = async (slug, lng = "en") => {
 
 export const getCategories = async () => {
   try {
-    const response = await localApi.get("/myitr-news/categories");
+    const response = await api.get("/myitr-news/categories");
     return response.data;
   } catch (error) {
     console.error("Categories API error:", error);
@@ -96,15 +96,17 @@ export const getCategories = async () => {
   }
 };
 
-export const fetchNewsByCategory = async (id, categoryType) => {
+export const getNewsByCategoryType = async (
+  categoryId,
+  type = "news,article",
+) => {
   try {
-    const response = await localApi.get(`/myitr-news/by-category-type?category_id=${id}&type=${categoryType}`);
-
-    if (response.status) {
-      return response.data
-    }
-  } catch (e) {
-    console.error(`fetching news by category: `)
-    return 1
+    const response = await api.get(
+      `/myitr-news/by-category-type?category_id=${categoryId}&type=${type}`,
+    );
+    return response.data;
+  } catch (error) {
+    console.error("News by category API error:", error);
+    throw error;
   }
-}
+};
