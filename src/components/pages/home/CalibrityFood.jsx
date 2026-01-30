@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import testAd from "../../../assets/testAd.jpeg";
 
 const CalibrityFood = ({ globalRbiData }) => {
   if (!globalRbiData) return null;
@@ -124,6 +125,11 @@ const CalibrityFood = ({ globalRbiData }) => {
               </div>
             </article>
           ))}
+        </div>
+        <div className="mt-4">
+          <img
+            src={testAd}
+          />
         </div>
       </div>
     </div>
