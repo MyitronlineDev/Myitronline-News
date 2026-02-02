@@ -11,8 +11,6 @@ import {
 import { formatDateDDMMYY } from "../utility/formatter";
 
 const Circular = ({ data }) => {
-  console.log("data from circular component:", data);
-
   // Get current category from first item
   const currentCategory = data[0]?.category_name || "Circulars";
   
