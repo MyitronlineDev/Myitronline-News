@@ -98,7 +98,6 @@ export const DataProvider = ({ children }) => {
     }
 
     try {
-      // 🔒 FORCE STRING FOR BACKEND
       const safeType = Array.isArray(types)
         ? types.join(",")
         : types;
