@@ -49,7 +49,7 @@ const TopBar = () => {
   };
 
   return (
-    <div className="w-full bg-gray-100 border-b z-50">
+    <div className="w-full bg-gray-100  z-50 ">
       <div className="max-w-7xl mx-auto px-4 py-2">
 
         {/* TOP ROW */}

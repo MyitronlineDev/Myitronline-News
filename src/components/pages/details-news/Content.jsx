@@ -37,8 +37,8 @@ const Content = ({ contents }) => {
   });
 
   return (
-    <div id="mat-page-body" style={{ fontSize: `${scale}rem` }}>
-      <article dangerouslySetInnerHTML={{ __html: cleanHTML }} />
+    <div style={{ fontSize: `${scale}rem` }} className="">
+      <article dangerouslySetInnerHTML={{ __html: cleanHTML }} className="w-full m-0 p-1 lg:p-3 "/>
     </div>
   );
 };

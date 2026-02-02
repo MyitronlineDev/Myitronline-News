@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { NAV_CONTENT } from "./headerData";
 import { useDevice } from "../context/DataProvider";
+import navbarImg from "../../assets/navbarImg.png"
 
 /* ================= FALLBACK NAV ================= */
 const FALLBACK_NAV = [
@@ -28,10 +29,12 @@ function Header() {
       : FALLBACK_NAV;
 
   return (
-    <nav className="bg-black text-white sticky top-0 z-50 w-full">
+    <nav className=" sticky top-4 z-50 w-[90%] max-w-4xl mx-auto bg-black/50 backdrop-blur-lg backdrop-saturate-150 border border-white/10 rounded-4xl px-6 text-black shadow-md shadow-black/10 my-2 bg-cover bg-center"
+      style={{ backgroundImage: `url(${navbarImg})` }}
+    >
       {/* ================= TOP BAR ================= */}
       <div className="max-w-7xl mx-auto px-4 h-14 flex items-center justify-center relative">
-        
+
         {/* ================= DESKTOP MENU ================= */}
         <ul className="hidden lg:flex gap-8 text-md font-medium tracking-wide">
           {safeNavbarData.map((category) => (
@@ -75,9 +78,8 @@ function Header() {
 
       {/* ================= MOBILE MENU ================= */}
       <div
-        className={`lg:hidden overflow-hidden transition-all duration-300 ${
-          mobileOpen ? "max-h-screen" : "max-h-0"
-        }`}
+        className={`lg:hidden overflow-hidden transition-all duration-300 ${mobileOpen ? "max-h-screen" : "max-h-0"
+          }`}
       >
         <div className="bg-gray-900 border-t border-gray-800">
           {safeNavbarData.map((category, i) => (
