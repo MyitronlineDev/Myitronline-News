@@ -19,8 +19,6 @@ const DetailNews = () => {
 
   const { latestNewsData } = useDevice();
 
-
-  //  Fetch news by slug & language
   const fetchShowNews = async (slug, language) => {
     try {
       setLoading(true);
@@ -33,13 +31,11 @@ const DetailNews = () => {
     }
   };
 
-  // Refetch when slug or language changes
   useEffect(() => {
     if (slug) fetchShowNews(slug, lang);
   }, [slug, lang]);
 
   if (!articles || loading) {
-    // return <DetailNewsSkeleton />;
     return <LoaderUi />
   }
 
@@ -91,7 +87,7 @@ const DetailNews = () => {
                         articles?.news?.intro_image
                       )}
                       alt={articles?.news?.news_title || "News image"}
-                      className="absolute inset-0 w-full h-full object-contain "
+                      className="absolute inset-0 w-full h-full aspect-video p-1 lg:p-2 rounded-2xl lg:rounded-4xl"
                       loading="lazy"
                     />
                   </div>

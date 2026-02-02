@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
+import { FiSearch, FiX } from "react-icons/fi";
 
-const IMAGE_BASE_URL = import.meta.env.VITE_API_BASE_URL
+const IMAGE_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const SearchInput = ({
   value,
@@ -20,8 +21,7 @@ const SearchInput = ({
     };
 
     document.addEventListener("mousedown", handleClickOutside);
-    return () =>
-      document.removeEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [onChange]);
 
   const trimmedValue = value.trim();
@@ -35,14 +35,26 @@ const SearchInput = ({
     });
 
   return (
-    <div ref={wrapperRef} className="relative w-full max-w-md">
+    <div ref={wrapperRef} className="relative w-full max-w-xl">
+
+      <FiSearch
+        className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5 pointer-events-none"
+      />
+
+      {value && (
+        <FiX
+          onClick={() => onChange("")}
+          className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5 cursor-pointer hover:text-gray-600"
+        />
+      )}
+
       <input
         type="text"
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
         className="
-          w-full px-4 py-2.5 text-sm
+          w-full pl-10 pr-10 py-2.5 text-sm
           rounded-full bg-white
           border border-gray-200 shadow-sm
           focus:outline-none focus:border-blue-400
@@ -50,14 +62,13 @@ const SearchInput = ({
         "
       />
 
-
       {showDropdown && (
         <ul
           className="
           absolute left-0 right-0 mt-2
           bg-white rounded-xl shadow-xl
           ring-1 ring-black/5
-          z-[60] max-h-80 overflow-auto
+          z-[60] max-h-90 overflow-auto 
         "
         >
           {trimmedValue.length < 3 && (
@@ -80,7 +91,7 @@ const SearchInput = ({
                 onClick={() => onSelect(item.slug)}
                 className="
                 flex gap-3 px-4 py-3 cursor-pointer
-                hover:bg-blue-50 transition
+                hover:bg-blue-50 transition 
               "
               >
                 <img
@@ -109,29 +120,34 @@ const SearchInput = ({
               </li>
             )}
 
-          {/* CATEGORY PILLS INSIDE SAME DROPDOWN */}
+          {/* CATEGORY PILLS */}
           <li className="px-4 py-3 border-t border-gray-100">
             <div className="flex flex-wrap gap-2">
-              {["Income Tax", "Budget", "Gst", "RBI", "Finance", "Corporate Law", "Global News"].map(
-                (cat) => (
-                  <button
-                    key={cat}
-                    onClick={() => onSelect(cat)}
-                    className="
+              {[
+                "Income Tax",
+                "Budget",
+                "Gst",
+                "RBI",
+                "Finance",
+                "Corporate Law",
+                "Global News",
+              ].map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => onSelect(cat)}
+                  className="
                     px-3 py-1 text-xs font-medium
                     rounded-full border border-gray-300
                     bg-gray-100 hover:bg-blue-100 transition
                   "
-                  >
-                    {cat}
-                  </button>
-                )
-              )}
+                >
+                  {cat}
+                </button>
+              ))}
             </div>
           </li>
         </ul>
       )}
-
     </div>
   );
 };
