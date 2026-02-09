@@ -28,13 +28,13 @@ export const NAV_CONTENT = {
   Finance: [
     { label: "Articles", type: "article" },
     { label: "News", type: "news" },
-    { label: "Notifications", type: "notifications" },
+   
   ],
 
   "Corporate Law": [
     { label: "Articles", type: "article" },
     { label: "News", type: "news" },
-    { label: "Notifications", type: "notifications" },
+  
   ],
 
   "Global News": [

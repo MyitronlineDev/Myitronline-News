@@ -56,83 +56,83 @@ const About = () => {
       </section>
 
       {/* ================= DARK SERVICES BLOCK ================= */}
-      <section className="bg-white py-10">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="relative bg-[#0f172a] rounded-2xl shadow-2xl overflow-hidden">
-            <div className="grid grid-cols-[40%_60%] min-h-[520px]">
-              {/* LEFT IMAGE */}
-              <img
-                src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=70"
-                alt="Team Work"
-                loading="lazy"
-                
-                className="w-full h-[520px] object-cover hover:scale-[1.03] transition duration-500 rounded-l-2xl"
-              />
+     <section className="bg-white py-10">
+  <div className="max-w-6xl mx-auto px-6">
+    <div className="relative bg-[#0f172a] rounded-2xl shadow-2xl overflow-hidden">
 
-              {/* RIGHT CONTENT */}
-              <div className="px-20 py-20 flex items-center">
-                <div className="grid sm:grid-cols-2 gap-x-20 gap-y-14 text-sm text-white">
-                  {[
-                    {
-                      title: "Design",
-                      items: [
-                        "Web Design",
-                        "Art Direction",
-                        "Logo & Branding",
-                        "UI / UX",
-                      ],
-                    },
-                    {
-                      title: "Digital & Mobile",
-                      items: [
-                        "Websites",
-                        "Responsive Design",
-                        "Mobile & Tablet",
-                        "iOS & Android Apps",
-                      ],
-                    },
-                    {
-                      title: "Development",
-                      items: [
-                        "Front-end & Back-end",
-                        "Interaction Design",
-                        "Magento",
-                        "WordPress / Laravel",
-                      ],
-                    },
-                    {
-                      title: "Social Marketing",
-                      items: [
-                        "Social Strategy",
-                        "Community Management",
-                        "Influencers",
-                        "Reporting",
-                      ],
-                    },
-                  ].map((block, i) => (
-                    <div key={i}>
-                      <span className="block text-md uppercase tracking-widest text-[#c9a24d] mb-2">
-                        Services
-                      </span>
-                      <h4 className="font-semibold mb-2">{block.title}</h4>
-                      <ul className="space-y-3 text-white/70">
-                        {block.items.map((item, idx) => (
-                          <li
-                            key={idx}
-                            className="hover:text-[#c9a24d] transition duration-200"
-                          >
-                            → {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* GRID */}
+      <div className="grid grid-cols-1 lg:grid-cols-[40%_60%] lg:min-h-[520px]">
+
+        {/* LEFT IMAGE */}
+        <img
+          src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=70"
+          alt="Team Work"
+          loading="lazy"
+          className="
+            w-full
+            h-64 sm:h-80 lg:h-[520px]
+            object-cover
+            transition
+            duration-500
+            hover:scale-[1.03]
+            lg:rounded-l-2xl
+          "
+        />
+
+       {/* RIGHT CONTENT */}
+<div className="px-6 sm:px-10 lg:px-20 py-10 sm:py-14 lg:py-20 flex items-center justify-center">
+  <div className="grid sm:grid-cols-2 gap-x-10 lg:gap-x-20 gap-y-10 lg:gap-y-14 text-sm text-white text-center lg:text-left">
+
+    {[
+      {
+        title: "Design",
+        items: ["Web Design", "Art Direction", "Logo & Branding", "UI / UX"],
+      },
+      {
+        title: "Digital & Mobile",
+        items: ["Websites", "Responsive Design", "Mobile & Tablet", "iOS & Android Apps"],
+      },
+      {
+        title: "Development",
+        items: ["Front-end & Back-end", "Interaction Design", "Magento", "WordPress / Laravel"],
+      },
+      {
+        title: "Social Marketing",
+        items: ["Social Strategy", "Community Management", "Influencers", "Reporting"],
+      },
+    ].map((block, i) => (
+      <div
+        key={i}
+        className="flex flex-col items-center lg:items-start"
+      >
+        <span className="block text-xs sm:text-md uppercase tracking-widest text-[#c9a24d] mb-2">
+          Services
+        </span>
+
+        <h4 className="font-semibold mb-2">{block.title}</h4>
+
+        <ul className="space-y-3 text-white/70">
+          {block.items.map((item, idx) => (
+            <li
+              key={idx}
+              className="hover:text-[#c9a24d] transition duration-200"
+            >
+              → {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+
+  </div>
+</div>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* ================= PRODUCT CARDS ================= */}
       <section className="bg-white py-10">

@@ -22,7 +22,7 @@ function Header() {
 
   /* ================= CONTEXT ================= */
   const { navbarData } = useDevice();
-  console.log(navbarData)
+
 
   /* ================= SAFE NAVBAR DATA ================= */
   const safeNavbarData =
