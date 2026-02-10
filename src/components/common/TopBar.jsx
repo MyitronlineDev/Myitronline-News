@@ -97,7 +97,7 @@ const TopBar = () => {
               </a>
             </div>
             <div className="hidden sm:flex">
-              <LiveTime color="text-black" size="text-sm" />
+              <LiveTime color="text-black" size="text-sm" showSeconds={false}/>
             </div>
 
             <button

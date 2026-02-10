@@ -12,6 +12,7 @@ function MainLayout() {
       <div className="h-2 bg-gray-50 border-b sm:hidden" />
 
       <Header />
+
       {/* <Breadcrumbs /> */}
       <main className="min-h-screen">
         <Outlet />
