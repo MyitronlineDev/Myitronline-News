@@ -16,7 +16,8 @@ const NavbarDataLayout = () => {
   const type = params.get("type");
 
   const { getCategoryNews, categoryNews, loadingCategory } = useDevice();
-
+  console.log(categoryNews);
+  console.log(`category header: `, loadingCategory)
   useEffect(() => {
     if (categoryId && type) {
       getCategoryNews(categoryId, [type]);
@@ -48,6 +49,5 @@ const NavbarDataLayout = () => {
     </>
   );
 };
-
 
 export default NavbarDataLayout;
