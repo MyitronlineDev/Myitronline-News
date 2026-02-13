@@ -40,6 +40,8 @@ function Footer() {
               ["Contact Us", "/contact"],
               ["Terms & Conditions", "/TermsAndConditions"],
               ["Privacy Policy", "/PrivacyPolicy"],
+               ["Security policy", "/SecurityPolicy"],
+                ["Legal Disclaimer", "/LegalDisclaimer"],
             ].map(([label, link]) => (
               <NavLink
                 key={label}
