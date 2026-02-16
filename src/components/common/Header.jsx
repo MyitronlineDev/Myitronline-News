@@ -93,7 +93,7 @@ function Header() {
           mobileOpen ? "max-h-screen" : "max-h-0"
         }`}
       >
-        <div className="bg-gray-900 border-t border-gray-800">
+        <div className="bg-white border-t border-gray-800">
           {safeNavbarData.map((category, i) => (
             <div key={category.name} className="border-b border-gray-800">
               <button

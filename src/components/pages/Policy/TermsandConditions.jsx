@@ -19,47 +19,10 @@ const TermsAndConditions = () => {
       {/* ================= CONTENT ================= */}
       <div className="max-w-6xl mx-auto px-5 py-10 grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* ================= SIDEBAR ================= */}
-        <aside className="md:col-span-1">
-          <div className="sticky top-20 border-l-2 border-indigo-400 pl-4">
-            <h3 className="text-sm font-semibold text-gray-500 uppercase mb-3">
-              Contents
-            </h3>
-
-            <ul className="space-y-1 text-sm">
-              {[
-                "Scope of Service",
-                "Use of Content",
-                "Copyright and Ownership",
-                "User Responsibilities",
-                "Accuracy of Information",
-                "Third-Party Links",
-                "Privacy and Data Protection",
-                "Limitation of Liability",
-                "Governing Law",
-              ].map((title, i) => (
-                <li key={i}>
-                  <a
-                    href={`#section-${i + 1}`}
-                    className="group flex items-center gap-3 rounded-md px-2 py-1.5
-                               text-gray-700 hover:text-indigo-600
-                               hover:bg-indigo-50 transition"
-                  >
-                    <span className="text-gray-400 group-hover:text-indigo-600 text-md">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <span>{title}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </aside>
-
-        {/* ================= ARTICLE ================= */}
-        <article className="md:col-span-3">
+            <article className="md:col-span-3 md:order-1 order-2">
           {/* INTRO */}
           <p className="text-base leading-relaxed text-gray-800 mb-4 max-w-3xl">
-            Welcome to <span className="font-semibold">Your Company Name</span>.
+            Welcome to <span className="font-semibold">Myitronline Global Services Private Limited</span>.
             By accessing or using this website, you confirm that you have read,
             understood, and agreed to these Terms and Conditions.
           </p>
@@ -249,6 +212,45 @@ const TermsAndConditions = () => {
             </section>
           </div>
         </article>
+
+        <aside className="md:col-span-1 md:order-2 order-1">
+          <div className="sticky top-20 border-l-2 border-indigo-400 pl-4">
+            <h3 className="text-sm font-semibold text-gray-500 uppercase mb-3">
+              Contents
+            </h3>
+
+            <ul className="space-y-1 text-sm">
+              {[
+                "Scope of Service",
+                "Use of Content",
+                "Copyright and Ownership",
+                "User Responsibilities",
+                "Accuracy of Information",
+                "Third-Party Links",
+                "Privacy and Data Protection",
+                "Limitation of Liability",
+                "Governing Law",
+              ].map((title, i) => (
+                <li key={i}>
+                  <a
+                    href={`#section-${i + 1}`}
+                    className="group flex items-center gap-3 rounded-md px-2 py-1.5
+                               text-gray-700 hover:text-indigo-600
+                               hover:bg-indigo-50 transition"
+                  >
+                    <span className="text-gray-400 group-hover:text-indigo-600 text-md">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span>{title}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </aside>
+
+        {/* ================= ARTICLE ================= */}
+    
       </div>
     </main>
   );
