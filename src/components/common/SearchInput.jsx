@@ -68,7 +68,7 @@ const SearchInput = ({
           absolute left-0 right-0 mt-2
           bg-white rounded-xl shadow-xl
           ring-1 ring-black/5
-          z-[60] max-h-90 overflow-auto 
+          z-60 max-h-90 overflow-auto 
         "
         >
           {trimmedValue.length < 3 && (
@@ -97,7 +97,7 @@ const SearchInput = ({
                 <img
                   src={`${IMAGE_BASE_URL}/${item.intro_image}`}
                   alt={item.title}
-                  className="w-14 h-14 rounded-md object-cover flex-shrink-0"
+                  className="w-14 h-14 rounded-md object-cover shrink-0"
                 />
 
                 <div className="flex flex-col">
