@@ -32,7 +32,7 @@ function Header() {
 
   return (
     <nav
-      className="sticky top-4 z-50 w-[90%] max-w-4xl mx-auto bg-black/50 backdrop-blur-lg backdrop-saturate-150 border border-white/10 rounded-4xl px-6 text-black shadow-md shadow-black/10 my-2 bg-cover bg-center"
+      className="sticky top-4 z-50 w-[90%] max-w-5xl mx-auto bg-black/50 backdrop-blur-lg backdrop-saturate-150 border border-white/10 rounded-4xl px-6 text-black shadow-md shadow-black/10  bg-cover bg-center"
       style={{ backgroundImage: `url(${navbarImg})` }}
     >
       {/* ================= TOP BAR ================= */}

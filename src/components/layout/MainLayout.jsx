@@ -11,7 +11,9 @@ function MainLayout() {
       {/* Visual separator */}
       <div className="h-2 bg-gray-50 border-b sm:hidden" />
 
-      <Header />
+      <div className="bg-gray-100 py-2 ">
+        <Header />
+      </div>
 
       {/* <Breadcrumbs /> */}
       <main className="min-h-screen">

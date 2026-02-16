@@ -8,15 +8,10 @@ const Header = ({
   heading,
   publishedAt,
   author = "Krishna-Gopal-Varahney",
-  intro_image = "",
-  setLang,
-  lang
 }) => {
   return (
     <header className="max-w-8xl mx-auto  grid-cols-12 sm:px-0 mb-10">
 
-
-      {/* TOP ROW: CATEGORY + META */}
       <div className="flex flex-wrap items-center gap-3 mb-4 justify-between">
 
         <div className="flex">
@@ -48,33 +43,6 @@ const Header = ({
             </div>
           )}
         </div>
-
-        <div className="flex gap-2 mt-1 lg:mt-2">
-          <button
-            onClick={() => setLang("en")}
-            className={`
-            px-4 py-1.5 text-sm rounded-full transition-all duration-300 border
-            ${lang === "en"
-                      ? "bg-black text-white border-black shadow-sm"
-                      : "bg-gray-200 text-gray-500 border-gray-300 hover:bg-gray-300 hover:text-black"}
-          `}
-          >
-            English
-          </button>
-
-          <button
-            onClick={() => setLang("hn")}
-            className={`
-            px-4 py-1.5 text-sm rounded-full transition-all duration-300 border
-            ${lang === "hn"
-                      ? "bg-black text-white border-black shadow-sm"
-                      : "bg-gray-200 text-gray-500 border-gray-300 hover:bg-gray-300 hover:text-black"}
-          `}
-          >
-            हिंदी
-          </button>
-        </div>
-
       </div>
 
       {/* MAIN TITLE */}

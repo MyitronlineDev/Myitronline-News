@@ -12,21 +12,22 @@
 <body>
   <div id="root"></div>
 
-  <!-- Global Google AdSense Script (required only once) -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8096635845270044"
     crossorigin="anonymous"></script>
 
-  <!-- GTranslate FREE Widget -->
   <script>
-    window.gtranslateSettings = {
-      default_language: "en",
-      languages: ["en", "hi"],
-      wrapper_selector: ".mygt_wrapper"
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement(
+        { pageLanguage: "en", includedLanguages: "en,hi" },
+        "google_translate_element"
+      );
     }
   </script>
 
-  <script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
-  <div class="mygt_wrapper"></div>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <div id="google_translate_element" style="display:none;"></div>
+
 
   <script src="https://cdn.ux4g.gov.in/tools/accessibility-widget.js" async></script>
 
