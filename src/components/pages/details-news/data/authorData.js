@@ -1,4 +1,4 @@
-import authorimage from "../../../../assets/authorPage.png"
+import authorimage from "../../../../assets/authorPage.png";
 
 export const authorData = [
   {
@@ -8,26 +8,30 @@ export const authorData = [
     authorDetails: {
       name: "Krishna-Gopal-Varshney",
       slug: "krishna-gopal-varshnay",
-      role: "Senior | Business | Correspondent ",
-      header: "loreml o remloremlore mlor emlor emloremlore mloreml oremlore mlore mloremlo remlor emlor eml oremloreml oremloremlore mloreml oremlorem  lorem lorem ",
-      bio: "Krishna Gopal varshnay is a senior journalist covering business, electric mobility, and policy-driven economic reforms in India. Electric vehicle sales in India surged by more than 40% in the first quarter of 2025, marking one of the strongest growth phases the country has ever recorded in the clean mobility space. According to the Ministry of Heavy Industries, this jump reflects a fundamental shift in consumer preference, driven not only by higher fuel prices but also by improved confidence in EV technology. The government’s revised subsidy structure, paired with aggressive private investment in charging infrastructure, has helped reduce ownership anxiety that once held back potential buyers. Moreover, Ministry of Heavy Industries, this jump reflects a fundamental shift in consumer preference, driven not only by higher fuel prices but also by improved confidence in EV technology. in EV technology. The government’s revised subsidy structure, paired with aggressive private investment in charging infrastructure, has helped reduce ownership anxiety that once held back potential buyers. Moreover, Ministry of Heavy Industries, this jump reflects a fundamental shift in consumer preference, driven not only by higher fuel prices but also by improved confidence in EV technology.in EV technology. The government’s revised subsidy structure, paired with aggressive private investment in charging infrastructure, has helped reduce ownership anxiety that once held back potential buyers. Moreover, Ministry of Heavy Industries, this jump reflects a fundamental shift in consumer preference, driven not only by higher fuel prices but also by improved confidence in EV technology. The government’s revised subsidy structure, paired with aggressive private investment in charging infrastructure,gy. The government’s revised subsidy experts believe could be a defining decade for India’s transition toward sustainable mobility. ",
 
-      Call: "+91 - 8130305886, + 91 - 9971055886",
+      role: "Founder & CEO | Myitronline Global Services Pvt. Ltd. | Delhi",
+
+      header: "Leading Myitronline with a vision to simplify taxation and business compliance for every individual and organization.",
+
+      bio: "MyITROnline Global Services Private Limited, based in Delhi, specializes in delivering seamless, comprehensive tax filing and essential compliance services for individuals, professionals, and businesses. With a strong focus on accuracy, reliability, and customer convenience, we ensure every client receives personalized assistance and end-to-end support.",
+
+      Call: "+91-8130305886, +91-9971055886",
 
       Email: "help@myitronline.com, info@myitronline.com",
 
-      location: "Myitronline Global Services Private Limited.Office No. 301 - 3rd Floor Plot No. 51 HASANPUR, I.P.Extension, Patparganj, Delhi, PIN: 110092",
+      location:
+        "Myitronline Global Services Private Limited. Office No. 301, 3rd Floor, Plot No. 51, Hasanpur, I.P. Extension, Patparganj, Delhi, PIN: 110092",
 
       avatar: authorimage,
 
       socials: {
         twitter: "https://x.com/_taxa23",
-        linkedin: "https://www.linkedin.com/company/taxa23/about/?viewAsMember=true",
+        linkedin:
+          "https://www.linkedin.com/company/taxa23/about/?viewAsMember=true",
         instagram: "https://www.instagram.com/taxa232025/",
-        facebook: "https://www.facebook.com/profile.php?id=61576770940387"
-      }
+        facebook:
+          "https://www.facebook.com/profile.php?id=61576770940387",
+      },
     },
-  }
+  },
 ];
-
-
