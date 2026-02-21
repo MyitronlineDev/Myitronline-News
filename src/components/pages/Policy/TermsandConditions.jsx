@@ -6,239 +6,145 @@ const TermsAndConditions = () => {
       {/* ================= HEADER ================= */}
       <div className="bg-linear-to-r from-indigo-950 to-slate-900">
         <div className="max-w-6xl mx-auto px-5 py-10">
-          <h1 className="text-4xl font-semibold text-white mb-1">
+          <h1 className="text-4xl font-semibold text-white mb-2">
             Terms & Conditions
           </h1>
-          <p className="text-gray-300 text-sm max-w-2xl">
-            Rules, responsibilities, and policies governing the use of our
-            platform.
+          <p className="text-gray-300 text-md max-w-2xl">
+             By accessing Myitronline News, you agree to comply with these terms.
           </p>
         </div>
       </div>
 
       {/* ================= CONTENT ================= */}
-      <div className="max-w-6xl mx-auto px-5 py-10 grid grid-cols-1 md:grid-cols-4 gap-8">
-        {/* ================= SIDEBAR ================= */}
-            <article className="md:col-span-3 md:order-1 order-2">
-          {/* INTRO */}
-          <p className="text-base leading-relaxed text-gray-800 mb-4 max-w-3xl">
-            Welcome to <span className="font-semibold">Myitronline Global Services Private Limited</span>.
-            By accessing or using this website, you confirm that you have read,
-            understood, and agreed to these Terms and Conditions.
-          </p>
+      <div className="max-w-6xl mx-auto px-5 py-12 grid grid-cols-1 md:grid-cols-4 gap-6">
+        
+        {/* ================= ARTICLE ================= */}
+        <article className="md:col-span-3 md:order-1 order-2">
 
-          <div className="space-y-6">
+          {/* INTRO */}
+    
+
+          <div className="space-y-10">
+
             {/* ================= 01 ================= */}
             <section id="section-1" className="scroll-mt-24">
-              <div className="flex items-center gap-3 mb-2">
-                <span className="text-indigo-600 font-semibold text-sm">
-                  01
-                </span>
-                <h2 className="text-3xl font-semibold">Scope of Service</h2>
+              <div className="flex items-center gap-3 mb-1">
+                <span className="text-indigo-600 font-semibold">01</span>
+                <h2 className="text-2xl font-semibold">Use of Website</h2>
               </div>
-              <p className="text-gray-800 leading-relaxed text-sm mb-2 pl-6 max-w-3xl">
-                We operate as a digital news and information platform providing
-                editorial content, analysis, opinion pieces, and related
-                services.
+
+              <p className="text-gray-800 leading-relaxed pl-6 max-w-3xl">
+                This website provides financial news, tax updates, compliance
+                information, and global economic insights for informational purposes only.
               </p>
-              <ul className="list-disc pl-10 text-sm text-gray-800 space-y-1">
-                <li>
-                  Services may be modified, expanded, or discontinued at any
-                  time.
-                </li>
-                <li>Content availability depends on editorial priorities.</li>
-                <li>
-                  Access to certain features may be restricted without notice.
-                </li>
+
+              <p className="pl-6 mt-1 font-medium text-gray-800">
+                You agree not to:
+              </p>
+
+              <ul className="list-disc pl-10 mt-1 text-gray-800 space-y-1">
+                <li>Use the site for unlawful purposes</li>
+                <li>Attempt unauthorized access</li>
+                <li>Reproduce content without permission</li>
+                <li>Misuse published information</li>
               </ul>
             </section>
 
             {/* ================= 02 ================= */}
             <section id="section-2" className="scroll-mt-24">
-              <div className="flex items-center gap-3 mb-2">
-                <span className="text-indigo-600 font-semibold text-sm">
-                  02
-                </span>
-                <h2 className="text-3xl font-semibold">Use of Content</h2>
+              <div className="flex items-center gap-3 mb-1">
+                <span className="text-indigo-600 font-semibold">02</span>
+                <h2 className="text-2xl font-semibold">No Professional Advice</h2>
               </div>
-              <p className="text-gray-800 leading-relaxed text-sm mb-2 pl-6 max-w-3xl">
-                All content published on this website is intended strictly for
-                personal and non-commercial use.
+
+              <p className="text-gray-800 leading-relaxed pl-6 max-w-3xl">
+                Content is for informational purposes only and does not constitute tax,
+                legal, accounting, or financial advice.
               </p>
-              <ul className="list-disc pl-10 text-sm text-gray-800 space-y-1">
-                <li>
-                  Reproduction or redistribution without permission is
-                  prohibited.
-                </li>
-                <li>Content must not be altered or misrepresented.</li>
-                <li>Proper attribution is required where permitted.</li>
-              </ul>
+
+              <p className="pl-6 mt-1 text-gray-800 leading-relaxed max-w-3xl">
+                Users must verify official notifications and consult professionals before acting.
+              </p>
             </section>
 
             {/* ================= 03 ================= */}
             <section id="section-3" className="scroll-mt-24">
-              <div className="flex items-center gap-3 mb-2">
-                <span className="text-indigo-600 font-semibold text-sm">
-                  03
-                </span>
-                <h2 className="text-3xl font-semibold">
-                  Copyright and Ownership
-                </h2>
+              <div className="flex items-center gap-3 mb-1">
+                <span className="text-indigo-600 font-semibold">03</span>
+                <h2 className="text-2xl font-semibold">Intellectual Property</h2>
               </div>
-              <p className="text-gray-800 leading-relaxed text-sm mb-2 pl-6 max-w-3xl">
-                All intellectual property rights in the content published on
-                this platform are owned by the company or its partners.
+
+              <p className="text-gray-800 leading-relaxed pl-6 max-w-3xl">
+                All website content including articles, graphics, logos, and design
+                elements are owned by Myitronline Global Services Private Limited.
               </p>
-              <ul className="list-disc pl-10 text-sm text-gray-800 space-y-1">
-                <li>Includes articles, images, videos, graphics, and logos.</li>
-                <li>Unauthorized use may result in legal action.</li>
+
+              <ul className="list-disc pl-10 mt-1 text-gray-800 space-y-2">
+                <li>Unauthorized copying, reproduction, or commercial use is prohibited.</li>
               </ul>
             </section>
 
             {/* ================= 04 ================= */}
             <section id="section-4" className="scroll-mt-24">
-              <div className="flex items-center gap-3 mb-2">
-                <span className="text-indigo-600 font-semibold text-sm">
-                  04
-                </span>
-                <h2 className="text-3xl font-semibold">
-                  User Responsibilities
-                </h2>
+              <div className="flex items-center gap-3 mb-1">
+                <span className="text-indigo-600 font-semibold">04</span>
+                <h2 className="text-2xl font-semibold">Limitation of Liability</h2>
               </div>
-              <p className="text-gray-800 leading-relaxed text-sm mb-2 pl-6 max-w-3xl">
-                Users must access and use the platform responsibly and lawfully.
+
+              <p className="text-gray-800 leading-relaxed pl-6 max-w-3xl">
+                We are not liable for:
               </p>
-              <ul className="list-disc pl-10 text-sm text-gray-800 space-y-1">
-                <li>No disruption of website security or functionality.</li>
-                <li>No abusive, defamatory, or unlawful content.</li>
-                <li>Violations may result in suspension or termination.</li>
+
+              <ul className="list-disc pl-10 mt-1 text-gray-800 space-y-1">
+                <li>Financial loss</li>
+                <li>Compliance errors</li>
+                <li>Business decisions taken based on website content</li>
+                <li>Technical interruptions</li>
               </ul>
+
+              <p className="pl-6 mt-1 text-gray-800 leading-relaxed max-w-3xl">
+                Use of the website is at your own discretion.
+              </p>
             </section>
 
             {/* ================= 05 ================= */}
             <section id="section-5" className="scroll-mt-24">
-              <div className="flex items-center gap-3 mb-2">
-                <span className="text-indigo-600 font-semibold text-sm">
-                  05
-                </span>
-                <h2 className="text-3xl font-semibold">
-                  Accuracy of Information
-                </h2>
+              <div className="flex items-center gap-3 mb-1">
+                <span className="text-indigo-600 font-semibold">05</span>
+                <h2 className="text-2xl font-semibold">Modifications</h2>
               </div>
-              <p className="text-gray-800 leading-relaxed text-sm mb-2 pl-6 max-w-3xl">
-                Information may change as new facts or clarifications emerge.
+
+              <p className="text-gray-800 leading-relaxed pl-6 max-w-3xl">
+                We reserve the right to modify content, features, or terms without prior notice.
               </p>
-              <ul className="list-disc pl-10 text-sm text-gray-800 space-y-1">
-                <li>No guarantee of absolute accuracy.</li>
-                <li>Opinions belong to respective authors.</li>
-                <li>
-                  Readers should verify critical information independently.
-                </li>
-              </ul>
             </section>
 
-            {/* ================= 06 ================= */}
-            <section id="section-6" className="scroll-mt-24">
-              <div className="flex items-center gap-3 mb-2">
-                <span className="text-indigo-600 font-semibold text-sm">
-                  06
-                </span>
-                <h2 className="text-3xl font-semibold">Third-Party Links</h2>
-              </div>
-              <p className="text-gray-800 leading-relaxed text-sm mb-2 pl-6 max-w-3xl">
-                The website may contain links to third-party websites.
-              </p>
-              <ul className="list-disc pl-10 text-sm text-gray-800 space-y-1">
-                <li>No control or endorsement of external websites.</li>
-                <li>Accessing external links is at the user’s discretion.</li>
-              </ul>
-            </section>
-
-            {/* ================= 07 ================= */}
-            <section id="section-7" className="scroll-mt-24">
-              <div className="flex items-center gap-3 mb-2">
-                <span className="text-indigo-600 font-semibold text-sm">
-                  07
-                </span>
-                <h2 className="text-3xl font-semibold">
-                  Privacy and Data Protection
-                </h2>
-              </div>
-              <p className="text-gray-800 leading-relaxed text-sm mb-2 pl-6 max-w-3xl">
-                We handle personal information responsibly and transparently.
-              </p>
-              <ul className="list-disc pl-10 text-sm text-gray-800 space-y-1">
-                <li>Data handled according to our Privacy Policy.</li>
-                <li>Security measures are implemented.</li>
-                <li>Absolute security cannot be guaranteed.</li>
-              </ul>
-            </section>
-
-            {/* ================= 08 ================= */}
-            <section id="section-8" className="scroll-mt-24">
-              <div className="flex items-center gap-3 mb-2">
-                <span className="text-indigo-600 font-semibold text-sm">
-                  08
-                </span>
-                <h2 className="text-3xl font-semibold">
-                  Limitation of Liability
-                </h2>
-              </div>
-              <p className="text-gray-800 leading-relaxed text-sm mb-2 pl-6 max-w-3xl">
-                Use of this website is at your own risk. These Terms and
-                Conditions are governed by the laws of India.
-              </p>
-              <ul className="list-disc pl-10 text-sm text-gray-800 space-y-1">
-                <li>No liability for indirect or consequential damages.</li>
-                <li>No responsibility for technical issues or downtime.</li>
-              </ul>
-            </section>
-
-            {/* ================= 09 ================= */}
-            <section id="section-9" className="scroll-mt-24">
-              <div className="flex items-center gap-3 mb-2">
-                <span className="text-indigo-600 font-semibold text-sm">
-                  09
-                </span>
-                <h2 className="text-3xl font-semibold">Governing Law</h2>
-              </div>
-              <p className="text-gray-800 leading-relaxed text-sm mb-2 pl-6 max-w-3xl">
-                These Terms and Conditions are governed by the laws of India.
-                These Terms and Conditions are governed by the laws of India.
-              </p>
-              <ul className="list-disc pl-10 text-sm text-gray-800 space-y-1">
-                <li>All disputes fall under Indian jurisdiction.</li>
-              </ul>
-            </section>
           </div>
         </article>
 
+        {/* ================= SIDEBAR ================= */}
         <aside className="md:col-span-1 md:order-2 order-1">
-          <div className="sticky top-20 border-l-2 border-indigo-400 pl-4">
-            <h3 className="text-sm font-semibold text-gray-500 uppercase mb-3">
+          <div className="sticky top-24 border-l-2 border-indigo-400 pl-4">
+            <h3 className="text-sm font-semibold text-gray-500 uppercase mb-1">
               Contents
             </h3>
 
             <ul className="space-y-1 text-sm">
               {[
-                "Scope of Service",
-                "Use of Content",
-                "Copyright and Ownership",
-                "User Responsibilities",
-                "Accuracy of Information",
-                "Third-Party Links",
-                "Privacy and Data Protection",
+                "Use of Website",
+                "No Professional Advice",
+                "Intellectual Property",
                 "Limitation of Liability",
-                "Governing Law",
+                "Modifications",
               ].map((title, i) => (
                 <li key={i}>
                   <a
                     href={`#section-${i + 1}`}
-                    className="group flex items-center gap-3 rounded-md px-2 py-1.5
+                    className="group flex items-center gap-3 rounded-md px-2 py-2
                                text-gray-700 hover:text-indigo-600
                                hover:bg-indigo-50 transition"
                   >
-                    <span className="text-gray-400 group-hover:text-indigo-600 text-md">
+                    <span className="text-gray-400 group-hover:text-indigo-600 text-sm">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span>{title}</span>
@@ -249,8 +155,6 @@ const TermsAndConditions = () => {
           </div>
         </aside>
 
-        {/* ================= ARTICLE ================= */}
-    
       </div>
     </main>
   );
