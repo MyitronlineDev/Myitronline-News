@@ -102,15 +102,16 @@ function Contact() {
         <div className="bg-white p-6 md:p-8 rounded-2xl shadow-sm hover:shadow-lg transition-shadow duration-200 h-full flex flex-col justify-between">
           <div>
             <h1 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-3 leading-tight">
-              Contact with Us For Your Any Information to Know
+              Contact Us for Any Information
             </h1>
             <p className="text-md  mb-4">
-              Our team is spread around the world working remotely. Visit us at
-              Ground Floor, Bella Strada, 037 Santorini, Greece.
+              Our team works remotely across the globe and is always ready to
+              assist you.
             </p>
 
             <address className="not-italic text-md  mb-4">
-              915 Cheshire Road, Stratford Street College, United States
+              305, 3rd Floor, Plot No. 51, Hasanpur, I.P. Extension, Patparganj,
+              Delhi – 110092
             </address>
 
             <p className="text-md mb-4">
@@ -119,7 +120,7 @@ function Contact() {
                 href="tel:+9199034688764"
                 className="text-blue-800 font-medium"
               >
-                +91 99034 688764
+                +91-9971055886 , 8130309886
               </a>
             </p>
 
@@ -217,9 +218,9 @@ function Contact() {
           <>
             <div>
               <h3 className="text-3xl font-bold text-slate-900 mb-2">
-                Get in Touch
+                Let’s Connect
               </h3>
-              <p className="text-md  mb-4">
+              <p className="text-md  mb-4">  
                 Your email address will not be published. Required fields are
                 marked *
               </p>

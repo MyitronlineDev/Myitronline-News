@@ -1,9 +1,13 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import footer from "../../assets/footerbg.png";
 
 function Footer() {
   return (
-    <footer className="bg-black text-gray-400 mt-2">
+    <footer
+      className="relative text-gray-400 mt-2 bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: `url(${footer})` }}
+    >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-10 py-10">
         {/* TOP ROW */}
         <div
@@ -21,7 +25,7 @@ function Footer() {
 
               {/* Tagline */}
               <div
-                className="mt-3 text-xs text-gray-400 flex flex-wrap gap-3 
+                className="mt-3 text-xs text-white flex flex-wrap gap-3 
                 justify-start md:justify-center lg:justify-start"
               >
                 <span>Honest</span>
@@ -50,7 +54,7 @@ function Footer() {
               <NavLink
                 key={label}
                 to={link}
-                className="text-gray-300 hover:text-yellow-400
+                   className="text-white hover:text-yellow-400
                   border-b border-transparent hover:border-yellow-400
                   pb-1 transition"
               >
@@ -58,10 +62,7 @@ function Footer() {
               </NavLink>
             ))}
           </div>
-        </div>
-
-        {/* Divider */}
-        <div className="mt-8 border-t border-gray-800" />
+        </div> 
 
         {/* BOTTOM ROW */}
         <div
@@ -71,7 +72,7 @@ function Footer() {
           justify-between"
         >
           {/* Copyright */}
-          <p className="text-sm text-gray-300 leading-relaxed max-w-3xl">
+          <p className="text-sm text-white leading-relaxed max-w-3xl">
             <span className="font-semibold text-white">Copyright:</span> Any
             unauthorized use or reproduction of{" "}
             <span className="font-bold text-white">Myitronline News</span>{" "}

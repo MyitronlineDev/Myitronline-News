@@ -15,6 +15,7 @@ import sushant from "../../../assets/sushant.jpg";
 import sumit from "../../../assets/sumit.jpg";
 import priyanshu from "../../../assets/priyanshu.jpg";
 import mukesh from "../../../assets/mukesh.jpg";
+import umang from "../../../assets/umang.jpg"
 
 /* ================= TEAM DATA ================= */
 
@@ -30,6 +31,7 @@ const teamMembers = [
   { name: "NITESH GUPTA", role: "Network Engineer", image: nitesh },
   { name: "MUKESH KUMAR", role: "FRONTEND DEVELOPER", image: mukesh },
   { name: "PRIYANSHU DIVEDI", role: "FRONTEND DEVELOPER", image: priyanshu },
+    { name: "UMANG", role: "GRAPHIC DESIGNER", image: umang },
 ];
 
 /* ================= TEAM CARD ================= */
@@ -107,7 +109,7 @@ function MeetTheTeam() {
             Our Extended Team
           </h2>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
             {teamMembers.slice(4).map((member, index) => (
               <TeamCard key={index} member={member} />
             ))}
