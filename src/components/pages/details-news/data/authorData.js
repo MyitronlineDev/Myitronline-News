@@ -27,7 +27,6 @@ export const authorData = [
         facebook: "https://www.facebook.com/profile.php?id=61576770940387"
       }
     },
-
   }
 ];
 

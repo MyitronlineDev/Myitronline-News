@@ -1,7 +1,7 @@
-import React from "react";
 import { FiCalendar, FiArrowRight } from "react-icons/fi";
 import { articleHeaderContent } from "./articleHeaderContent.js";
 import articlesHeaderBg from "../../assets/temp2.png"
+import { NavLink } from "react-router-dom";
 
 const Articles = ({ data }) => {
     const activeHeader = articleHeaderContent.find(
@@ -73,13 +73,13 @@ const Articles = ({ data }) => {
                                         {item.synopsis}
                                     </p>
 
-                                    <a
-                                        href={`/articles/${item.slug}`}
+                                    <NavLink
+                                        to={`/detail-news/${item.slug}/myitronline`}
                                         className="inline-flex items-center text-blue-600 font-medium text-sm hover:underline"
                                     >
                                         Read More
                                         <FiArrowRight className="ml-1" />
-                                    </a>
+                                    </NavLink>
                                 </div>
                             </div>
                         ))}

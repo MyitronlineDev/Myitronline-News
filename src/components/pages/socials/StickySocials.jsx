@@ -1,4 +1,3 @@
-import React from 'react'
 
 const StickySocials = () => {
     return (
@@ -15,7 +14,6 @@ const StickySocials = () => {
             <a href='https://x.com/_taxa23' className="bg-gray-500 text-white px-4 py-2 w-36 translate-x-24 hover:translate-x-0 transition-transform duration-300 cursor-pointer rounded-l-lg">
                 Twitter
             </a>
-
         </div>
     )
 }

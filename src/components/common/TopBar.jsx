@@ -5,7 +5,7 @@ import LiveTime from "./liveClock/LiveTime";
 import SearchInput from "./SearchInput";
 
 import { searchNews } from "../context/apiService/apiService";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import { FaInstagram, FaFacebookF, FaXTwitter } from "react-icons/fa6";
 
@@ -97,10 +97,6 @@ const TopBar = () => {
             onClick={() => { navigateTo("/") }}
           />
 
-
-
-
-
           {/* Desktop Search */}
           <div className="hidden sm:flex flex-1 justify-center px-6">
             <SearchInput
@@ -140,27 +136,35 @@ const TopBar = () => {
 
             </div>
             <div className="hidden md:flex gap-3 items-center">
+
               <a
-                href="#"
+                href="https://www.instagram.com/taxa232025/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-2 rounded-full border-b hover:bg-pink-500 hover:text-white transition"
               >
                 <FaInstagram className="text-xl" />
               </a>
 
               <a
-                href="#"
-                className="p-2 rounded-full  border-b hover:bg-blue-600 hover:text-white transition"
+                href="https://www.facebook.com/profile.php?id=61576770940387"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-full border-b hover:bg-blue-600 hover:text-white transition"
               >
                 <FaFacebookF className="text-xl" />
               </a>
 
               <a
-                href="#"
-                className="p-2 rounded-full  border-b hover:bg-black hover:text-white transition"
+                href="https://x.com/_taxa23"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-full border-b hover:bg-black hover:text-white transition"
               >
                 <FaXTwitter className="text-xl" />
               </a>
             </div>
+
             <div className="hidden sm:flex">
               <LiveTime color="text-black" size="text-sm" showSeconds={false} />
             </div>
