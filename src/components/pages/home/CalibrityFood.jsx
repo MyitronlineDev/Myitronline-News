@@ -1,6 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import testAd from "../../../assets/testAd.jpeg";
+import itr1_image from "../../../assets/itr1_image.png";
+import itr2_image from "../../../assets/itr2_image.png";
+import HoverCard from "../../common/HoverCard";
 
 const CalibrityFood = ({ globalRbiData }) => {
   if (!globalRbiData) return null;
@@ -126,10 +129,26 @@ const CalibrityFood = ({ globalRbiData }) => {
             </article>
           ))}
         </div>
-        <div className="mt-4">
-          <img
-            src={testAd}
-          />
+        <div className="mt-4 flex flex-col gap-4">
+
+          <div className="flex-none  h-70">
+            <HoverCard
+              image={itr1_image}
+              title="ITR-1"
+              text="For salaried individuals with simple income sources."
+              link="https://myitronline.com/application-form16-itr-1"
+            />
+          </div>
+
+          <div className="flex-none  h-70">
+            <HoverCard
+              image={itr2_image}
+              title="ITR-2"
+              text="For individuals with capital gains or multiple income sources."
+              link="https://myitronline.com/application-form16-itr-2"
+            />
+          </div>
+
         </div>
       </div>
     </div>

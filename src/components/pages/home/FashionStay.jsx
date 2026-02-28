@@ -1,8 +1,9 @@
 import React from "react";
 import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import HireEca from "./redirect/HireEca";
 
-const FashionStay = ({fashionData}) => {
+const FashionStay = ({ fashionData }) => {
 
   const navigate = useNavigate();
   const handleNavigate = (slug) => {
@@ -10,7 +11,7 @@ const FashionStay = ({fashionData}) => {
   };
 
 
-   const socialData = [
+  const socialData = [
     {
       icon: <FaFacebookF size={22} className="text-white" />,
       bg: "bg-[#3b5998]",
@@ -40,14 +41,15 @@ const FashionStay = ({fashionData}) => {
       action: "SUBSCRIBE",
     },
   ];
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 h-auto mb-4">
       <div className="lg:col-span-7">
         <h2 className="text-3xl font-bold mb-6">Goods and Services Tax</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pe-4">
           {fashionData.map((item, index) => (
-            <div key={index} 
-            onClick={() => handleNavigate(item.slug)}
+            <div key={index}
+              onClick={() => handleNavigate(item.slug)}
             >
               <h3 className="font-semibold text-xl">{item.title}</h3>
               <div className="text-xs font-semibold uppercase text-gray-500 flex items-center gap-2">
@@ -61,15 +63,15 @@ const FashionStay = ({fashionData}) => {
       </div>
 
       <div className="lg:col-span-5 px-7">
-      {/* here  */}
-      <h2 className="text-3xl font-bold mb-6">Stay connected</h2>
-      <div className="space-y-4">
-        {socialData.map((item, index) => (
-          <div 
-            key={index}
-            className="flex items-center justify-between pb-3"
-          >
-            <div className="flex items-center gap-4">
+        {/* here  */}
+        <h2 className="text-3xl font-bold mb-6">Stay connected</h2>
+        <div className="space-y-4">
+          {socialData.map((item, index) => (
+            <div
+              key={index}
+              className="flex items-center justify-between pb-3"
+            >
+              <div className="flex items-center gap-4">
                 <div
                   className={`w-10 h-10 rounded-full flex items-center justify-center ${item.bg}`}
                 >
@@ -85,10 +87,13 @@ const FashionStay = ({fashionData}) => {
               <button className="text-xs font-bold text-gray-500 uppercase">
                 {item.action}
               </button>
-          </div>
-        ))}
+            </div>
+          ))}
+        </div>
 
-      </div>
+        <div className="w-full">
+          <HireEca />
+        </div>
       </div>
     </div>
   );
