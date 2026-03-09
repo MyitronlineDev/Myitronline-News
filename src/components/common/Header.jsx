@@ -38,9 +38,9 @@ function Header() {
       {/* ================= TOP BAR ================= */}
       <div className="max-w-7xl mx-auto px-4 h-14 flex items-center justify-center relative">
         {/* ================= DESKTOP MENU ================= */}
-        <ul className="hidden lg:flex gap-8 text-md font-medium tracking-wide">
+        <div className="hidden lg:flex gap-8 text-md font-medium tracking-wide">
           {safeNavbarData.map((category) => (
-            <li key={category.name} className="relative group">
+            <div key={category.name} className="relative group">
               <span className="cursor-pointer hover:text-yellow-400 transition">
                 {category.name}
               </span>
@@ -72,9 +72,9 @@ function Header() {
                   </div>
                 </div>
               )}
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
 
         {/* ================= MOBILE TOGGLE ================= */}
         <button

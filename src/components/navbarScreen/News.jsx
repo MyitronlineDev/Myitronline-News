@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { formatDateDDMMYY } from "../utility/formatter";
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
@@ -24,7 +24,7 @@ const News = ({ data }) => {
             className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-300"
           >
             {/* IMAGE */}
-            <Link to={`/detail-news/${item.slug}/myitronline`}>
+            <NavLink to={`/detail-news/${item.slug}/myitronline`}>
               <div className="relative w-full aspect-video overflow-hidden bg-gray-200">
                 <img
                   src={`${BASE_URL}${item.intro_image}`}
@@ -53,27 +53,27 @@ const News = ({ data }) => {
                   {formatDateDDMMYY(item.published_at)}
                 </span>
               </div>
-            </Link>
+            </NavLink>
 
             {/* CONTENT */}
             <div className="p-4">
-              <Link to={`/detail-news/${item.slug}/myitronline`}>
+              <NavLink to={`/detail-news/${item.slug}/myitronline`}>
                 <h3 className="text-[18px] font-semibold text-gray-900 leading-snug hover:text-blue-600 transition line-clamp-2">
                   {item.title}
                 </h3>
-              </Link>
+              </NavLink>
 
               <p className="mt-1 text-sm text-gray-600 line-clamp-2">
                 {item.synopsis}
               </p>
 
               {/* READ MORE */}
-              <Link
+              <NavLink
                 to={`/detail-news/${item.slug}/myitronline`}
                 className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:underline"
               >
                 Read more →
-              </Link>
+              </NavLink>
             </div>
           </article>
         ))}
@@ -84,7 +84,7 @@ const News = ({ data }) => {
         {restNews.map((item) => (
           <article key={item.id} className="flex gap-6 items-start group">
             {/* IMAGE */}
-            <Link to={`/detail-news/${item.slug}/myitronline`}>
+            <NavLink to={`/detail-news/${item.slug}/myitronline`}>
               <div className="relative w-36 h-24 shrink-0 overflow-hidden rounded-xl bg-gray-200">
                 <img
                   src={`${BASE_URL}${item.intro_image}`}
@@ -100,7 +100,7 @@ const News = ({ data }) => {
                   "
                 />
               </div>
-            </Link>
+            </NavLink>
 
             {/* CONTENT */}
             <div>
@@ -114,19 +114,19 @@ const News = ({ data }) => {
               </div>
 
               {/* TITLE */}
-              <Link to={`/detail-news/${item.slug}/myitronline`}>
+              <NavLink to={`/detail-news/${item.slug}/myitronline`}>
                 <h3 className="mt-1 text-[15px] font-semibold text-gray-900 leading-snug hover:text-blue-600 transition line-clamp-2">
                   {item.title}
                 </h3>
-              </Link>
+              </NavLink>
 
               {/* READ MORE */}
-              <Link
+              <NavLink
                 to={`/detail-news/${item.slug}/myitronline`}
                 className="mt-1 inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:underline"
               >
                 Read more →
-              </Link>
+              </NavLink>
             </div>
           </article>
         ))}
