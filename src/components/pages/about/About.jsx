@@ -1,4 +1,7 @@
 import React from "react";
+import gst from "../../../assets/gst.jpg";
+import income from "../../../assets/income.jpeg";
+import corporate from "../../../assets/corporate.jpg";
 
 const About = () => {
   return (
@@ -190,68 +193,67 @@ const About = () => {
             Insights
           </h2>
 
-          <div className="grid md:grid-cols-3 gap-12">
-            {[
-              {
-                title: "Income Tax",
-                img: "https://images.unsplash.com/photo-1492724441997-5dc865305da7",
-                items: [
-                  "Section-wise amendments",
-                  "Tax regime comparisons",
-                  "ITR filing deadlines",
-                  "TDS/TCS compliance",
-                ],
-              },
-              {
-                title: "GST",
-                img: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2",
-                items: [
-                  "Rate revisions",
-                  "GSTR compliance",
-                  "Notices and penalties",
-                  "ITC eligibility",
-                ],
-              },
-              {
-                title: "Corporate",
-                img: "https://images.unsplash.com/photo-1518770660439-4636190af475",
-                items: [
-                  "Annual filing alerts",
-                  "Board compliance",
-                  "Corporate penalties",
-                  "Startup ecosystem updates",
-                ],
-              },
-            ].map((card, i) => (
-              <div
-                key={i}
-                className="bg-gray-50 rounded-2xl shadow-lg hover:shadow-xl transition overflow-hidden hover:border hover:border-[#c9a24d]/50"
-              >
-                <img
-                  src={`${card.img}?auto=format&fit=crop&w=600&q=70`}
-                  alt={card.title}
-                  loading="lazy"
-                  className="w-full h-44 object-cover hover:scale-[1.03] transition duration-500"
-                />
-                <div className="p-8">
-                  <h3 className="font-semibold text-lg mb-2 text-gray-900 hover:text-[#c9a24d] transition duration-300">
-                    {card.title}
-                  </h3>
-                  <ul className="text-md text-gray-600 space-y-1">
-                    {card.items.map((item, idx) => (
-                      <li
-                        key={idx}
-                        className="hover:text-[#c9a24d] transition duration-200"
-                      >
-                        ✓ {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            ))}
-          </div>
-
+        <div className="grid md:grid-cols-3 gap-12">
+  {[
+    {
+      title: "Income Tax",
+      img: income,
+      items: [
+        "Section-wise amendments",
+        "Tax regime comparisons",
+        "ITR filing deadlines",
+        "TDS/TCS compliance",
+      ],
+    },
+    {
+      title: "GST",
+      img: gst,
+      items: [
+        "Rate revisions",
+        "GSTR compliance",
+        "Notices and penalties",
+        "ITC eligibility",
+      ],
+    },
+    {
+      title: "Corporate",
+      img: corporate,
+      items: [
+        "Annual filing alerts",
+        "Board compliance",
+        "Corporate penalties",
+        "Startup ecosystem updates",
+      ],
+    },
+  ].map((card, i) => (
+    <div
+      key={i}
+      className="bg-gray-50 rounded-2xl shadow-lg hover:shadow-xl transition overflow-hidden hover:border hover:border-[#c9a24d]/50"
+    >
+      <img
+        src={card.img}
+        alt={card.title}
+        loading="lazy"
+        className="w-full h-44 object-cover hover:scale-[1.03] transition duration-500"
+      />
+      <div className="p-8">
+        <h3 className="font-semibold text-lg mb-2 text-gray-900 hover:text-[#c9a24d] transition duration-300">
+          {card.title}
+        </h3>
+        <ul className="text-md text-gray-600 space-y-1">
+          {card.items.map((item, idx) => (
+            <li
+              key={idx}
+              className="hover:text-[#c9a24d] transition duration-200"
+            >
+              ✓ {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  ))}
+</div>
           <p className="text-center mt-5 text-lg font-medium text-gray-600">
             Our goal is simple: actionable information, not complicated
             interpretation.

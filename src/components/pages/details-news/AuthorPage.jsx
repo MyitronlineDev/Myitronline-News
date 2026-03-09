@@ -14,7 +14,7 @@ const AuthorPage = () => {
   const { authorDetails } = authorArticle;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-100 via-white to-gray-200 py-16">
+    <div className="min-h-screen bg-linear-to-br from-gray-100 via-white to-gray-200 py-16">
       <div className="max-w-6xl mx-auto px-6">
         <div className="bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-gray-100">
           <div className="flex flex-col md:flex-row items-center gap-10">
@@ -22,7 +22,7 @@ const AuthorPage = () => {
               className="relative group cursor-pointer"
               onClick={() => setOpen(true)}
             >
-              <div className="absolute -inset-3 bg-gradient-to-r from-black/10 to-black/5 rounded-3xl blur-lg opacity-70"></div>
+              <div className="absolute -inset-3 bg-linear-to-r from-black/10 to-black/5 rounded-3xl blur-lg opacity-70"></div>
               <img
                 className="relative w-56 sm:w-64 md:w-72 rounded-3xl transition duration-500 group-hover:scale-105 animate-float"
                 src={authorDetails.avatar}
