@@ -2,6 +2,8 @@ import React from "react";
 import gst from "../../../assets/gst.jpg";
 import income from "../../../assets/income.jpeg";
 import corporate from "../../../assets/corporate.jpg";
+import Aboutus from "../../../assets/About.jpeg";
+import about from "../../../assets/Aboutus.jpeg";
 
 const About = () => {
   return (
@@ -34,7 +36,7 @@ const About = () => {
           {/* HERO IMAGE */}
           <div className="rounded-xl overflow-hidden shadow-2xl border-2 border-[#c9a24d]/20">
             <img
-              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=70"
+              src={about}
               alt="Digital Studio"
               loading="lazy"
               className="w-full h-full object-cover hover:scale-[1.03] transition duration-500"
@@ -101,7 +103,7 @@ const About = () => {
             <div className="grid grid-cols-1 lg:grid-cols-[40%_60%] lg:min-h-[520px]">
               {/* LEFT IMAGE */}
               <img
-                src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=70"
+                src={ Aboutus}
                 alt="Team Work"
                 loading="lazy"
                 className="

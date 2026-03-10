@@ -12,9 +12,7 @@ const News = ({ data }) => {
   return (
     <section className="max-w-7xl mx-auto px-4 py-4">
       {/* HEADER */}
-      <h2 className="text-2xl font-semibold text-gray-900 mb-3">
-        Latest News
-      </h2>
+      <h2 className="text-2xl font-semibold text-gray-900 mb-3">Latest News</h2>
 
       {/* ================= FEATURED GRID ================= */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mb-8">
@@ -62,10 +60,11 @@ const News = ({ data }) => {
                   {item.title}
                 </h3>
               </NavLink>
-
-              <p className="mt-1 text-sm text-gray-600 line-clamp-2">
-                {item.synopsis}
-              </p>
+              <NavLink to={`/detail-news/${item.slug}/myitronline`}>
+                <p className="mt-1 text-sm text-gray-600 line-clamp-2">
+                  {item.synopsis}
+                </p>
+              </NavLink>
 
               {/* READ MORE */}
               <NavLink

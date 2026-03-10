@@ -59,6 +59,7 @@ function TvSection({tvArticles = []}) {
               <img
                 src={item.image}
                 alt={item.title}
+                  loading="lazy"
                 className="w-24 h-16 md:w-28 md:h-20 object-cover rounded"
               />
             </div>

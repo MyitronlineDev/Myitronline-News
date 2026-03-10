@@ -66,6 +66,7 @@ function Technology({articles = []}) {
               <img
                 src={article.image}
                 alt={article.title}
+                  loading="lazy"
                 className="w-28 h-24 object-cover "
               />
             </div>

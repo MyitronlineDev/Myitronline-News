@@ -55,6 +55,7 @@ const Featured = ({featuredItems}) => {
                 <img
                   src={item.image}
                   alt={item.title}
+                    loading="lazy"
                   className="w-full h-full aspect-insta"
                 />
                 <span className="absolute border border-black -bottom-2 left-0 bg-white text-black text-xs font-semibold px-2 py-1 uppercase">

@@ -21,7 +21,7 @@ const RightSidebar = ({ relatedNews = [] }) => {
         <div className="bg-white border border-neutral-200 rounded-2xl shadow-md overflow-hidden">
 
           {/* HEADER */}
-          <div className="px-4 py-3 border-b bg-gradient-to-r from-neutral-50 to-neutral-100 flex items-center gap-2">
+          <div className="px-4 py-3 border-b bg-linear-to-r from-neutral-50 to-neutral-100 flex items-center gap-2">
             <span className="w-2 h-2 bg-red-600 rounded-full animate-pulse" />
             <h3 className="text-sm font-semibold text-neutral-800 tracking-wide">
               Related Articles
@@ -48,7 +48,7 @@ const RightSidebar = ({ relatedNews = [] }) => {
                 >
                   {/* IMAGE */}
                   {item?.intro_image && (
-                    <div className="w-14 h-14 rounded-xl overflow-hidden flex-shrink-0">
+                    <div className="w-14 h-14 rounded-xl overflow-hidden shrink-0">
                       <img
                         src={buildImageUrl(
                           import.meta.env.VITE_API_INTRO_IMG,

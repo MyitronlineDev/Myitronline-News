@@ -25,7 +25,7 @@ const LatestNews = ({ leftNews }) => {
             >
               <div className="flex flex-row gap-2 text-sm text-gray-700 items-center justify-between">
                 <span
-                  className={`font-semibold rounded-full px-3 font-medium text-xs py-1 
+                  className={`font-semibold rounded-full px-3 text-xs py-1 
                   ${getCategoryColor(item.category || item.category_name)}`}
                 >
                   {item.category_name || item.category}

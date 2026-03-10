@@ -38,6 +38,7 @@ const CalibrityFood = ({ globalRbiData }) => {
             >
               <img
                 src={latestGlobalNews.image}
+                loading="lazy"
                 className="w-full aspect-video object-cover"
                 alt={latestGlobalNews.title}
               />
@@ -69,6 +70,7 @@ const CalibrityFood = ({ globalRbiData }) => {
               <div className="relative h-40 w-full mb-2">
                 <img
                   src={item.image}
+                    loading="lazy"
                   className="w-full h-full object-cover"
                   alt={item.title}
                 />
@@ -111,6 +113,7 @@ const CalibrityFood = ({ globalRbiData }) => {
                 <img
                   src={item.image}
                   alt={item.title}
+                    loading="lazy"
                   className="w-24 h-20 object-cover"
                 />
               </div>
@@ -130,7 +133,6 @@ const CalibrityFood = ({ globalRbiData }) => {
           ))}
         </div>
         <div className="mt-4 flex flex-col gap-4">
-
           <div className="flex-none  h-70">
             <HoverCard
               image={itr1_image}
@@ -148,7 +150,6 @@ const CalibrityFood = ({ globalRbiData }) => {
               link="https://myitronline.com/application-form16-itr-2"
             />
           </div>
-
         </div>
       </div>
     </div>
