@@ -54,7 +54,7 @@ function Footer() {
               <NavLink
                 key={label}
                 to={link}
-                   className="text-white hover:text-yellow-400
+                className="text-white hover:text-yellow-400
                   border-b border-transparent hover:border-yellow-400
                   pb-1 transition"
               >
@@ -62,7 +62,7 @@ function Footer() {
               </NavLink>
             ))}
           </div>
-        </div> 
+        </div>
 
         {/* BOTTOM ROW */}
         <div
@@ -72,13 +72,19 @@ function Footer() {
           justify-between"
         >
           {/* Copyright */}
-          <p className="text-sm text-white leading-relaxed max-w-3xl">
-            <span className="font-semibold text-white">Copyright:</span> Any
-            unauthorized use or reproduction of{" "}
-            <span className="font-bold text-white">Myitronline News</span>{" "}
-            content for commercial purposes is strictly prohibited and
-            constitutes copyright infringement liable to legal action.
-          </p>
+          <p className="text-sm leading-relaxed max-w-3xl">
+            <span className="font-semibold text-white"> Copyright:</span>
+            <span className="text-white">
+              {" "}
+              Any unauthorized use or reproduction of{" "}
+            </span>
+            <span className="font-bold text-white">Myitronline News</span>
+            <span className="text-white">
+              {" "}
+              content for commercial purposes is strictly prohibited and
+              constitutes copyright infringement liable to legal action.
+            </span>
+          </p> 
 
           {/* Social Icons */}
           <div
