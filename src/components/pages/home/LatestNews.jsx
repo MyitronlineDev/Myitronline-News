@@ -44,9 +44,9 @@ const LatestNews = ({ leftNews }) => {
                 {item.title || item.news_title}
               </h3>
 
-              <p className="text-gray-600 text-sm leading-relaxed">
+              <span className="text-gray-600 text-sm leading-relaxed">
                 <ReadMoreLess text={item.excerpt || item.synopsis} />
-              </p>
+              </span>
             </div>
           ))}
         </div>
