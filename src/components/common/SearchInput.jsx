@@ -36,10 +36,7 @@ const SearchInput = ({
 
   return (
     <div ref={wrapperRef} className="relative w-full max-w-xl">
-
-      <FiSearch
-        className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5 pointer-events-none"
-      />
+      <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5 pointer-events-none" />
 
       {value && (
         <FiX
@@ -95,8 +92,9 @@ const SearchInput = ({
               "
               >
                 <img
-                  src={`${IMAGE_BASE_URL}/${item.intro_image}`}
+                  src={`${"https://www.apnokaca.com"}/${item.intro_image}`}
                   alt={item.title}
+                  loading="lazy"
                   className="w-14 h-14 rounded-md object-cover shrink-0"
                 />
 
@@ -112,13 +110,11 @@ const SearchInput = ({
               </li>
             ))}
 
-          {trimmedValue.length >= 3 &&
-            !loading &&
-            suggestions.length === 0 && (
-              <li className="px-4 py-3 text-sm text-gray-500 text-center">
-                No results found
-              </li>
-            )}
+          {trimmedValue.length >= 3 && !loading && suggestions.length === 0 && (
+            <li className="px-4 py-3 text-sm text-gray-500 text-center">
+              No results found
+            </li>
+          )}
 
           {/* CATEGORY PILLS */}
           <li className="px-4 py-3 border-t border-gray-100">

@@ -8,14 +8,14 @@ import Header from "./Header";
 import RelatedNews from "./RelatedNews";
 import { useDevice } from "../../context/DataProvider";
 import LatestNews from "../home/LatestNews";
-import LoaderUi from "../../common/LoaderUi"
+import LoaderUi from "../../common/LoaderUi";
 import GoogleAd from "../../common/GoogleAd";
 
 const DetailNews = () => {
   const { slug } = useParams();
 
   const [articles, setArticles] = useState(null);
-  const [lang, setLang] = useState("en"); 
+  const [lang, setLang] = useState("en");
   const [loading, setLoading] = useState(false);
 
   const fetchShowNews = async (slug, language) => {
@@ -35,7 +35,7 @@ const DetailNews = () => {
   }, [slug, lang]);
 
   if (!articles || loading) {
-    return <LoaderUi />
+    return <LoaderUi />;
   }
 
   // Image URL builder (safe)
@@ -49,7 +49,6 @@ const DetailNews = () => {
       <ReadingProgress />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 min-h-screen p-0">
-
         <Header
           category={articles?.news?.category_name}
           title={articles?.news?.news_title}
@@ -62,7 +61,6 @@ const DetailNews = () => {
         />
 
         <div className="grid grid-cols-12 gap-4 mt-8">
-
           <aside className="hidden lg:block col-span-3">
             <div className="sticky top-20 h-[calc(100vh-5rem)] overflow-y-auto">
               <LatestNews leftNews={articles?.right_side_news} />
@@ -71,17 +69,16 @@ const DetailNews = () => {
 
           <main className="col-span-12 lg:col-span-9">
             <article className="bg-white rounded-2xl shadow-sm border border-neutral-200 overflow-hidden">
-
               {articles?.news?.intro_image && (
                 <div className="relative w-full aspect-video bg-gray-100 p-2">
                   <img
                     src={buildImageUrl(
-                      import.meta.env.VITE_API_BASE_URL,
-                      articles?.news?.intro_image
+                      "https://www.apnokaca.com",
+                      articles?.news?.intro_image,
                     )}
                     alt={articles?.news?.news_title || "News image"}
-                    className="absolute inset-0 w-full h-full aspect-video p-1 lg:p-2 rounded-2xl lg:rounded-4xl"
                     loading="lazy"
+                    className="absolute inset-0 w-full h-full aspect-video p-1 lg:p-2 rounded-2xl lg:rounded-4xl"
                   />
                 </div>
               )}

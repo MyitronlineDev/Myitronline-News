@@ -25,7 +25,7 @@ const News = ({ data }) => {
             <NavLink to={`/detail-news/${item.slug}/myitronline`}>
               <div className="relative w-full aspect-video overflow-hidden bg-gray-200">
                 <img
-                  src={`${BASE_URL}${item.intro_image}`}
+                  src={`https://www.apnokaca.com/${item.intro_image}`}
                   alt={item.title}
                   loading="lazy"
                   decoding="async"
@@ -86,7 +86,7 @@ const News = ({ data }) => {
             <NavLink to={`/detail-news/${item.slug}/myitronline`}>
               <div className="relative w-36 h-24 shrink-0 overflow-hidden rounded-xl bg-gray-200">
                 <img
-                  src={`${BASE_URL}${item.intro_image}`}
+                  src={`https://www.apnokaca.com/${item.intro_image}`}
                   alt={item.title}
                   loading="lazy"
                   decoding="async"

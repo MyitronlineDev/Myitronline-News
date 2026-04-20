@@ -250,10 +250,7 @@ const Home = () => {
           id: item.id,
           category: item.category_name,
           title: item.news_title,
-          image: buildImageUrl(
-            import.meta.env.VITE_API_BASE_URL,
-            item.intro_image,
-          ),
+          image: buildImageUrl("https://www.apnokaca.com", item.intro_image),
           slug: item.slug,
           date: formatDateDDMMYY(item.published_at),
         }));
@@ -295,10 +292,7 @@ const Home = () => {
           category: item.category_name,
           title: item.news_title,
           heading: item.news_heading,
-          image: buildImageUrl(
-            import.meta.env.VITE_API_BASE_URL,
-            item.intro_image,
-          ),
+          image: buildImageUrl("https://www.apnokaca.com", item.intro_image),
           slug: item.slug,
           author: item.created_by_alias,
           date: formatDateDDMMYY(item.published_at),
@@ -309,10 +303,7 @@ const Home = () => {
           category: item.category_name,
           title: item.news_title,
           heading: item.news_heading,
-          image: buildImageUrl(
-            import.meta.env.VITE_API_BASE_URL,
-            item.intro_image,
-          ),
+          image: buildImageUrl("https://www.apnokaca.com", item.intro_image),
           slug: item.slug,
           author: item.created_by_alias,
           date: formatDateDDMMYY(item.published_at),
@@ -363,9 +354,10 @@ const Home = () => {
             author: "Krishna Gopal Varshney",
             title: data.latest.news_title,
             description: data.latest.synopsis,
-            image: `${import.meta.env.VITE_API_BASE_URL}/${
-              data.latest.intro_image
-            }`,
+            image: buildImageUrl(
+              "https://www.apnokaca.com",
+              data.latest.intro_image,
+            ),
           },
           sideNews: data.side.map((item) => ({
             id: item.id,
@@ -373,7 +365,7 @@ const Home = () => {
             category: item.category_name,
             title: item.news_title,
             description: item.synopsis,
-            image: `${import.meta.env.VITE_API_BASE_URL}/${item.intro_image}`,
+            image: `https://www.apnokaca.com/${item.intro_image}`,
           })),
         };
         setLandingPageData(formattedData);
@@ -404,7 +396,7 @@ const Home = () => {
             title: item.news_title,
             heading: item.news_heading,
             publishedAt: formatDateDDMMYY(item.published_at),
-            image: `${import.meta.env.VITE_API_BASE_URL}/${item.intro_image}`,
+            image: `https://www.apnokaca.com/${item.intro_image}`,
           })),
 
           rbiNews: data.rbi.map((item) => ({
@@ -414,7 +406,7 @@ const Home = () => {
             title: item.news_title,
             heading: item.news_heading,
             publishedAt: formatDateDDMMYY(item.published_at),
-            image: `${import.meta.env.VITE_API_BASE_URL}/${item.intro_image}`,
+            image: `https://www.apnokaca.com/${item.intro_image}`,
           })),
         };
 

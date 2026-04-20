@@ -45,14 +45,15 @@ const Articles = ({ data }) => {
                 key={item.id}
                 className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all "
               >
-               <NavLink to={`/detail-news/${item.slug}/myitronline`}>
-                <div className="h-48 w-full overflow-hidden">
-                  <img
-                    src={`https://www.apnokaca.com/${item.intro_image}`}
-                    alt={item.title}
-                    className="w-full h-full hover:scale-105 transition-transform duration-300 aspect-video"
-                  />
-                </div>
+                <NavLink to={`/detail-news/${item.slug}/myitronline`}>
+                  <div className="h-48 w-full overflow-hidden">
+                    <img
+                      src={`https://www.apnokaca.com/${item.intro_image}`}
+                      alt={item.title}
+                      loading="lazy"
+                      className="w-full h-full hover:scale-105 transition-transform duration-300 aspect-video"
+                    />
+                  </div>
                 </NavLink>
 
                 <div className="p-6">
